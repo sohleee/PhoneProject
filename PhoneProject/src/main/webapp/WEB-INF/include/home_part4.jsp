@@ -11,7 +11,7 @@
 		});
 		$("[id^='a']").on("click",function(){
 			var x=$(this).children("td").eq(0).text();
-					location.href="boardRetrieve?boardnum="+x; 
+					/* location.href="boardRetrieve?boardnum="+x;  */
 			});
 	});
 		
@@ -28,13 +28,11 @@
 <table class="table table-hover">
 		<thead>
 		<tr>
-			<th>글번호</th>
 			<th>제목</th>
-			<th>작성일</th>
 		</tr>
 		</thead>
 	
-		<c:set var="list" value="${page.getList()}"></c:set>
+		<c:set var="list" value="${fpage.getList()}"></c:set>
 		<c:if test="${list.size()==0}">
 			<tr>
 			<td colspan="5" align="center">게시물이 없습니다</td>
@@ -42,10 +40,8 @@
 		</c:if>
 		<c:if test="${list.size()!=0}">
 		<c:forEach var="dto" items="${list}">
-			<tr id="a${dto.boardnum}">
-				<td>${dto.boardnum}</td>
+			<tr id="a${dto.num}">
 				<td>${dto.title}</td>
-				<td>${dto.writeday}</td>
 			</tr>
 			</c:forEach>
 		</c:if>

@@ -11,7 +11,7 @@
 		});
 		$("[id^='a']").on("click",function(){
 			var x=$(this).children("td").eq(0).text();
-					location.href="boardRetrieve?boardnum="+x; 
+					location.href="board/boardRetrieve?boardnum="+x; 
 			});
 	});
 		
@@ -34,7 +34,7 @@
 		</tr>
 		</thead>
 	
-		<c:set var="list" value="${page.getList()}"></c:set>
+		<c:set var="list" value="${bpage.getList()}"></c:set>
 		<c:if test="${list.size()==0}">
 			<tr>
 			<td colspan="5" align="center">게시물이 없습니다</td>
