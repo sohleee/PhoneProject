@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dto.phone.FileDTO;
+import com.dto.phone.PhoneFileDTO;
 import com.dto.phone.PhoneDTO;
 import com.service.phone.PhoneService;
 
@@ -36,8 +36,8 @@ public class PhoneList {
 	}
 	
 	
-	@RequestMapping("/PhoneList")
-	public ModelAndView PhoneList() {
+	@RequestMapping("/phoneList")
+	public ModelAndView phoneList() {
 		List<PhoneDTO> list = service.PhoneList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
@@ -81,7 +81,7 @@ public class PhoneList {
 		return "phoneAddForm";
 	}
 	@RequestMapping(value="/AddFile",method=RequestMethod.POST)
-	public String AddFile(FileDTO dto) {
+	public String AddFile(PhoneFileDTO dto) {
 		
 		CommonsMultipartFile theFile = dto.getPhone_image();
 		String originalFilename = theFile.getOriginalFilename();

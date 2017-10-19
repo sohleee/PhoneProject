@@ -10,9 +10,9 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Phone
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="/phone/phoneAll">All</a></li>
-          <li><a href="/phone/galaxy">Galaxy</a></li>
-          <li><a href="/phone/iphone">iPhone</a></li>
+        <li><a href="phoneList">All</a></li>
+          <li><a href="/phone/List?phone_model_num=galaxy">Galaxy</a></li>
+          <li><a href="/phone/List?phone_model_num=iphone">iPhone</a></li>
         </ul>
       </li>
       <li><a href="/phone/board/boardList">Board</a></li>

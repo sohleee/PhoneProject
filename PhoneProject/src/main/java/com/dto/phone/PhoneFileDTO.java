@@ -3,8 +3,8 @@ package com.dto.phone;
 import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-@Alias("fileDTO")
-public class FileDTO {
+@Alias("phoneFileDTO")
+public class PhoneFileDTO {
 
 	private String telecom_num,phone_model_num,phone_name,phone_content,phone_price;
 	private CommonsMultipartFile phone_image;

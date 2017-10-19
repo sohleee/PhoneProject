@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dto.phone.FileDTO;
+import com.dto.phone.PhoneFileDTO;
 import com.dto.phone.PhoneDTO;
 @Repository
 public class PhoneDAO {

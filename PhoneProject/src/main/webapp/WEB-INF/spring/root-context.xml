@@ -38,7 +38,7 @@
 				<value>com.dto.board.FileDTO</value>
 				<value>com.dto.member.MemberDTO</value>
 				<value>com.dto.phone.PhoneDTO</value>
-				<value>com.dto.phone.FileDTO</value>
+				<value>com.dto.phone.PhoneFileDTO</value>
 			</list>
 		</property>
 	</bean>
