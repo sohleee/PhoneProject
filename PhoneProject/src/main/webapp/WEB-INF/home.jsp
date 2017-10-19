@@ -10,6 +10,7 @@
 	<title>Home</title>
 	
 <style>
+
 .carousel-control.right, .carousel-control.left {
       background-image: none;
       color: #000000;
@@ -20,13 +21,16 @@
   .carousel-indicators li.active {
       background-color: #000000;
   }
-  .item h4 {
+  .item img {
       font-size: 19px;
       line-height: 1.375em;
       font-weight: 400;
       font-style: italic;
       margin: 70px 0;
   }
+  .row{
+  }
+  .carousel-inner{}
 </style>
 </head>
 <body>
@@ -41,25 +45,28 @@
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
   	<div class="row">
-  	<br>
   	 <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
+		<img src="images/main_slide/main_image01.png" width="100%" height="100%">
       </div>
       <div class="item">
-        <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
+		<img src="images/main_slide/main_image02.png" width="100%" height="100%">
       </div>
       <div class="item">
-        <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+		<img src="images/main_slide/main_image03.png" width="100%" height="100%">
+      </div>
+      <div class="item">
+		<img src="images/main_slide/main_image04.png" width="100%" height="500">
       </div>
     </div>
 

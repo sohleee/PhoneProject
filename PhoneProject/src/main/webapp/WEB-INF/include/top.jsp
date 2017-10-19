@@ -53,17 +53,16 @@
 	
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="mypage">회원정보</a>
+  <a href="loginX/mypage">회원정보</a>
   <a href="#">Cart</a>
   <a href="#">Question</a>
-  <a href="#">Contact</a>
 </div>
 
 <c:if test="${empty sessionScope.login}">
 <ul class="nav navbar-nav navbar-right"> 
 <li id="navbar-page"><a href="/phone/"><i class="fa fa-home fa-fw"></i><span class="glyphicon glyphicon-home"></span> Home</a></li>
-<li id="navbar-login"><a href="memberForm"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-plus"></span> Join</a></li>
-<li id="navbar-login"><a href="loginForm"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-lock"></span> Login</a></li>
+<li id="navbar-login"><a href="/phone/memberForm"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-plus"></span> Join</a></li>
+<li id="navbar-login"><a href="/phone/loginForm"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-lock"></span> Login</a></li>
 <li id="navbar-login"><a href="#"><span onclick="openNav()"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-user"></span>MyPage</span></a></li>
 </ul>
 
