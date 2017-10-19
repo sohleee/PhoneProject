@@ -19,7 +19,6 @@
 	
 	<mvc:annotation-driven validator="myBoardValidator"/>
 	<mvc:default-servlet-handler/>
-	<mvc:view-controller path="/" view-name="home"/>
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/" suffix=".jsp"/>
 	</mvc:view-resolvers>
