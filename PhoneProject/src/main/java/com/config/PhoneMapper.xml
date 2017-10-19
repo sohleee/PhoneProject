@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.list.PhoneMapper">
+
+
+
+
+	<select id="PhoneList" resultType="PhoneDTO">
+		select telecom_num,
+		phone_model_num,
+		phone_name,
+		phone_content,
+		phone_price,
+		phone_image
+		from phones
+
+	</select>
+
+	<select id="phoneRetrieve" resultType="PhoneDTO" parameterType="string">
+		select telecom_num,
+		phone_model_num,
+		phone_name,
+		phone_content,
+		phone_price,
+		phone_image
+		from phones
+		where telecom_num = #{telecom_num}
+	</select>
+	<select id="phoneModelList" resultType="PhoneDTO" parameterType="string">
+		select telecom_num,
+		phone_model_num,
+		phone_name,
+		phone_content,
+		phone_price,
+		phone_image
+		from phones
+		where phone_model_num = #{phone_model_num}
+	</select>
+	
+	<insert id="PhoneAdd" parameterType="hashmap">
+	insert into phones(telecom_num, phone_model_num, phone_name,
+		phone_content, phone_price, phone_image)
+	values(#{telecom_num},#{phone_model_num},#{phone_name},#{phone_content},#{phone_price},#{phone_image})
+	
+	</insert>
+	<update id="phoneUpdate" parameterType="hashmap">
+	update phones
+	set phone_content = #{phone_content}, phone_price = #{phone_price}
+	where telecom_num = #{telecom_num}
+	
+	</update>
+	<delete id="phoneDelete" parameterType="String">
+	delete from phones
+	where telecom_num=#{telecom_num}
+	</delete>
+
+</mapper>
+
+
+
+
+
