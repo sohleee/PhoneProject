@@ -31,11 +31,11 @@ public class FAQDAO {
 	public FAQPageDTO faqPage(int curPage, int perPage, HashMap<String,String> map) {
 		FAQPageDTO dto=new FAQPageDTO();
 		int index=(curPage-1)*perPage;
+		int totalCount=0;
 		if(map.get("category").equals("all")) {
 			List<FAQDTO> list=template.selectList("faqList1",map, new RowBounds(index, perPage));
-			int totalCount=0;
 			if(map.get("searchValue")==null) {
-				totalCount=template.selectOne("faqtotalCount");
+				totalCount=template.selectOne("faqtotalCount1");
 				dto.setList(list);
 				dto.setCurPage(curPage);
 				dto.setPerPage(perPage);
@@ -51,22 +51,22 @@ public class FAQDAO {
 			}
 		}else {
 			List<FAQDTO> list=template.selectList("faqList2",map, new RowBounds(index, perPage));
-			int totalCount=0;
 			if(map.get("searchValue")==null) {
-				totalCount=template.selectOne("faqtotalCount");
+				totalCount=template.selectOne("faqtotalCount2");
 				dto.setList(list);
 				dto.setCurPage(curPage);
 				dto.setPerPage(perPage);
 				dto.setTotalCount(totalCount);
 			}
 			else {
-				totalCount=template.selectOne("faqtotalCount1",map);
+				totalCount=template.selectOne("faqtotalCount2",map);
 				dto.setList(list);
 				dto.setCurPage(curPage);
 				dto.setPerPage(perPage);
 				dto.setTotalCount(totalCount);
 				dto.setSearchValue(map.get("searchValue"));
 			}
+			
 			
 		}
 		return dto;
