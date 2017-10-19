@@ -30,7 +30,7 @@
 <th>작성자</th><td>${retrieve.author}<br></td>
 </tr>
 <tr>
-<th>내용</th><td><div id="content"><c:if test="${retrieve.board_image != null}"><img src="/phone/board/images/${retrieve.board_image}" width="200" height="200"></c:if><br>${retrieve.content}</div></td>
+<th>내용</th><td><div id="content"><c:if test="${retrieve.board_image != null}"><img src="images/${retrieve.board_image}" width="200" height="200"></c:if><br>${retrieve.content}</div></td>
 </tr>
 </table>
 <hr>

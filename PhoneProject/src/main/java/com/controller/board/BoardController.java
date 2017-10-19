@@ -36,6 +36,8 @@ public class BoardController {
 	@Autowired
 	CommentService cservice;
 	
+	
+	
 		@RequestMapping(value="/boardList", method=RequestMethod.GET)
 		public String boardList(@RequestParam(required=false, defaultValue="1")int curPage,
 		@RequestParam(required=false, defaultValue="10") int perPage,
@@ -78,7 +80,7 @@ public class BoardController {
 					String originalFilename = theFile.getOriginalFilename();
 					
 					System.out.println(">>>"+originalFilename);
-					File f=new File("/phone/board/images",originalFilename);
+					File f=new File("C:\\upload",originalFilename);
 				      
 				    try{
 				    	theFile.transferTo(f);
