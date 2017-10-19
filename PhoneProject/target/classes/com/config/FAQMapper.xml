@@ -20,11 +20,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	order by num desc
 </select>
 
-<select id="faqtotalCount" resultType="int" parameterType="map">
+<select id="faqtotalCount1" resultType="int" parameterType="map">
 	select count(*) from faq
 </select>
 
-<select id="faqtotalCount1" resultType="int" parameterType="map">
+<select id="faqtotalCount2" resultType="int" parameterType="map">
 	select count(*) from faq
 	where title like '%'||#{searchValue}||'%'
 	and category=#{category}
