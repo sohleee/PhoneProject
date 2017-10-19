@@ -78,7 +78,7 @@ public class BoardController {
 					String originalFilename = theFile.getOriginalFilename();
 					
 					System.out.println(">>>"+originalFilename);
-					File f=new File("c:\\upload",originalFilename);
+					File f=new File("/phone/board/images",originalFilename);
 				      
 				    try{
 				    	theFile.transferTo(f);
