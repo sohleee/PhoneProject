@@ -1,0 +1,23 @@
+<style>
+#title{text-align: center; }
+a{text-decoration: none;}
+.a{text-decoration: none; font-size:12px; color:#363636; margin-left: 10px;}
+table{border:2px solid gray; padding: 20px; }
+.button{margin-top:5px; width: 200px; padding: 10px; padding-left:30px; padding-right:30px; background-color:#363636; color:#ffffff; border: 1px solid #363636; }
+.button:hover{background-color:#ffffff; color:#000000; border: 1px solid #363636;}
+#p{margin-left: 80px;}
+
+
+/*   table {border: 1px solid gray;
+    border-collapse: collapse;}
+  th, td {border: 1px solid gray; padding: 15px;}
+  th{background-color: #F6F6F6; text-align: left;} */
+
+/* 주소 API */
+.blue{
+     color:blue;
+   }
+   .red{
+     color:red;
+   }
+</style>

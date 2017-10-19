@@ -22,6 +22,7 @@
 				<value>classpath:com/config/QNAMapper.xml</value>
 				<value>classpath:com/config/CommentMapper.xml</value>
 				<value>classpath:com/config/FAQMapper.xml</value>
+				<value>classpath:com/config/MemberMapper.xml</value>
 			</list>
 		</property>
 		<property name="typeAliases">
@@ -34,6 +35,7 @@
 				<value>com.dto.board.QNAPageDTO</value>
 				<value>com.dto.board.FAQPageDTO</value>
 				<value>com.dto.board.FileDTO</value>
+				<value>com.dto.member.MemberDTO</value>
 			</list>
 		</property>
 	</bean>
