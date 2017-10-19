@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.FAQMapper">
+
+<select id="faqList1" resultType="FAQDTO" parameterType="hashmap">
+	select num, title,content
+	from faq
+	where (title like '%'||#{searchValue}||'%' or content like '%'||#{searchValue}||'%')
+	order by num desc
+</select>
+
+<select id="faqList2" resultType="FAQDTO" parameterType="hashmap">
+	select num, title,content
+	from faq
+	where (title like '%'||#{searchValue}||'%' or content like '%'||#{searchValue}||'%')
+	and category=#{category}
+	order by num desc
+</select>
+
+<select id="faqtotalCount" resultType="int">
+	select count(*) from faq
+</select>
+
+<select id="faqtotalCount1" resultType="int" parameterType="map">
+	select count(*) from faq
+	where title like '%'||#{searchValue}||'%'
+	and category=#{category}
+</select>
+
+<insert id="faqInsert" parameterType="FAQDTO">
+	insert into FAQ(num,catitle,content)
+	values(faq_seq.nextval,#{title},#{content})
+</insert>
+
+<select id="faqselectByNum" parameterType="int" resultType="FAQDTO">
+	select num,title,content
+	from faq
+	where num=#{num}
+</select>
+
+
+<delete id="faqDelete" parameterType="hashmap">
+	delete from faq
+	where num=#{num}
+</delete>
+
+<update id="faqUpdateByNum" parameterType="FAQDTO">
+	update faq
+	set title=#{title},content=#{content}
+	where num=#{num}
+</update>
+</mapper>

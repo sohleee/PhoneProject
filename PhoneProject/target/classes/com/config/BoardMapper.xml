@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.BoardMapper">
+
+<select id="boardList" resultType="BoardDTO" parameterType="hashmap">
+	select boardnum, userid, title, author, content, to_char(writeday,'YYYY/MM/DD') writeday, readCnt, board_image
+	from board
+	<if test="searchName=='title'">
+	where title like '%'||#{searchValue}||'%'
+	</if>
+	<if test="searchName=='author'">
+	where author like '%'||#{searchValue}||'%'
+	</if>
+	order by boardnum desc
+</select>
+
+<select id="boardCount1" resultType="int">
+	select count(*) from board
+</select>
+
+<select id="boardCount2" resultType="int" parameterType="hashmap">
+	select count(*) from board
+	<if test="searchName=='title'">
+	where title like '%'||#{searchValue}||'%'
+	</if>
+	<if test="searchName=='author'">
+	where author like '%'||#{searchValue}||'%'
+	</if>
+</select>
+
+<insert id="boardWrite1" parameterType="hashmap">
+	insert into Board(boardnum,userid,title,author,content)
+	values(board_seq.nextval,#{userid},#{title},#{author},#{content})
+</insert>
+
+<insert id="boardWrite2" parameterType="hashmap">
+	insert into Board(boardnum,userid,title,author,content,board_image)
+	values(board_seq.nextval,#{userid},#{title},#{author},#{content},#{board_image})
+</insert>
+
+<select id="boardRetrieve" parameterType="int" resultType="BoardDTO">
+	select boardnum, userid, title,author,content,to_char(writeday,'YYYY/MM/DD') writeday,readCnt,board_image
+	from board
+	where boardnum=#{boardnum}
+</select>
+<update id="boardReadCnt" parameterType="int">
+	update board
+	set readCnt=readCnt+1
+	where boardnum=#{boardnum}
+</update>
+
+<delete id="boardDelete" parameterType="hashmap">
+	delete from board
+	where boardnum=#{boardnum} and userid=#{userid}
+</delete>
+
+<update id="boardUpdate1" parameterType="hashmap">
+	update board
+	set title=#{title}, author=#{author}, content=#{content}
+	where boardnum=#{boardnum}
+</update>
+
+<update id="boardUpdate2" parameterType="hashmap">
+	update board
+	set title=#{title}, author=#{author}, content=#{content},board_image=#{board_image}
+	where boardnum=#{boardnum}
+</update>
+
+</mapper>
