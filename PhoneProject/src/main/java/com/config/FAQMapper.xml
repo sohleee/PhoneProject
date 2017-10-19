@@ -8,19 +8,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="faqList1" resultType="FAQDTO" parameterType="hashmap">
 	select num, title,content
 	from faq
-	where (title like '%'||#{searchValue}||'%' or content like '%'||#{searchValue}||'%')
+	where title like '%'||#{searchValue}||'%'
 	order by num desc
 </select>
 
 <select id="faqList2" resultType="FAQDTO" parameterType="hashmap">
 	select num, title,content
 	from faq
-	where (title like '%'||#{searchValue}||'%' or content like '%'||#{searchValue}||'%')
+	where title like '%'||#{searchValue}||'%'
 	and category=#{category}
 	order by num desc
 </select>
 
-<select id="faqtotalCount" resultType="int">
+<select id="faqtotalCount" resultType="int" parameterType="map">
 	select count(*) from faq
 </select>
 

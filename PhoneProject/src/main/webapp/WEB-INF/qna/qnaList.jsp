@@ -1,5 +1,5 @@
-<%@page import="com.dto.QNADTO"%>
-<%@page import="com.dto.QNAPageDTO"%>
+<%@page import="com.dto.board.QNADTO"%>
+<%@page import="com.dto.board.QNAPageDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

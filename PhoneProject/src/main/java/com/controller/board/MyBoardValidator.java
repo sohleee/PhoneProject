@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.dto.BoardDTO;
-import com.dto.FileDTO;
+import com.dto.board.BoardDTO;
+import com.dto.board.FileDTO;
 
 public class MyBoardValidator implements Validator {
 

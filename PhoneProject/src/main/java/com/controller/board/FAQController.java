@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dto.BoardDTO;
-import com.service.BoardService;
-import com.service.FAQService;
+import com.dto.board.BoardDTO;
+import com.service.board.BoardService;
+import com.service.board.FAQService;
 
 @Controller
 @RequestMapping("/faq")
@@ -30,7 +30,7 @@ public class FAQController {
 		@RequestMapping(value="/faqList", method=RequestMethod.GET)
 		public String faqList(@RequestParam(required=false, defaultValue="1")int curPage,
 		@RequestParam(required=false, defaultValue="10") int perPage,
-		@RequestParam(required=false,defaultValue="") String searchValue,
+		@RequestParam(required=false,defaultValue=" ") String searchValue,
 		@RequestParam(required=false, defaultValue="") String category,
 		HashMap<String,String> map,Model m) {
 			map.put("searchValue", searchValue);

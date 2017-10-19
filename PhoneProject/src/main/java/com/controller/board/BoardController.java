@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dto.BoardDTO;
-import com.dto.CommentDTO;
-import com.dto.FileDTO;
-import com.service.BoardService;
-import com.service.CommentService;
+import com.dto.board.BoardDTO;
+import com.dto.board.CommentDTO;
+import com.dto.board.FileDTO;
+import com.service.board.BoardService;
+import com.service.board.CommentService;
 
 @Controller
 @RequestMapping("/board")

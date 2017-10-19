@@ -24,7 +24,7 @@
 
 <form name="myForm">
 <div align="left"><h3>BOARD</h3></div>
-<div align="right"><a href="/test/board/boardList"><span class="glyphicon glyphicon-plus"></span>더보기</a></div>
+<div align="right"><a href="/phone/board/boardList"><span class="glyphicon glyphicon-plus"></span>더보기</a></div>
 <table class="table table-hover">
 		<thead>
 		<tr>

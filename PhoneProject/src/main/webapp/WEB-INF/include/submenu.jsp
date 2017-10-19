@@ -5,7 +5,7 @@
   <div class="container-fluid">
     
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/test/">Home</a></li>
+      <li class="active"><a href="/phone/">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Phone
         <span class="caret"></span></a>
@@ -15,16 +15,16 @@
           <li><a href="/phone/iphone">iPhone</a></li>
         </ul>
       </li>
-      <li><a href="/test/board/boardList">Board</a></li>
-      <li><a href="/test/qna/qnaList">QNA</a></li>
+      <li><a href="/phone/board/boardList">Board</a></li>
+      <li><a href="/phone/qna/qnaList">QNA</a></li>
        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="/test/faq/faqList">FAQ
+        <a class="dropdown-toggle" data-toggle="dropdown" href="/phone/faq/faqList">FAQ
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-       		<li class="nav-item"><a href="/test/faq/faqList?category=all">All</a></li>
-			<li class="nav-item"><a href="/test/faq/faqList?category=member">회원정보</a></li>
-			<li class="nav-item"><a href="/test/faq/faqList?category=order">주문/결제</a></li>
-			<li class="nav-item"><a href="/test/faq/faqList?category=cancel">취소/반품</a></li>
+       		<li class="nav-item"><a href="/phone/faq/faqList?category=all">All</a></li>
+			<li class="nav-item"><a href="/phone/faq/faqList?category=member">회원정보</a></li>
+			<li class="nav-item"><a href="/phone/faq/faqList?category=order">주문/결제</a></li>
+			<li class="nav-item"><a href="/phone/faq/faqList?category=cancel">취소/반품</a></li>
 		</ul>
     </ul>
     

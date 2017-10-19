@@ -26,14 +26,14 @@
 		</property>
 		<property name="typeAliases">
 			<list>
-				<value>com.dto.BoardDTO</value>
-				<value>com.dto.CommentDTO</value>
-				<value>com.dto.QNADTO</value>
-				<value>com.dto.FAQDTO</value>
-				<value>com.dto.PageDTO</value>
-				<value>com.dto.QNAPageDTO</value>
-				<value>com.dto.FAQPageDTO</value>
-				<value>com.dto.FileDTO</value>
+				<value>com.dto.board.BoardDTO</value>
+				<value>com.dto.board.CommentDTO</value>
+				<value>com.dto.board.QNADTO</value>
+				<value>com.dto.board.FAQDTO</value>
+				<value>com.dto.board.PageDTO</value>
+				<value>com.dto.board.QNAPageDTO</value>
+				<value>com.dto.board.FAQPageDTO</value>
+				<value>com.dto.board.FileDTO</value>
 			</list>
 		</property>
 	</bean>

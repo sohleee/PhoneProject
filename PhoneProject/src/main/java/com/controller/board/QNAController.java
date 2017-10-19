@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dto.BoardDTO;
-import com.dto.QNADTO;
-import com.service.BoardService;
-import com.service.FAQService;
-import com.service.QNAService;
+import com.dto.board.BoardDTO;
+import com.dto.board.QNADTO;
+import com.service.board.BoardService;
+import com.service.board.FAQService;
+import com.service.board.QNAService;
 
 @Controller
 @RequestMapping("/qna")
