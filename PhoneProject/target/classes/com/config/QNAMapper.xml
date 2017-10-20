@@ -12,17 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	order by num desc
 </select>
 
-<select id="qnatotalCount" resultType="int">
+<select id="qnatotalCount" resultType="int" parameterType="hashmap">
 	select count(*) from qna
+	where userid=#{userid}
 </select>
 
 <select id="qnatotalCount1" resultType="int" parameterType="hashmap">
 	select count(*) from qna
 	<if test="searchName=='title'">
-	where title like '%'||#{searchValue}||'%'
+	where title like '%'||#{searchValue}||'%' and userid=#{userid}
 	</if>
 	<if test="searchName=='author'">
-	where title like '%'||#{searchValue}||'%'
+	where title like '%'||#{searchValue}||'%' and userid=#{userid}
 	</if>
 </select>
 
