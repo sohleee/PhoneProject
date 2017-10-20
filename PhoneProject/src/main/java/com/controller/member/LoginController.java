@@ -35,10 +35,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map, Model m, HttpSession session,HttpServletRequest reqeust) {
 		session=reqeust.getSession();
-		Set<String> set = map.keySet();
-		for (String key : set) {
-			System.out.println(key+":"+map.get(key));
-		}
+		
 		AdminDTO adto = amservice.getAdminData(map);
 		if (adto == null) {
 			MemberDTO dto = service.login(map);

@@ -240,7 +240,7 @@
 			<td colspan="3"><a href="PaymentViewServlet?phone_model_num=${dto.phone_model_num}
 			&phone_name=${dto.phone_name}&phone_price=${dto.phone_price}&phone_image=${dto.phone_image}
 			&telecom_num=${dto.telecom_num}">주문하기</a>  
-			<a href="CartInsertServlet?phone_model_num=${dto.phone_model_num}
+			<a href="cartAdd?phone_model_num=${dto.phone_model_num}
 			&phone_name=${dto.phone_name}&phone_price=${dto.phone_price}&phone_image=${dto.phone_image}
 			&telecom_num=${dto.telecom_num}">장바구니 담기</a>
 			<br><a href="updateForm?telecom_num=${dto.telecom_num}">수정</a>    &nbsp;
