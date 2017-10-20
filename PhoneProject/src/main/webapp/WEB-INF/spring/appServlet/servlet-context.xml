@@ -27,6 +27,8 @@
 	<mvc:resources location="/WEB-INF/images/" mapping="loginX/images/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
+		<mvc:resources location="/WEB-INF/chart/" mapping="/chart/**" />
+	<mvc:resources location="/WEB-INF/admin/" mapping="/admin/**" />
 	
 	<mvc:interceptors>
 	 <mvc:interceptor>

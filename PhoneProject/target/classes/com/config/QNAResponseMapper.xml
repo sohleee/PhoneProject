@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.ONAResponseMapper">
+
+<select id="AdminQNAboardList" resultType="QNADTO" parameterType="hashmap">
+	select num, userid, title, author, content, to_char(writeday,'YYYY/MM/DD') writeday, readcnt
+	from QNA
+<if test='searchName != null and searchName=="title"'>
+	where title like '%'||#{searchValue}||'%'
+	</if>
+<if test='searchName != null and searchName=="author"'>
+	where author like '%'||#{searchValue}||'%'
+	</if>
+	order by num desc
+</select>
+
+<select id="AdminQNAtotalCount" resultType="int">
+	select count(*) from QNA
+</select>
+<select id="AdminQNAselectCounter" resultType="int" parameterType="int">
+
+select count(*) from QNARESPONSE where num=#{num}
+</select>
+<select id="AdminQNAtotalCount1" resultType="int" parameterType="hashmap">
+	select count(*) from QNA
+	<if test='searchName.equals("title")'>
+	where title like '%'||#{searchValue}||'%'
+	</if>
+<if test='searchName.equals("author")'>
+	where author like '%'||#{searchValue}||'%'
+	</if>
+</select>
+
+<insert id="AdminQNAinsertBoard" parameterType="hashmap">
+	insert into qnaresponse(num,userid,title,content)
+	values(#{num},'관리자',#{title},#{content})
+</insert>
+
+<insert id="AdminQNAinsertBoard2" parameterType="QNADTO">
+	insert into QNA(num,userid,title,author,content)
+	values(board_seq.nextval,#{userid},#{title},#{author},#{content})
+</insert>
+
+<select id="AdminQNAselectByNum" parameterType="int" resultType="QNADTO">
+	select num, userid, content,to_char(writeday,'YYYY/MM/DD') writeday 
+	from QNARESPONSE
+	where num=#{num}
+</select>
+<update id="AdminQNAboardreadcnt" parameterType="int">
+	update QNA
+	set readcnt=readcnt+1
+	where num=#{num}
+</update>
+
+<delete id="AdminQNAdeleteBoard" parameterType="hashmap">
+	delete from QNA
+	where num=#{num} and userid=#{userid}
+</delete>
+<delete id="deleteAnswer" parameterType="hashmap">
+	delete from qnaresponse
+	where num=#{num}
+</delete>
+
+<update id="AdminQNAupdateByNum" parameterType="QNADTO">
+	update QNA
+	set title=#{title}, author=#{author}, content=#{content}
+	where num=#{num}
+</update>
+
+</mapper>

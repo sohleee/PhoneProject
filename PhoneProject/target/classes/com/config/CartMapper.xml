@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.CartMapper">
+
+	<select id="cartAllList" resultType="CartDTO" parameterType="String">
+
+		select
+		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image
+		from cart
+		where userid=#{userid}
+	</select>
+
+	<update id="amountUpdate" parameterType="hashmap">
+		update cart
+		set
+		phone_amount=#{phone_amount}
+		where num=${num}
+
+	</update>
+	
+	<delete id="deleteItem" parameterType="int">
+		delete from cart
+		where
+		num=#{num}
+	</delete>
+
+	<select id="orderConfirm" parameterType="int" resultType="CartDTO">
+		select
+		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image
+		from cart
+		where num=#{num}
+	</select>
+
+	<insert id="insertItem" parameterType="CartDTO">
+		insert into cart(num, userid, phone_model_num, phone_name, phone_price, phone_amount ,phone_image,telecom_num)
+		values(seq_cart.nextval,#{userid},#{phone_model_num},#{phone_name},#{phone_price},#{phone_amount}
+		,#{phone_image},#{telecom_num})
+	</insert>
+	<insert id="createOrderNum" parameterType="CartDTO">
+		insert into cart(num)
+		values(seq_cart.nextval)
+	</insert>
+	<select id="getOrderNum" resultType="int">
+		select max(num) from cart
+	</select>
+</mapper>
+
+
+
+
+
