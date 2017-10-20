@@ -58,8 +58,14 @@
 </c:forEach>
 </c:if>
 <tr>
-<td><textarea rows="3" cols="100" id="comment"></textarea>
+<c:if test="${empty sessionScope.login}">
+<td><textarea rows="3" cols="95%" id="comment1" disabled="disabled" placeholder="댓글은 로그인 후에 작성이 가능합니다"></textarea>
+<button disabled="disabled">comment</button></td>
+</c:if>
+<c:if test="${!empty sessionScope.login}">
+<td><textarea rows="3" cols="95%" id="comment2"></textarea>
 <button onclick="boardComment(event)">comment</button></td>
+</c:if>
 </tr>
 </table>
 
