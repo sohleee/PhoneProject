@@ -6,7 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-
 	<select id="PhoneList" resultType="PhoneDTO">
 		select telecom_num,
 		phone_model_num,
