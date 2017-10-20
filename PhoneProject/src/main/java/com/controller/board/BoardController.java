@@ -179,8 +179,9 @@ public class BoardController {
 		}
 		
 		@RequestMapping(value="/boardComment", method=RequestMethod.GET)
-		public String boardComment(CommentDTO dto, HashMap<String,Integer> map, Model m) {
-			dto.setUsername("username");
+		public String boardComment(CommentDTO dto, HashMap<String,Integer> map, Model m,HttpSession session) {
+			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
+			dto.setUsername(mdto.getUsername());
 			String content = dto.getContent().replace("\r\n","<br>");
 			dto.setContent(content);
 			cservice.commentWrite(dto);
