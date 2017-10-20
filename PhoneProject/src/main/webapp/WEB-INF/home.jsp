@@ -106,7 +106,7 @@
 	</div>
 	<br><br>
 	<div class="row">
-		<iframe width="100%" height="480" src="https://www.youtube.com/watch?v=D1X2NBnQKlY" frameborder="0" allowfullscreen></iframe>
+		<iframe width="100%" height="480" src="https://www.youtube.com/embed/D1X2NBnQKlY?&autoplay=1" frameborder="0" allowfullscreen></iframe>
 	</div>
 	<br>
   	<div class="row">
