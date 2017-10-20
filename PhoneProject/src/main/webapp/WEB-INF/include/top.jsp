@@ -69,11 +69,11 @@
 </c:if>
 
 <c:if test="${!empty sessionScope.login}">
-${sessionScope.login.username}님
 <ul class="nav navbar-nav navbar-right"> 
+<li id="navbar-page"><a>${sessionScope.login.username}님</a></li>
 <li id="navbar-page"><a href="/phone/"><i class="fa fa-home fa-fw"></i><span class="glyphicon glyphicon-home"></span> Home</a></li>
 <li id="navbar-login"><a href="/phone/loginX/logout"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-plus"></span>Logout</a></li>
-<li id="navbar-login"><a href="/cartList"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-cart"></span>Cart</a></li>
+<li id="navbar-cart"><a href="/cartList"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-cart"></span>Cart</a></li>
 <li id="navbar-login"><a href="#"><span onclick="openNav()"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-user"></span>MyPage</span></a></li>
 </ul>
 </c:if>

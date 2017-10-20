@@ -35,7 +35,6 @@
 <th>내용</th><td><div id="content"><c:if test="${retrieve.board_image != null}"><img src="images/${retrieve.board_image}" width="200" height="200"></c:if><br>${retrieve.content}</div></td>
 </tr>
 </table>
-<hr>
 <div align="right">
 <c:if test="${sessionScope.login.userid==retrieve.userid}">
 <a href="boardUpdateForm?title=${retrieve.title}&content=${retrieve.content}&num=${retrieve.boardnum}&boardnum=${retrieve.boardnum}">수정</a>
