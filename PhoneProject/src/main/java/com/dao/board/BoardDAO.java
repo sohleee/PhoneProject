@@ -38,8 +38,8 @@ public class BoardDAO {
 		return n;
 	}
 	
-	public void boardDelete(int boardnum){
-		template.delete("boardDelete",boardnum);
+	public void boardDelete(HashMap<String,String> map){
+		template.delete("boardDelete",map);
 	}
 	
 	public void boardUpdate(HashMap<String,String>map) {

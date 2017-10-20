@@ -30,8 +30,8 @@ public class BoardService {
 		dao.boardUpdate(map);
 	}
 	
-	public void boardDelete(int boardnum){
-		dao.boardDelete(boardnum);
+	public void boardDelete(HashMap<String,String> map){
+		dao.boardDelete(map);
 	}
 	
 	public PageDTO boardPage(int curPage, int perPage, HashMap<String,String> map) {

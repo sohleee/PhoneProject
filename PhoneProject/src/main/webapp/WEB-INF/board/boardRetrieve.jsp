@@ -8,7 +8,9 @@
 
 <div align="right" style="padding-right: 20px">
 <button id="List" onclick="boardList()">목록</button>
+<c:if test="${!empty sessionScope.login}">
 <button id="Delete" onclick="boardDelete()">삭제</button>
+</c:if>
 </div>
 <hr>
 
@@ -34,7 +36,11 @@
 </tr>
 </table>
 <hr>
-<div align="right"><a href="boardUpdateForm?title=${retrieve.title}&content=${retrieve.content}&num=${retrieve.boardnum}&boardnum=${retrieve.boardnum}">수정</a></div>
+<div align="right">
+<c:if test="${sessionScope.login.userid==retrieve.userid}">
+<a href="boardUpdateForm?title=${retrieve.title}&content=${retrieve.content}&num=${retrieve.boardnum}&boardnum=${retrieve.boardnum}">수정</a>
+</c:if>
+</div>
 
 
 <br>
@@ -70,7 +76,7 @@
 	}
 	
 	function boardDelete(){
-		location.href="boardDelete?boardnum=${retrieve.boardnum}";
+		location.href="boardDelete?boardnum=${retrieve.boardnum}&author=${retrieve.author}";
 	}
 	function boardComment(e){
 		console.log($("textarea:last").val());

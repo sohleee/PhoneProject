@@ -105,7 +105,12 @@
         </div>
 	</div>
 	<br><br>
+	<div class="row">
+		<iframe width="100%" height="480" src="https://www.youtube.com/embed/42Gtm4-Ax2U?&autoplay=1" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<br>
   	<div class="row">
+  	<br>
   		<div class="col-sm-6">
   			<jsp:include page="include/home_part3.jsp"></jsp:include>
   		</div>
