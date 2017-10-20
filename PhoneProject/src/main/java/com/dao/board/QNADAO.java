@@ -29,8 +29,7 @@ public class QNADAO {
 		
 		int totalCount=0;
 		if(map.get("searchValue")==null) {
-			totalCount=template.selectOne("qnatotalCount");
-			System.out.println("this SearchValue null");
+			totalCount=template.selectOne("qnatotalCount",map);
 		}
 		else {
 			totalCount=template.selectOne("qnatotalCount1",map);
@@ -44,6 +43,7 @@ public class QNADAO {
 		dto.setSearchValue(map.get("searchValue"));
 		return dto;
 	}
+	
 	public int qnainsert(QNADTO dto) {
 		int n=template.insert("qnainsert",dto);
 		return n;
