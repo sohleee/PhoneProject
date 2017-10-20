@@ -28,13 +28,16 @@
       font-style: italic;
       margin: 70px 0;
   }
-  .row{
-  }
-  .carousel-inner{}
+
 </style>
+
 </head>
 <body>
-
+<c:if test="${!empty requestScope.result}">
+	<script>
+		alert("${requestScope.result}");
+	</script>
+</c:if>
 <!-- 1번 -->
 <div class="collapse navbar-collapse" align="right">
 	<jsp:include page="include/top.jsp"></jsp:include>

@@ -35,7 +35,6 @@
 <th>내용</th><td><div id="content"><c:if test="${retrieve.board_image != null}"><img src="images/${retrieve.board_image}" width="200" height="200"></c:if><br>${retrieve.content}</div></td>
 </tr>
 </table>
-<hr>
 <div align="right">
 <c:if test="${sessionScope.login.userid==retrieve.userid}">
 <a href="boardUpdateForm?title=${retrieve.title}&content=${retrieve.content}&num=${retrieve.boardnum}&boardnum=${retrieve.boardnum}">수정</a>
@@ -49,17 +48,22 @@
 <c:if test="${comment.size()!=0}">
 <c:forEach var="comment" items="${comment}">
 <tr>
-<td>${comment.username}</td>
-<td>${comment.commentday}</td>
+<td>${comment.username}&nbsp;&nbsp;&nbsp;${comment.commentday}</td>
 </tr>
 <tr>
-<td colspan="2">${comment.content}</td>
+<td>${comment.content}</td>
 </tr>
 </c:forEach>
 </c:if>
 <tr>
-<td><textarea rows="3" cols="100" id="comment"></textarea>
+<c:if test="${empty sessionScope.login}">
+<td width="100%"><textarea rows="3" cols="140" id="comment1" disabled="disabled" placeholder="댓글은 로그인 후에 작성이 가능합니다"></textarea>
+<button disabled="disabled">comment</button></td>
+</c:if>
+<c:if test="${!empty sessionScope.login}">
+<td width="100%"><textarea rows="3" cols="140" id="comment2"></textarea>
 <button onclick="boardComment(event)">comment</button></td>
+</c:if>
 </tr>
 </table>
 

@@ -47,16 +47,12 @@
 	alert("${requestScope.key}");
 	</script>
 </c:if>
-<c:if test="${!empty requestScope.writeNull}">
-	<script>
-	alert("${requestScope.writeNull}");
-	</script>
-</c:if>
+
 
 <div align="center">
 <form action="qnaWrite" method="post">
-<input type="hidden" name="author" value="${username}">
-<input type="hidden" name="userid" value="${userid}">
+<input type="hidden" name="author" value="${sessionScope.login.username}">
+<input type="hidden" name="userid" value="${sessionScope.login.userid}">
 <br>
 <h3 align="left">문의하기</h3>
 <table class="table">
@@ -76,13 +72,7 @@
 <br><br>
 <h3 align="left">나의 문의내역</h3>
 <table class="table table-hover">
-	<colgroup>
-	<col width="100"/>
-	<col width="400"/>
-	<col width="100"/>
-	<col width="100"/>
-	<col width="100"/>
-	</colgroup>
+
 		<thead>
 		<tr>
 			<th>글번호</th>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dto.board.BoardDTO;
 import com.dto.board.QNADTO;
+import com.dto.member.MemberDTO;
 import com.service.board.BoardService;
 import com.service.board.FAQService;
 import com.service.board.QNAService;
@@ -32,29 +33,24 @@ public class QNAController {
 		@RequestMapping(value="/qnaList", method=RequestMethod.GET)
 		public String qnaList(@RequestParam(required=false, defaultValue="1")int curPage,
 		@RequestParam(required=false, defaultValue="3") int perPage,
-		HashMap<String,String> map,Model m) {
-			map.put("userid", "userid");
-			m.addAttribute("username","username");
-			m.addAttribute("userid","userid");
-			m.addAttribute("page",service.qnaPage(curPage, perPage, map));
-			m.addAttribute("perPage",perPage);
-			return "qnaList";
-		}
-		
-/*qnaListServlet
-		
-		String target="qnaList.jsp";
-		try {
+		HashMap<String,String> map,Model m, HttpSession session) {
+			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
 			if(mdto==null) {
-				target="home.jsp";
-				request.setAttribute("QNA", "로그인이 필요한 서비스입니다.");
+				m.addAttribute("result", "로그인이 필요한 서비스입니다.");
+				return "redirect:/";
 			}
 			else {
-				String userid=mdto.getUserid();
-				HashMap<String,String> map=new HashMap<>();
-				map.put("userid", userid);
+				map.put("userid", mdto.getUserid());
+				m.addAttribute("username",mdto.getUsername());
+				m.addAttribute("userid",mdto.getUserid());
+				m.addAttribute("page",service.qnaPage(curPage, perPage, map));
+				m.addAttribute("perPage",perPage);
+				return "qnaList";
+			}
+			
+		}
 		
-			*/
+
 		@RequestMapping(value="/qnaWrite", method=RequestMethod.POST)
 		public String qnaWrite(QNADTO dto) {
 			service.qnaWrite(dto);

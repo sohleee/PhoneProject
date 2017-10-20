@@ -7,7 +7,7 @@
 
    <c:set var="dto" value="${page}"></c:set>
    <c:set var="curPage" value="${dto.curPage}"></c:set>
-   <c:set var="perPage" value="${perPage}"></c:set>
+   <c:set var="perPage" value="${dto.perPage}"></c:set>
    <c:set var="totalCount" value="${dto.getTotalCount()}"></c:set>
    <fmt:parseNumber var="totalNum" integerOnly="true" value="${totalCount/perPage}"></fmt:parseNumber>
    <c:set var="perBlock" value="5"></c:set>

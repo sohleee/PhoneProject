@@ -25,21 +25,11 @@
 		}
 </script>
 
-<c:if test="${!empty requestScope.write}">
-  <script>
-    alert('${requestScope.write}');
-  </script>
-</c:if>
+
 <div align="center">
 <form name="myForm">
 <table class="table table-hover">
-	<colgroup>
-	<col width="100"/>
-	<col width="1000"/>
-	<col width="200"/>
-	<col width="200"/>
-	<col width="100"/>
-	</colgroup>
+
 	
 		<thead>
 		<tr>
