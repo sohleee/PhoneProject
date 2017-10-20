@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.mybatis.CommentMapper">
 
 <select id="commentList" resultType="CommentDTO" parameterType="hashmap">
-	select num, boardnum, username, content, to_char(commentday,'YYYY.MM.DD HH:MI') commentday
+	select num, boardnum, username, content, to_char(commentday,'YYYY.MM.DD') commentday
 	from board_co
 	where boardnum=#{boardnum}
 	order by num
