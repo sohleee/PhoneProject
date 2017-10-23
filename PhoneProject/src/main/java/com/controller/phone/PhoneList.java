@@ -106,6 +106,7 @@ public class PhoneList {
 		map.put("phone_content", dto.getPhone_content());
 		map.put("phone_price", dto.getPhone_price());
 		map.put("phone_image", originalFilename);
+		map.put("telecom", dto.getTelecom());
 		service.PhoneAdd(map);
 		
 		

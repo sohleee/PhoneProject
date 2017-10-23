@@ -6,22 +6,22 @@
 <style type="text/css">
 
 .imgst {
-	width : 100px;
-	height : 118px;
+	width : 300px;
+	height : 400px;
 	display : inline-table;
 	border : 0px;
 }
 </style>
 
-<table  cellspacing="0" cellpadding="0">
+<table  cellspacing="1000" cellpadding="1000">
 
 	<tr>
 		<td>
-			<table align="center"  cellspacing="0" cellpadding="0"
+			<table align="center"  cellspacing="50" cellpadding="50"
 				border="0">
 
 				<tr>
-					<td height="5"></td>
+					<td height="50"></td>
 				</tr>
 				<tr>
 					<td height="1" colspan="8" bgcolor="CECECE"></td>
@@ -52,7 +52,7 @@
 
 								</tr>
 								<tr>
-									<td height="10">
+									<td height="30">
 								</tr>
 								<tr>
 									<td class="td_gray" align="center">${xxx.phone_content}</td>
@@ -71,7 +71,7 @@
 
 
 							<tr>
-								<td height="5">
+								<td height="20">
 							</tr>
 
 						</c:if>
