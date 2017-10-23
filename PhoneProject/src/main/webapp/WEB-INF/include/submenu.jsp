@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 2번 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+ <jsp:include page="../include/check.jsp"></jsp:include>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     
@@ -17,7 +20,12 @@
         </ul>
       </li>
       <li><a href="/phone/board/boardList">Board</a></li>
-      <li><a href="/phone/qna/qnaList">QNA</a></li>
+      <c:if test="${!empty sessionScope.login}">
+      	<li><a href="/phone/qna/qnaList">QNA</a></li>
+      </c:if>
+      <c:if test="${empty sessionScope.login}">
+      	<li><a href="#" data-toggle="modal" data-target="#myModal">QNA</a></li>
+      </c:if>
        <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="/phone/faq/faqList">FAQ
         <span class="caret"></span></a>

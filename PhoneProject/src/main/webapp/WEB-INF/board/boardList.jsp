@@ -93,8 +93,15 @@
 </table>
 </form>
 
+<c:if test="${!empty sessionScope.login}">
 <div align="right"><button class="btn btn-default" onclick="boardWrite()">글쓰기</button></div>
+</c:if>
+<c:if test="${empty sessionScope.login}">
+<div align="right"><button class="btn btn-default" data-toggle="modal" data-target="#myModal">글쓰기</button></div>
+</c:if>
 </div>
+
+ <jsp:include page="../include/check.jsp"></jsp:include>
 
 
 
