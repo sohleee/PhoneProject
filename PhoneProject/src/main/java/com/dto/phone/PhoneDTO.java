@@ -11,7 +11,22 @@ public class PhoneDTO {
 	private String phone_content;
 	private int phone_price;
 	private String phone_image;
-	
+	private String telecom;
+	public PhoneDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public PhoneDTO(String telecom_num, String phone_model_num, String phone_name, String phone_content,
+			int phone_price, String phone_image, String telecom) {
+		super();
+		this.telecom_num = telecom_num;
+		this.phone_model_num = phone_model_num;
+		this.phone_name = phone_name;
+		this.phone_content = phone_content;
+		this.phone_price = phone_price;
+		this.phone_image = phone_image;
+		this.telecom = telecom;
+	}
 	public String getTelecom_num() {
 		return telecom_num;
 	}
@@ -48,25 +63,17 @@ public class PhoneDTO {
 	public void setPhone_image(String phone_image) {
 		this.phone_image = phone_image;
 	}
-	public PhoneDTO() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getTelecom() {
+		return telecom;
 	}
-	public PhoneDTO(String telecom_num, String phone_model_num, String phone_name, String phone_content,
-			int phone_price, String phone_image) {
-		super();
-		this.telecom_num = telecom_num;
-		this.phone_model_num = phone_model_num;
-		this.phone_name = phone_name;
-		this.phone_content = phone_content;
-		this.phone_price = phone_price;
-		this.phone_image = phone_image;
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
 	}
 	@Override
 	public String toString() {
 		return "PhoneDTO [telecom_num=" + telecom_num + ", phone_model_num=" + phone_model_num + ", phone_name="
 				+ phone_name + ", phone_content=" + phone_content + ", phone_price=" + phone_price + ", phone_image="
-				+ phone_image + "]";
+				+ phone_image + ", telecom=" + telecom + "]";
 	}
 	
 	

@@ -19,8 +19,8 @@ public class PhoneDAO {
 		List<PhoneDTO> list = template.selectList("PhoneList");
 		return list;
 	}
-	public List<PhoneDTO> phoneModelList(String phone_model_num) {
-		List<PhoneDTO> list = template.selectList("phoneModelList",phone_model_num);
+	public List<PhoneDTO> phoneModelList(String telecom) {
+		List<PhoneDTO> list = template.selectList("phoneModelList",telecom);
 		return list;
 	}
 	public PhoneDTO phoneRetrieve(String telecom_num) {

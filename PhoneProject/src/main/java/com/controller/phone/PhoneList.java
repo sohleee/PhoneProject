@@ -45,8 +45,8 @@ public class PhoneList {
 		return mav;
 	}
 	@RequestMapping("/List")
-	public ModelAndView List(@RequestParam String phone_model_num) {
-		List<PhoneDTO> dto = service.phoneModelList(phone_model_num);
+	public ModelAndView List(@RequestParam String telecom) {
+		List<PhoneDTO> dto = service.phoneModelList(telecom);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", dto);
 		mav.setViewName("phoneList");

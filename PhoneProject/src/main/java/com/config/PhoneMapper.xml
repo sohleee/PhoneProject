@@ -12,7 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		phone_name,
 		phone_content,
 		phone_price,
-		phone_image
+		phone_image,
+		telecom
 		from phones
 
 	</select>
@@ -23,7 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		phone_name,
 		phone_content,
 		phone_price,
-		phone_image
+		phone_image,
+		telecom
 		from phones
 		where telecom_num = #{telecom_num}
 	</select>
@@ -33,15 +35,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		phone_name,
 		phone_content,
 		phone_price,
-		phone_image
+		phone_image,
+		telecom
 		from phones
-		where phone_model_num = #{phone_model_num}
+		where telecom = #{telecom}
 	</select>
 	
 	<insert id="PhoneAdd" parameterType="hashmap">
 	insert into phones(telecom_num, phone_model_num, phone_name,
-		phone_content, phone_price, phone_image)
-	values(#{telecom_num},#{phone_model_num},#{phone_name},#{phone_content},#{phone_price},#{phone_image})
+		phone_content, phone_price, phone_image,telecom)
+	values(#{telecom_num},#{phone_model_num},#{phone_name},#{phone_content},#{phone_price},#{phone_image},#{telecom})
 	
 	</insert>
 	<update id="phoneUpdate" parameterType="hashmap">

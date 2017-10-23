@@ -11,8 +11,9 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
         <li><a href="/phone/phoneList">All</a></li>
-          <li><a href="/phone/List?phone_model_num=galaxy">Galaxy</a></li>
-          <li><a href="/phone/List?phone_model_num=iphone">iPhone</a></li>
+          <li><a href="/phone/List?telecom=KT">KT</a></li>
+          <li><a href="/phone/List?telecom=SKT">SKT</a></li>
+          <li><a href="/phone/List?telecom=LG_UPLUS">LG_UPLUS</a></li>
         </ul>
       </li>
       <li><a href="/phone/board/boardList">Board</a></li>

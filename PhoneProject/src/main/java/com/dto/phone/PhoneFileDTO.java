@@ -6,7 +6,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Alias("phoneFileDTO")
 public class PhoneFileDTO {
 
-	private String telecom_num,phone_model_num,phone_name,phone_content,phone_price;
+	private String telecom_num,phone_model_num,phone_name,phone_content,phone_price,telecom;
 	private CommonsMultipartFile phone_image;
 	
 	
@@ -45,6 +45,12 @@ public class PhoneFileDTO {
 	}
 	public void setPhone_image(CommonsMultipartFile phone_image) {
 		this.phone_image = phone_image;
+	}
+	public String getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
 	}
 	
 	

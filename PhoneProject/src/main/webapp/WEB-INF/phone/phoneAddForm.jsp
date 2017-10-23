@@ -6,6 +6,9 @@
 <form action="AddFile" method="post" enctype="multipart/form-data">
 <table border="0">
 			<tr>
+				<td>통신사&nbsp;<input type="text" name="telecom"></td>
+			</tr>
+			<tr>
 				<td>카테고리&nbsp;<input type="text" name="telecom_num"></td>
 			</tr>
 			<tr>

@@ -17,8 +17,8 @@ public class PhoneService {
 	public List<PhoneDTO> PhoneList() {
 		return dao.PhoneList();
 	}
-	public List<PhoneDTO> phoneModelList(String phone_model_num) {
-		return dao.phoneModelList(phone_model_num);
+	public List<PhoneDTO> phoneModelList(String telecom) {
+		return dao.phoneModelList(telecom);
 	}
 	public PhoneDTO phoneRetrieve(String telecom_num) {
 		return dao.phoneRetrieve(telecom_num);
