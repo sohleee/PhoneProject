@@ -30,7 +30,12 @@
 <form name="myForm">
 <table class="table table-hover">
 
-	
+		<colgroup>
+		<col width="100"/>
+		<col width="800"/>
+		<col width="200"/>
+		<col width="200"/>
+		<col width="100"/>
 		<thead>
 		<tr>
 			<th>글번호</th>

@@ -16,6 +16,9 @@
 
 <input type="hidden" name="author" value="${retrieve.author}">
 <table class="table">
+	<colgroup>
+		<col width="300"/>
+		<col width="1000"/>
 <tr>
 <th>글번호</th><td>${retrieve.boardnum}</td>
 </tr>

@@ -72,7 +72,12 @@
 <br><br>
 <h3 align="left">나의 문의내역</h3>
 <table class="table table-hover">
-
+	<colgroup>
+		<col width="100"/>
+		<col width="800"/>
+		<col width="200"/>
+		<col width="200"/>
+		<col width="100"/>
 		<thead>
 		<tr>
 			<th>글번호</th>
