@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.navbar-inverse > .container-fluid > .navbar-nav > li{
 
+    padding: 0px 20px 0 20px;
+
+
+}
+</style>
 
  <jsp:include page="../include/check.jsp"></jsp:include>
 <nav class="navbar navbar-inverse">
