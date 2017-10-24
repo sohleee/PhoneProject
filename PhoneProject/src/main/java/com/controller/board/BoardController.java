@@ -159,7 +159,7 @@ public class BoardController {
 				String originalFilename = theFile.getOriginalFilename();
 				
 				System.out.println(">>>"+originalFilename);
-				File f=new File("c:\\upload",originalFilename);
+				File f = new File("C:\\upload",originalFilename);
 			      
 			    try{
 			    	theFile.transferTo(f);
