@@ -92,12 +92,13 @@ public class PhoneList {
 		System.out.println(dto.getPhone_content()+"\t"+dto.getPhone_model_num());
 		    
 		//실제 저장
-		File f = new File("C:\\springStudy\\eclipse\\workspace\\Phone82_Spring\\src\\main\\webapp\\WEB-INF\\images",originalFilename);
+		File f = new File("C:\\upload",originalFilename);
 		
 		try {
             theFile.transferTo(f);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("등록오류");
 		}
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("telecom_num", dto.getTelecom_num());
