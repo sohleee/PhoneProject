@@ -27,19 +27,19 @@
 
 
 <div align="center">
-<form:form action="boardUpdate" modelAttribute="xxx" method="post" enctype="multipart/form-data">
+<form action="boardUpdate" method="post" enctype="multipart/form-data">
 <input type="hidden" name="author" value="${username}">
 <input type="hidden" name="boardnum" value="${dto.boardnum}">
 <table class="table">
 <tr>
-<td>제목</td><td><input type="text" name="title" value="${dto.title}" size="50"><br><form:errors path="title"/></td>
+<td>제목</td><td><input type="text" name="title" value="${dto.title}" size="50" class="form-control" required></td>
 </tr>
 <tr>
 <td>작성자</td><td>${username}</td>
 </tr>
 
 <tr>
-<td>내용</td><td><textarea rows="30" cols="100" name="content">${dto.content}</textarea><form:errors path="content"/></td>
+<td>내용</td><td><textarea rows="30" cols="100" name="content" class="form-control" required>${dto.content}</textarea></td>
 </tr>
 <tr>
 	<td>이미지 등록</td><td><input type="file" name="board_image" id="image" />
@@ -51,12 +51,12 @@
     </td>
 </tr>
 </table>
-<input type="submit" value="쓰기">
-<input type="reset" value="취소">
+<input class="btn btn-default" type="submit" value="쓰기">
+<input class="btn btn-default" type="reset" value="취소">
 
-</form:form>
+</form>
 <hr>
-<div align="left"><button onclick="boardList()">목록</button></div>
+<div align="left"><button class="btn btn-default" onclick="boardList()">목록</button></div>
 </div>
 
 

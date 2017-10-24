@@ -82,7 +82,7 @@
 			<td colspan="5">
 				
 			<input type="text" name="searchValue" value="${page.searchValue}">
-			<button onclick="faqSearch(myForm)">검색</button>
+			<button class="btn btn-default" onclick="faqSearch(myForm)">검색</button>
 			
 			</td>
 		</tr>

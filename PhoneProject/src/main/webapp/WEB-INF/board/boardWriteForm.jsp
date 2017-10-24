@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
@@ -25,20 +24,31 @@
 	</script>
 </c:if>
 
+
 <div align="center">
-<form:form action="boardWrite" modelAttribute="xxx" method="post" enctype="multipart/form-data">
+<form id="signInForm" class="form-horizontal"
+action="boardWrite" method="post" enctype="multipart/form-data"
+    data-fv-framework="bootstrap"
+    data-fv-icon-valid="glyphicon glyphicon-ok"
+    data-fv-icon-invalid="glyphicon glyphicon-remove"
+    data-fv-icon-validating="glyphicon glyphicon-refresh">
 <input type="hidden" name="author" value="${username}">
 <input type="hidden" name="userid" value="${userid}">
 <table class="table">
 <tr>
-<td>제목</td><td><input type="text" name="title" value="${dto.title}" size="50"><br><form:errors path="title"/></td>
+<td>제목</td>
+<td><input type="text" name="title" value="${dto.title}" class="form-control" size="100%"
+		required></td>
 </tr>
 <tr>
 <td>작성자</td><td>${username}${dto.author}</td>
 </tr>
 
 <tr>
-<td>내용</td><td><textarea rows="30" cols="100" name="content">${dto.content}</textarea><form:errors path="content"/></td>
+<td>내용</td>
+<td><textarea rows="20" cols="100%" name="content" class="form-control"
+		required>${dto.content}</textarea><br>
+	<div class="help-block with-errors"></div></td>
 </tr>
 <tr>
 	<td>이미지 등록</td><td><input type="file" name="board_image" id="image" />
@@ -53,7 +63,7 @@
 <input type="submit" value="쓰기">
 <input type="reset" value="취소">
 
-</form:form>
+</form>
 <hr>
 <div align="left"><button onclick="boardList()">목록</button></div>
 </div>
@@ -115,7 +125,9 @@
         e.unwrap(); //감싼 <form> 태그를 제거
     }
 	
-	
+    $(document).ready(function() {
+        $('#signInForm').formValidation();
+    });
 </script>
 
 

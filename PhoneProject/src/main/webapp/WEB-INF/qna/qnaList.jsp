@@ -54,16 +54,16 @@
 <input type="hidden" name="author" value="${sessionScope.login.username}">
 <input type="hidden" name="userid" value="${sessionScope.login.userid}">
 <br>
-<h3 align="left">문의하기</h3>
+
 <table class="table">
 <tr>
-<td>문의제목</td><td><input type="text" name="title" value="${dto.title}" size="50"><br></td>
+<td>문의제목</td><td><input type="text" name="title" value="${dto.title}" size="50" class="form-control" required></td>
 </tr>
 <tr>
 <td>작성자</td><td>${username}</td>
 </tr>
 <tr>
-<td>문의내용</td><td><textarea rows="20" cols="100" name="content">${dto.content}</textarea></td>
+<td>문의내용</td><td><textarea rows="20" cols="100" name="content" class="form-control" required>${dto.content}</textarea></td>
 </tr>
 </table>
 <input class="btn btn-default" type="submit" value="문의하기">
@@ -77,14 +77,14 @@
 		<col width="800"/>
 		<col width="200"/>
 		<col width="200"/>
-		<col width="100"/>
+		<col width="300"/>
 		<thead>
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
-			<th>조회수</th>
+			<th>처리상태</th>
 		</tr>
 		</thead>
 		<c:set var="list" value="${page.getList()}"></c:set>
@@ -100,7 +100,12 @@
 				<td>${dto.title}</td>
 				<td>${dto.author}</td>
 				<td>${dto.writeday}</td>
-				<td>${dto.readCnt}</td>
+				<td><div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+    문의완료
+  </div>
+</div></td>
 			</tr>
 			<tr id="retrieve${dto.num}" style="display:none;">
 			</tr>
