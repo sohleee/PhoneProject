@@ -109,7 +109,12 @@
 	</div>
 	<br><br>
 	<div class="row">
+		<div class="col-sm-6">
 		<iframe width="100%" height="480" src="https://www.youtube.com/embed/D1X2NBnQKlY" frameborder="0" allowfullscreen></iframe>
+	</div>
+		<div class="col-sm-6">
+		여기
+		</div>
 	</div>
 	<br>
   	<div class="row">
