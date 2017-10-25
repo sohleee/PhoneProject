@@ -182,6 +182,7 @@ public class BoardController {
 		public String boardComment(CommentDTO dto, HashMap<String,Integer> map, Model m,HttpSession session) {
 			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
 			dto.setUsername(mdto.getUsername());
+			dto.setUserid(mdto.getUserid());
 			String content = dto.getContent().replace("\r\n","<br>");
 			dto.setContent(content);
 			cservice.commentWrite(dto);
@@ -191,4 +192,20 @@ public class BoardController {
 			return "boardRetrieve";
 		}
 		
+		@RequestMapping(value="/commentDelete", method=RequestMethod.GET)
+		public String commentDelete(@RequestParam String userid, @RequestParam int num,HashMap<String,String> map,HttpSession session, Model m){
+			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
+			map.put("userid", mdto.getUserid());
+			map.put("num", String.valueOf(num));
+			if(mdto!=null) {
+				if(mdto.getUserid().equals(userid)) {
+					cservice.commentDelete(map);
+					m.addAttribute("result", "댓글이 삭제되었습니다");
+				}
+				else {
+					m.addAttribute("result", "본인이 작성한 댓글만 삭제 가능합니다");
+				}
+			}
+			return "redirect:boardList";
+		}
 }

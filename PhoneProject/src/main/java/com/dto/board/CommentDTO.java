@@ -6,6 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class CommentDTO {
 	private int num;
 	private int boardnum;
+	private String userid;
 	private String username;
 	private String commentday;
 	private String content;
@@ -39,22 +40,24 @@ public class CommentDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public CommentDTO(int num, int boardnum, String username, String commentday, String content) {
-		super();
-		this.num = num;
-		this.boardnum = boardnum;
-		this.username = username;
-		this.commentday = commentday;
-		this.content = content;
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public CommentDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "CommentDTO [num=" + num + ", boardnum=" + boardnum + ", username=" + username + ", commentday="
-				+ commentday + ", content=" + content + "]";
+	public CommentDTO(int num, int boardnum, String userid, String username, String commentday, String content) {
+		super();
+		this.num = num;
+		this.boardnum = boardnum;
+		this.userid = userid;
+		this.username = username;
+		this.commentday = commentday;
+		this.content = content;
 	}
 	
 		

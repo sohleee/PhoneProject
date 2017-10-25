@@ -51,7 +51,8 @@
 <c:if test="${comment.size()!=0}">
 <c:forEach var="comment" items="${comment}">
 <tr>
-<td colspan="2">${comment.username}&nbsp;&nbsp;&nbsp;${comment.commentday}</td>
+<td colspan="2">${comment.username}&nbsp;&nbsp;&nbsp;${comment.commentday}&nbsp;&nbsp;
+<c:if test="${!empty sessionScope.login}"><a href="commentDelete?userid=${comment.userid}&num=${comment.num}">삭제</a></c:if></td>
 </tr>
 <tr>
 <td colspan="2">${comment.content}</td>
