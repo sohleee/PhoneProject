@@ -29,6 +29,7 @@ public class AdminController {
 	@RequestMapping("chartForm")
 	public String chartFrom() {
 
+		
 		return "chart";
 	}
 
