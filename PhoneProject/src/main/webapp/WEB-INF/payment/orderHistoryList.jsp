@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
 
-<table style="margin: auto">
+<table style="margin: auto"class="table table-hover">
 	<tr>
 		<td>번호</td>
 		<td>이미지</td>

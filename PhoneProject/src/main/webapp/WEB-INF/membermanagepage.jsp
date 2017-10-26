@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,44 +11,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="favicon.ico">
 <title>Admin</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/adminCss.css">
+
+
 <style>
 <!--
-.columhead {
-	background-color: #eee;
-	text-align: center;
-	font-weight: bold;
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
 }
-
-.columbody {
-	background-color: #DDDDFF;
-	text-align: center;
-	font-weight: normal;
-}
-
-.columbody input {
-	border: none;
+.datainput{
+border: none;
 	border-right: 0px;
 	border-top: 0px;
 	boder-left: 0px;
 	boder-bottom: 0px;
-	background-color: #DDDDFF;
-}
-
-table {
-	width: 90%;
-	border-collapse: collapse;
-	border-right: none;
-	border-left: none;
-	border-top: none;
-	border-bottom: none;
-}
-
-th, td {
-	padding: 10px;
+	background-color: #c1c1c1;
 }
 -->
 </style>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#deleteMember").on("click",function(){
@@ -177,17 +170,35 @@ th, td {
 		 
 		}); 
 		
-		
+
+	$(this).mousemove(function(e) {
+		//	 console.log(e.pageX,e.pageY);
+		/*
+		      e.pageX : x좌표
+		              e.pageY : y좌표
+		 */
+		console.log(e.pageX, e.pageY);
+		if (e.pageX < 100) {
+			
+			$('.sidenav').css("width", "200px");
+			
+		} else if(e.pageX >180){
+			$('.sidenav').css("width", "0");
+		}
+	});
+
 	});
 </script>
 </head>
 <body>
-<h1>관리자페이지</h1>
-<jsp:include page="admin/adminForm.jsp" flush="true" /><br>
-<hr>
-
-<div id="initView">
-<jsp:include page="admin/membermanagepage.jsp" flush="true" /><br>
-</div>
+	<div class="container-fluid"
+		style="background-color: gray; color: #fff; height: 100px;">
+		<h1>관리자 페이지</h1>
+		안녕하세요 ${sessionScope.login.getAdminid()}<br>
+	</div>
+	<jsp:include page="admin/adminForm.jsp" flush="true" />
+	<div id="initView">
+		<jsp:include page="admin/membermanagepage.jsp" flush="true" /><br>
+	</div>
 </body>
 </html>

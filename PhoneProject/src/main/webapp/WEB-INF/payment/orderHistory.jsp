@@ -1,45 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<table width="70%" cellspacing="0" cellpadding="0">
-
-	<tr>
-		<td height="30">
-	</tr>
+<table class="table table-hover">
 
 	<tr>
 		<td><b>주문완료</b></td>
 	</tr>
 
 	<tr>
-		<td height="30">
-	</tr>
-
-	<tr>
 		<td align="center"><b>주문해주셔서 감사합니다.</b></td>
 	</tr>
-
-	<tr>
-		<td height="7">
-	</tr>
-
 	<tr>
 		<td class="td_default" align="center"><b>${oDTO.userid}</b> 님의 주문이
 			안전하게 처리되었습니다.</td>
 	</tr>
 
 	<tr>
-		<td height="40">
-	</tr>
-
-	<tr>
 		<td class="td_default"><b>상품 및 배송정보</b>
 		</td>
 	</tr>
-
-	<tr>
-		<td height="15">
-	</tr>
-
 	<tr>
 		<td>
 			<table width="100%" border="1" style="border-collapse: collapse"
@@ -60,11 +38,6 @@
 					<td class="td_default" height="35"> ${oDTO.phone}</td>
 				</tr>
 			</table>
-	</tr>
-	</td>
-
-	<tr>
-		<td height="20">
 	</tr>
 
 	<tr>
@@ -102,17 +75,8 @@
 	</tr>
 
 	<tr>
-		<td height="40">
-	</tr>
-
-	<tr>
 		<td class="td_default"><b>결제정보</b></td>
 	</tr>
-
-	<tr>
-		<td height="15">
-	</tr>
-
 	<tr>
 		<td>
 			<table width="100%" border="1" style="border-collapse: collapse"
@@ -134,22 +98,10 @@
 	</tr>
 
 	<tr>
-		<td height="40">
-	</tr>
-
-	
-
-	<tr>
-		<td height="40">
-	</tr>
-
-	<tr>
 		<td class="td_default" align="center"><a class="a_default"
 			href="PhoneListServlet">더 둘러보기</a></td>
 	</tr>
 
-	<tr>
-		<td height="30">
-	</tr>
+
 
 </table>

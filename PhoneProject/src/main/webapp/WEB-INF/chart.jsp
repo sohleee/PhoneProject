@@ -5,18 +5,50 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Chart</title>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/adminCss.css">
 
 <script src="https://code.highcharts.com/highcharts.src.js"></script>
 <script src="chart/highcharts.js"></script>
 <script src="chart/highcharts-3d.js"></script>
+<style>
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+</style>
 <script type="text/javascript">
 	$(document).ready(()=>{
+		$(this).mousemove(function(e) {
+			//	 console.log(e.pageX,e.pageY);
+			/*
+			      e.pageX : x좌표
+			              e.pageY : y좌표
+			 */
+			console.log(e.pageX, e.pageY);
+			if (e.pageX < 150) {
+				
+				$('.sidenav').css("width", "200px");
+				
+			} else if (e.pageX > 180) {
+				$('.sidenav').css("width", "0");
+			}
+		});
 		$("#dateSearch").on("click",function(){
 			console.log($("#start").val());
 			var dataa ={
@@ -46,12 +78,20 @@
 </script>
 </head>
 <body>
-	<h1>관리자페이지</h1>
-	<jsp:include page="admin/adminForm.jsp" flush="true" /><br>
-	<hr>
-	<input type="text" name="start" id="start" value="2017/01/01">~
-	<input type="text" name="finish" id="finish" value="2017/12/31">
-	<input type="button" id="dateSearch" value="검색" />
+	<div class="container-fluid"
+		style="background-color: gray; color: #fff; height: 100px;">
+		<h1>관리자 페이지</h1>
+		안녕하세요 ${sessionScope.login.getAdminid()}<br>
+	</div>
+	<jsp:include page="admin/adminForm.jsp" flush="false" />
+	<div class="row">
+   	 <div class="col-lg-2 col-lg-offset-4">
+			<input type="date" class="form-control" name="start" id="start"
+				value="2017/01/01">~ <input type="date" class="form-control"
+				name="finish" id="finish" value="2017/12/31"> <input
+				type="button"  class="btn btn-default" id="dateSearch" value="검색" />
+		</div>
+	</div>
 	<div id="result"></div>
 </body>
 </html>

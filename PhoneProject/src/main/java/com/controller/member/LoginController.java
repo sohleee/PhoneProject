@@ -41,6 +41,7 @@ public class LoginController {
 			MemberDTO dto = service.login(map);
 			if (dto == null) {
 				m.addAttribute("mesg", "아이디또는 비밀번호가 일치하지 않습니다.");
+				session.setAttribute("login", adto);
 				return "loginForm";
 			} else {
 
@@ -86,6 +87,7 @@ public class LoginController {
 
 	@RequestMapping("/loginX/logout")
 	public String logout(HttpSession session) {
+		System.out.println("logout");
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -98,7 +100,8 @@ public class LoginController {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public String error() {
+	public String error(Exception exception) {
+		exception.printStackTrace();
 		return "error";
 	}
 

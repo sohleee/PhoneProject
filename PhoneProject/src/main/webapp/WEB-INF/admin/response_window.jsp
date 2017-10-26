@@ -61,9 +61,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td> <input type="button" id="button"value="전송">
+		<td> <input type="button" class="btn btn-default" id="button"value="전송">
 		</td>
-		<td><input type="reset" value="다시쓰기" > 
+		<td><input type="reset" class="btn btn-default" value="다시쓰기" > 
 		 <span id="num">${num}</span>
 		</td>
 	</tr>

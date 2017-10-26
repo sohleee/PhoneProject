@@ -54,7 +54,8 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="loginX/mypage">회원정보</a>
-  <a href="#">Cart</a>
+  <a href="/phone/cartList">Cart</a>
+  <a href="/phone/orderHistoryList">주문내역</a>
   <a href="#">Question</a>
 </div>
 

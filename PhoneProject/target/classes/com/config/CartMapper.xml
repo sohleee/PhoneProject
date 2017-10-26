@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="cartAllList" resultType="CartDTO" parameterType="String">
 
 		select
-		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image
+		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image,telecom,telecom_num
 		from cart
 		where userid=#{userid}
 	</select>
@@ -28,23 +28,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="orderConfirm" parameterType="int" resultType="CartDTO">
 		select
-		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image
+		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image,telecom_num,telecom
 		from cart
 		where num=#{num}
 	</select>
 
 	<insert id="insertItem" parameterType="CartDTO">
-		insert into cart(num, userid, phone_model_num, phone_name, phone_price, phone_amount ,phone_image,telecom_num)
+		insert into cart(num, userid, phone_model_num, phone_name, phone_price, phone_amount ,phone_image,telecom_num,telecom)
 		values(seq_cart.nextval,#{userid},#{phone_model_num},#{phone_name},#{phone_price},#{phone_amount}
-		,#{phone_image},#{telecom_num})
+		,#{phone_image},#{telecom_num},#{telecom})
 	</insert>
-	<insert id="createOrderNum" parameterType="CartDTO">
-		insert into cart(num)
-		values(seq_cart.nextval)
-	</insert>
+	<select id="createOrderNum" resultType="CartDTO" >
+		select seq_cart.nextval from cart
+	</select>
 	<select id="getOrderNum" resultType="int">
 		select max(num) from cart
 	</select>
+	<delete id="delAllCart" parameterType="arraylist">
+       delete from cart
+       <where>
+         num IN
+         <foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+       </where>
+    </delete>
+	
 </mapper>
 
 

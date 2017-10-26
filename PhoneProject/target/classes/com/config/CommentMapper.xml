@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.mybatis.CommentMapper">
 
 <select id="commentList" resultType="CommentDTO" parameterType="hashmap">
-	select num, boardnum, username, content, to_char(commentday,'YYYY.MM.DD') commentday
+	select num, boardnum, userid, username, content, to_char(commentday,'YYYY.MM.DD') commentday
 	from board_co
 	where boardnum=#{boardnum}
 	order by num
@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <insert id="commentWrite" parameterType="CommentDTO">
-	insert into board_co(num, boardnum, username, content)
-	values(comment_seq.nextval,#{boardnum},#{username},#{content})
+	insert into board_co(num, userid, boardnum, username, content)
+	values(comment_seq.nextval,#{userid},#{boardnum},#{username},#{content})
 </insert>
 
 <delete id="commentDelete" parameterType="hashmap">

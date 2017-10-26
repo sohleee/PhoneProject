@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:property-placeholder location="classpath:com/config/jdbc.properties" />
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.userid}" />
+		<property name="password" value="${jdbc.passwd}" />
+	</bean>
+
+	<!-- SqlSessionFactoryBean 등록 -->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/config/BoardMapper.xml</value>
+				<value>classpath:com/config/QNAMapper.xml</value>
+				<value>classpath:com/config/CommentMapper.xml</value>
+				<value>classpath:com/config/FAQMapper.xml</value>
+				<value>classpath:com/config/MemberMapper.xml</value>
+				<value>classpath:com/config/PhoneMapper.xml</value>
+				<value>classpath:com/config/AdminMapper.xml</value>
+				<value>classpath:com/config/MemberMapper.xml</value>
+				<value>classpath:com/config/CartMapper.xml</value>
+				<value>classpath:com/config/OrderMapper.xml</value>
+				<value>classpath:com/config/QNAResponseMapper.xml</value>
+
+			</list>
+		</property>
+		<property name="typeAliases">
+			<list>
+				<value>com.dto.board.BoardDTO</value>
+				<value>com.dto.board.CommentDTO</value>
+				<value>com.dto.board.QNADTO</value>
+				<value>com.dto.board.FAQDTO</value>
+				<value>com.dto.board.PageDTO</value>
+				<value>com.dto.board.QNAPageDTO</value>
+				<value>com.dto.board.FAQPageDTO</value>
+				<value>com.dto.board.FileDTO</value>
+				<value>com.dto.member.MemberDTO</value>
+				<value>com.dto.phone.PhoneDTO</value>
+				<value>com.dto.cart.CartDTO</value>
+				<value>com.dto.phone.PhoneFileDTO</value>
+				<value>com.dto.admin.AdminDTO</value>
+				<value>com.dto.cart.SalesDTO</value>
+				<value>com.dto.cart.OrderDTO</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- SqlSessionTemplate -->
+	<bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factoryBean" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- //////////////////////////////////////////////// -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

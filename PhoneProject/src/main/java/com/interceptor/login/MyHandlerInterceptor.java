@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.dto.admin.AdminDTO;
 import com.dto.member.MemberDTO;
 
 public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
@@ -17,13 +18,26 @@ public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO)session.getAttribute("login");
-	    if(dto == null ) {
-	    	//System.out.println("세션없음");
-	    	response.sendRedirect("../loginForm");
-	    	return false;
-	    }
-		return true;
-	}
+	
+	  if(session.getAttribute("login")==null) {
+		  
+		  System.out.println("adto null");
+		  if(session.getAttribute("login") == null ) {
+		    	//System.out.println("세션없음");
+		    	response.sendRedirect("../loginForm");
+		    	  System.out.println("dto null");
+		    	return false;
+		    }
+		  else {
+			return true;
+			}
+			
+			
+	  }
+	  else
+	  {
+		  return true;
+	  }
+}
 
 }

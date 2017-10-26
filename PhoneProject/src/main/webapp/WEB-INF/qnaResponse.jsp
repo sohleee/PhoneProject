@@ -1,104 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- <style type="text/css">
- body{
- 	font:14px/1.8 Arial,Helvetica, sans-serif;
- }
- .frame{
- 	width:800px;
- 	margin: 0 auto;
- 	border: 1px solid #aaa;
- }
- .header{
- 	padding : 40px 10px;
- 	text-align : center;
- 	background : #eee;
- 	margin-bottom : 20px;
- }
- .logo{
- 	font-size : 2em;
- 	font-weight : bold;
- 	background:#eee;
- 	color: #fff;
- 	display : inline-block;
- 	padding : 0 8px;
- }
- .container{
- 	overflow:hidden;
- }
 
-.nav{
-	float: left;
-	width: 150px;
-	background: #eee;
-	color : #fff;
-	margin-right: 50px;
-}
-.nav-list{
-	list-style:none;
-	margin:0;
-	padding: 10px 0;
-}
-.nav-item{
-	margin: 4px 0;
-}
-.nav-link{
-	display:block;
-	text-decoration: none;
-	padding: 4px 10px;
-	color: #fff;
-}
-.nav-link:hover{
-	background: #5457de;
-}
-.content{
-	float: left;
-	width : 600px;
-}
-.footer{
-	text-align:center;
-	border-top: 1px solid #aaa;
-	margin: 20px 20px 0;
-	font-size: 12px;
-}
-.container{
-	display: table;
-	
-	background: url
-}
-.nav, .content{
-	display: table-cell;
-}
-.content{
-	background:#fff;
-}
- a:link { color: red; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: blue; text-decoration: underline;}
- 
-</style> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" type="text/css"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/adminCss.css">
+<style>
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+</style>
+<script>
+	$(this).mousemove(function(e) {
+		//	 console.log(e.pageX,e.pageY);
+		/*
+		      e.pageX : x좌표
+		              e.pageY : y좌표
+		 */
+		console.log(e.pageX, e.pageY);
+		if (e.pageX < 100) {
+
+			$('.sidenav').css("width", "200px");
+
+		} else if (e.pageX > 180) {
+			$('.sidenav').css("width", "0");
+		}
+	});
+</script>
 
 </head>
 <body>
-<h1>관리자페이지</h1>
-<jsp:include page="admin/adminForm.jsp" flush="true" /><br>
-<c:if test="${!empty requestScope.result}">
-	<script>
-	alert("${requestScope.result}");
-	</script>
-</c:if>
 
-<jsp:include page="admin/qnaResponse.jsp"></jsp:include>
-<div class="footer">
-		<p class="copyright">&copy;copy</p>
+	<c:if test="${!empty requestScope.result}">
+		<script>
+			alert("${requestScope.result}");
+		</script>
+	</c:if>
+	<div class="container-fluid"
+		style="background-color: gray; color: #fff; height: 100px;">
+		<h1>관리자 페이지</h1>
+		안녕하세요 ${sessionScope.login.getAdminid()}<br>
 	</div>
+	<jsp:include page="admin/adminForm.jsp" flush="false" />
+	<jsp:include page="admin/qnaResponse.jsp"></jsp:include>
 
 </body>
 </html>

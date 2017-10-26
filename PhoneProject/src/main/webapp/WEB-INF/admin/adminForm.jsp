@@ -5,10 +5,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-   안녕하세요 ${sessionScope.login.getAdminid()}<br>
-  <a href="chartForm">판매현황</a>
+
+<!--   <a href="chartForm">판매현황</a>
   <a href="memberMng">회원 관리</a>
   <a href="QNAResponseForm">질의·응답</a>
-  <a href="LogoutServlet">로그아웃</a>
-  
+  <a href="LogoutServlet">로그아웃</a> -->
+<div id="mySidenav" class="sidenav">
+	<ul>
+		<li><a href="chartForm">판매현황</a></li>
+		<li><a href="memberMng">회원관리</a></li>
+		<li><a href="QNAResponseForm">질의응답</a></li>
+		<li><a href="/phone/loginX/logout">로그아웃</a></li>
+	</ul>
 
+
+
+</div>

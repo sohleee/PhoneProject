@@ -1,26 +1,32 @@
 package com.dao.cart;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.dto.cart.OrderDTO;
 import com.dto.cart.SalesDTO;
 
+@Repository("orderDAO")
 public class OrderDAO {
 
-	public int orderHistory(SqlSession session, OrderDTO dto) {
-		int n=session.insert("addOrder",dto);
-		 System.out.println("OrderDAO :"+n);
-		return n;
+	@Autowired
+	SqlSessionTemplate template;
+	public void orderHistory( Map<String,String> map) {
+		template.insert("addOrder",map);
+		template.delete("deleteItem",Integer.parseInt(map.get("num")));
 				
 	}
-	public int insertSales(SqlSession session,SalesDTO dto ) {
-		return session.insert("addSales",dto);
+	public int insertSales(SalesDTO dto ) {
+		return template.insert("addSales",dto);
 	}
-	public List<OrderDTO> orderList(SqlSession session, String userid) {
+	public List<OrderDTO> orderList( String userid) {
 		// TODO Auto-generated method stub
-		return session.selectList("orderList",userid);
+		return template.selectList("orderList",userid);
 	}
 
 }

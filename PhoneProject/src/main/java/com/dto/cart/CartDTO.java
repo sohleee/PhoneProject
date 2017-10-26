@@ -10,12 +10,13 @@ public class CartDTO {
 	private int phone_amount;
 	private String phone_image;
 	private String telecom_num;
+	private String telecom;
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public CartDTO(int num, String userid, String phone_model_num, String phone_name, int phone_price, int phone_amount,
-			String phone_image, String telecom_num) {
+			String phone_image, String telecom_num, String telecom) {
 		super();
 		this.num = num;
 		this.userid = userid;
@@ -25,6 +26,13 @@ public class CartDTO {
 		this.phone_amount = phone_amount;
 		this.phone_image = phone_image;
 		this.telecom_num = telecom_num;
+		this.telecom = telecom;
+	}
+	@Override
+	public String toString() {
+		return "CartDTO [num=" + num + ", userid=" + userid + ", phone_model_num=" + phone_model_num + ", phone_name="
+				+ phone_name + ", phone_price=" + phone_price + ", phone_amount=" + phone_amount + ", phone_image="
+				+ phone_image + ", telecom_num=" + telecom_num + ", telecom=" + telecom + "]";
 	}
 	public int getNum() {
 		return num;
@@ -74,6 +82,13 @@ public class CartDTO {
 	public void setTelecom_num(String telecom_num) {
 		this.telecom_num = telecom_num;
 	}
+	public String getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
+	}
+	
 	
 	
 	

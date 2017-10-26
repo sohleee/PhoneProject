@@ -18,7 +18,9 @@ public class CartDAO {
 	
 	public List<CartDTO> cartAllList( String userid) {
 	
-		return template.selectList("cartAllList",userid);
+		List<CartDTO> list= template.selectList("cartAllList",userid);
+			
+		return list;
 	}
 
 	public void amountUpdate( HashMap<String, Integer> map) { // ���� update
@@ -40,15 +42,18 @@ public class CartDAO {
 
 	public void insertItem( CartDTO dto) {
 		// TODO Auto-generated method stub
-		template.insert("insertItem",dto);
-		
+	     int n = template.insert("insertItem",dto);
+		System.out.println("cartDAO :"+n);
 	}
 
 	public int createOrderNum() {
-		template.insert("createOrderNum");
+		template.selectOne("createOrderNum");
 		int num =template.selectOne("getOrderNum");
 		return num;
 	}
-
+	public void deleteItems(List<String> list) {
+		// TODO Auto-generated method stub
+		template.delete("delAllCart",list);
+	}
 	
 }

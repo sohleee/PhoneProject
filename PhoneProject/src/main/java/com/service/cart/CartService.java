@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.cart.CartDAO;
 import com.dto.cart.CartDTO;
@@ -38,7 +39,7 @@ public class CartService {
 
 		return dao.orderConfirm(dto);
 	}
-
+	@Transactional
 	public void insertItem( CartDTO dto) {
 		// TODO Auto-generated method stub
 		dao.insertItem(dto);
@@ -50,4 +51,10 @@ public class CartService {
 		
 		return dao.createOrderNum();
 	}
+
+	public void deleteItems(List<String> list) {
+		// TODO Auto-generated method stub
+		dao.deleteItems(list);
+	}
+	
 }
