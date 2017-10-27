@@ -84,7 +84,7 @@
 	}
 	
 	function boardDelete(){
-		location.href="boardDelete?boardnum=${retrieve.boardnum}&author=${retrieve.author}";
+		location.href="boardDelete?boardnum=${retrieve.boardnum}&userid=${retrieve.userid}";
 	}
 	function boardComment(e){
 		console.log($("textarea:last").val());
