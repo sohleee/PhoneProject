@@ -120,12 +120,12 @@ public class BoardController {
 		}
 		
 		@RequestMapping(value="/boardDelete", method=RequestMethod.GET)
-		public String boardDelete(@RequestParam int boardnum, @RequestParam String author, HashMap<String,String> map,HttpSession session, Model m){
+		public String boardDelete(@RequestParam int boardnum, @RequestParam String userid, HashMap<String,String> map,HttpSession session, Model m){
 			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
 			map.put("userid", mdto.getUserid());
 			map.put("boardnum", String.valueOf(boardnum));
 			if(mdto!=null) {
-				if(mdto.getUserid().equals(author)) {
+				if(mdto.getUserid().equals(userid)) {
 					service.boardDelete(map);
 					m.addAttribute("result", "글이 삭제되었습니다");
 				}
@@ -133,7 +133,7 @@ public class BoardController {
 					m.addAttribute("result", "본인이 작성한 글만 삭제 가능합니다");
 				}
 			}
-			return "redirect:boardList";
+			return "forward:boardList";
 		}
 		
 		@RequestMapping(value="/boardUpdateForm", method=RequestMethod.GET)
@@ -206,6 +206,6 @@ public class BoardController {
 					m.addAttribute("result", "본인이 작성한 댓글만 삭제 가능합니다");
 				}
 			}
-			return "redirect:boardList";
+			return "forward:boardList";
 		}
 }
