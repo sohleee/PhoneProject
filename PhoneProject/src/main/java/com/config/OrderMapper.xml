@@ -7,18 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addOrder" parameterType="hashmap">
 		insert into orderHistory
 		(num, userid, phone_name, phone_model_num,
-		 phone_price, phone_amount, phone_image, orderName , post1, post2, addr1, addr2,
+		 phone_price, phone_amount, phone_image, ordername , post1, post2, addr1, addr2,
 		 phone, paymethod,telecom_num,telecom)
 		 values(#{num},#{userid},#{phone_name},#{phone_model_num},#{phone_price},
-		 #{phone_amount},#{phone_image},#{orderName},#{post1}, #{post2},#{addr1},#{addr2},#{phone},#{payMethod},#{telecom_num},#{telecom})
+		 #{phone_amount},#{phone_image},#{ordername},#{post1}, #{post2},#{addr1},#{addr2},#{phone},#{payMethod},#{telecom_num},#{telecom})
 
 	</insert>
 
-	<insert id="addSales" parameterType="SalesDTO">
+	<insert id="addSales" parameterType="hashmap">
 		insert into sales_status
-		(ordername,telecom_num,phone_model_num,phone_price,phone_amount,orderdate)
+		(ordername,telecom_num,phone_model_num,phone_price,phone_amount,telecom)
 		values(#{ordername},#{telecom_num},#{phone_model_num},
-		#{phone_price},#phone_amount},#{orderdate})
+		#{phone_price},#{phone_amount},#{telecom})
 	</insert>
 	<select id="orderList" parameterType="String" resultType="OrderDTO">
 		select num,userid,phone_model_num,phone_name,phone_price,phone_image,phone_amount,

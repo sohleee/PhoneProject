@@ -9,9 +9,21 @@ public class SalesDTO {
 	private int phone_price;
 	private int phone_amount;
 	private String orderdate;
+	private String telecom;
 	public SalesDTO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public SalesDTO(String ordername, String telecom_num, String phone_model_num, int phone_price, int phone_amount,
+			String orderdate, String telecom) {
+		super();
+		this.ordername = ordername;
+		this.telecom_num = telecom_num;
+		this.phone_model_num = phone_model_num;
+		this.phone_price = phone_price;
+		this.phone_amount = phone_amount;
+		this.orderdate = orderdate;
+		this.telecom = telecom;
 	}
 	public String getOrdername() {
 		return ordername;
@@ -49,21 +61,17 @@ public class SalesDTO {
 	public void setOrderdate(String orderdate) {
 		this.orderdate = orderdate;
 	}
-	public SalesDTO(String ordername, String telecom_num, String phone_model_num, int phone_price, int phone_amount,
-			String orderdate) {
-		super();
-		this.ordername = ordername;
-		this.telecom_num = telecom_num;
-		this.phone_model_num = phone_model_num;
-		this.phone_price = phone_price;
-		this.phone_amount = phone_amount;
-		this.orderdate = orderdate;
+	public String getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
 	}
 	@Override
 	public String toString() {
 		return "SalesDTO [ordername=" + ordername + ", telecom_num=" + telecom_num + ", phone_model_num="
 				+ phone_model_num + ", phone_price=" + phone_price + ", phone_amount=" + phone_amount + ", orderdate="
-				+ orderdate + "]";
+				+ orderdate + ", telecom=" + telecom + "]";
 	}
 	
 }

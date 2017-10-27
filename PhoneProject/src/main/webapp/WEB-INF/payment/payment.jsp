@@ -115,7 +115,7 @@
 					<tr>
 						<td width="125" height="35" class="td_default">이 름</td>
 						<td height="35" class="td_default"><input
-							class="input_default" type="text" id="orderName" name="orderName"
+							class="input_default" type="text" id="ordername" name="ordername"
 							size="20" maxlength="20" value=""></input></td>
 					</tr>
 					<tr>
@@ -179,7 +179,7 @@
 	}
 	function sameAddress(chk) {
 		if (chk.checked) {
-			document.getElementById("orderName").value = document
+			document.getElementById("ordername").value = document
 					.getElementById("mname").value;
 			document.getElementById("post1").value = document
 					.getElementById("mpost1").value;
@@ -192,7 +192,7 @@
 			document.getElementById("phone").value = document
 					.getElementById("mphone").value;
 		} else {
-			document.getElementById("orderName").value = "";
+			document.getElementById("ordername").value = "";
 			document.getElementById("post1").value = "";
 			document.getElementById("post2").value = "";
 			document.getElementById("addr1").value = "";

@@ -9,7 +9,7 @@ public class OrderDTO {
 	private int phone_price;
 	private int phone_amount;
 	private String phone_image;
-	private String orderName ;
+	private String ordername ;
 	private String post1  ;
 	private String post2;
 	private String addr1 ;
@@ -24,7 +24,7 @@ public class OrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 	public OrderDTO(int num, String userid, String phone_name, String phone_model_num, int phone_price,
-			int phone_amount, String phone_image, String orderName, String post1, String post2, String addr1,
+			int phone_amount, String phone_image, String ordername, String post1, String post2, String addr1,
 			String addr2, String phone, String payMethod, String telecom_num, String orderdate, String telecom) {
 		super();
 		this.num = num;
@@ -34,7 +34,7 @@ public class OrderDTO {
 		this.phone_price = phone_price;
 		this.phone_amount = phone_amount;
 		this.phone_image = phone_image;
-		this.orderName = orderName;
+		this.ordername = ordername;
 		this.post1 = post1;
 		this.post2 = post2;
 		this.addr1 = addr1;
@@ -87,11 +87,11 @@ public class OrderDTO {
 	public void setPhone_image(String phone_image) {
 		this.phone_image = phone_image;
 	}
-	public String getOrderName() {
-		return orderName;
+	public String getordername() {
+		return ordername;
 	}
-	public void setOrderName(String orderName) {
-		this.orderName = orderName;
+	public void setordername(String ordername) {
+		this.ordername = ordername;
 	}
 	public String getPost1() {
 		return post1;
