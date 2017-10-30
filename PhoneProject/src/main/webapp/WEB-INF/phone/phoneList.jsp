@@ -37,7 +37,11 @@
 							<table style='padding: 15px' border="1" bordercolor="CECECE">
 								<tr>
 									<td><a href="PhoneRetrieve?telecom_num=${xxx.telecom_num}"  class="no-uline" >
+											<div><c:if test="${xxx.telecom=='LG_UPLUS' }"><img src="images/lg-u_.png"  width=30 height=30></c:if>
+											<c:if test="${xxx.telecom=='KT' }"><img src="images/kt.jpg"  width=30 height=30></c:if>
+											<c:if test="${xxx.telecom=='SKT' }"><img src="images/skt.jpg"  width=30 height=30></c:if></div>
 											<img src="images/${xxx.phone_image}" class="imgst">
+											
 									</a></td>
 								</tr>
 								<!-- <tr>
