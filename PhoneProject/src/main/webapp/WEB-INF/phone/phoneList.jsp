@@ -32,7 +32,7 @@
 
 				<tr>
 					<c:forEach var="xxx" items="${list}" varStatus="status">
-
+					<fmt:parseNumber var="totalNum" integerOnly="true" value="${xxx.phone_price / 24}"></fmt:parseNumber>
 						<td>
 							<table style='padding: 15px' border="1" bordercolor="CECECE">
 								<tr>
@@ -62,8 +62,8 @@
 								</tr> -->
 								<tr>
 									<td class="td_red" align="center"><font color="orange"><strong>
-												${xxx.phone_price / 24} </strong></font></td>
-									<td><fmt:parseNumber var="totalNum" integerOnly="true" value="${xxx.phone_price / 24}"></fmt:parseNumber></td>
+										2개월 할부시<br>매달 ${totalNum}원 </strong></font></td>
+									
 								</tr>
 							</table>
 						</td>
