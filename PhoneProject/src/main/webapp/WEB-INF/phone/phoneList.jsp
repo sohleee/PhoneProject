@@ -11,6 +11,7 @@
 	display : inline-table;
 	border : 0px;
 }
+
 </style>
 
 <table  cellspacing="1000" cellpadding="1000">
@@ -65,8 +66,11 @@
 									<td height="10">
 								</tr> -->
 								<tr>
-									<td class="td_red" align="center"><font color="orange"><strong>
-										2개월 할부시<br>매달 ${totalNum}원 </strong></font></td>
+									<td class="td_red" align="center"><div>1234</div>
+									
+									<span><font color="orange"><strong>
+										2개월 할부시<br>매달 ${totalNum}원 </strong></font></span>
+									</td>
 									
 								</tr>
 							</table>

@@ -55,6 +55,7 @@ public class PhoneList {
 	@RequestMapping("/PhoneRetrieve")
 	public ModelAndView PhoneRetrieve(@RequestParam String telecom_num) {
 		PhoneDTO dto = service.phoneRetrieve(telecom_num);
+		System.out.println(telecom_num);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.setViewName("phoneRetrieve");
