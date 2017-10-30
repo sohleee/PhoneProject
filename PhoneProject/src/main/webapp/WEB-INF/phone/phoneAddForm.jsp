@@ -6,13 +6,37 @@
 <form action="AddFile" method="post" enctype="multipart/form-data">
 <table border="0">
 			<tr>
-				<td>통신사&nbsp;<input type="text" name="telecom"></td>
+				
+				<td>통신사&nbsp;&nbsp;&nbsp;<select name="telecom">
+					<option>SKT</option>
+					<option>KT</option>
+					<option>LG_UPLUS</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td>카테고리&nbsp;<input type="text" name="telecom_num"></td>
+				<td>카테고리&nbsp;&nbsp;&nbsp;<select name="telecom_num">
+					<option>G6</option>
+					<option>G6E</option>
+					<option>G7</option>
+					<option>G7E</option>
+					<option>G8</option>
+					<option>G8E</option>
+					<option>I5</option>
+					<option>I5s</option>
+					<option>I6</option>
+					<option>I6s</option>
+					<option>I7</option>
+					<option>I7s</option>
+					<option>I8</option>
+					<option>I8s</option>
+					<option>IX</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td>폰 모델&nbsp;&nbsp;&nbsp;<input type="text" name="phone_model_num"></td>
+				<td>폰 모델&nbsp;&nbsp;&nbsp;<select name="phone_model_num">
+					<option>iphone</option>
+					<option>galaxy</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>폰 이름&nbsp;&nbsp;&nbsp;<input type="text" name="phone_name"></td>

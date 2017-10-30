@@ -112,11 +112,23 @@
 				},
 				dataType:"text",
 				success:function(responseData,status,xhr){
-					console.log(responseData);
-					$("#result2").text(responseData);
+					console.log(typeof responseData, responseData);
+					
+					if(responseData.trim()=="a"){
+						alert("분할 상환 기간을 선택해주세요.");
+					}
+					else if(responseData.trim()=="b"){
+						alert("요금제를 선택해주세요.");
+						
+					}else if(responseData.trim()=="c"){
+						alert("분할 상환 기간과 요금제를 선택해주세요.");
+					}else{
+						$("#result2").text(responseData);
+					}
 				},
 				error:function(xhr,status,error){
-					console.log(error);
+					console.log(">>>>에러" +error + xhr.status);
+					
 				}
 			});
 		});
@@ -124,10 +136,10 @@
 	});
 	$(document).ready(function(){
 		$("#img_black").on("click", function(){
-			 $("#img").attr("src", "images/${dto.phone_image}_black.jpg");
+			 $("#img").attr("src", "images/${dto.phone_image}");
 		});
 		$("#img_white").on("click", function(){
-			 $("#img").attr("src", "images/${dto.phone_image}.jpg");
+			 $("#img").attr("src", "images/${dto.phone_image}");
 		});
 	});
 </script>
@@ -173,7 +185,7 @@
 			</td>
 			<td>
 				<font size="2">&nbsp;&nbsp;&nbsp;기기 값</font><br>
-				<div id="result">&nbsp;&nbsp;&nbsp;</div>
+				<div id="result"></div>
 			</td>
 		</tr>
 		<tr>
@@ -183,7 +195,7 @@
 			<input type="button" value="36"  data-rate="m24" class="btn btn-default btn-sm"></td>
 			<td colspan="">
 				<font size="2">&nbsp;&nbsp;&nbsp;요금</font><br>
-				<div id="result1">&nbsp;&nbsp;&nbsp;</div>
+				<div id="result1"></div>
 			</td>
 		</tr>
 		<tr>
@@ -204,7 +216,7 @@
 			</td>
 			<td colspan="4">
 				<font size="2">&nbsp;&nbsp;&nbsp;총합 </font><br>
-				&nbsp;&nbsp;&nbsp;<div id="result2">&nbsp;&nbsp;&nbsp;</div>
+				<div id="result2"></div>
 			</td>
 		</tr>
 		<tr>
