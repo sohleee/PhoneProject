@@ -34,35 +34,36 @@
 					<c:forEach var="xxx" items="${list}" varStatus="status">
 
 						<td>
-							<table style='padding: 15px'>
+							<table style='padding: 15px' border="1" bordercolor="CECECE">
 								<tr>
 									<td><a href="PhoneRetrieve?telecom_num=${xxx.telecom_num}"  class="no-uline" >
 											<img src="images/${xxx.phone_image}" class="imgst">
 									</a></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 
 									<td height="10">
-								</tr>
+								</tr> -->
 								<tr>
 									<td class="td_default" align="center"><a class="a_black"
 										href="PhoneRetrieve?telecom_num=${xxx.telecom_num}">
 											${xxx.phone_name}<br>
-									</a> <font color="gray"> -------------------- </font></td>
+									</a> <!-- <font color="gray"> -------------------- </font> --></td>
 
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td height="30">
-								</tr>
-								<tr>
+								</tr> -->
+								<%-- <tr>
 									<td class="td_gray" align="center">${xxx.phone_content}</td>
-								</tr>
-								<tr>
+								</tr> --%>
+								<!-- <tr>
 									<td height="10">
-								</tr>
+								</tr> -->
 								<tr>
 									<td class="td_red" align="center"><font color="orange"><strong>
-												${xxx.phone_price} </strong></font></td>
+												${xxx.phone_price / 24} </strong></font></td>
+									<td><fmt:parseNumber var="totalNum" integerOnly="true" value="${xxx.phone_price / 24}"></fmt:parseNumber></td>
 								</tr>
 							</table>
 						</td>

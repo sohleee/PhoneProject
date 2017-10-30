@@ -114,8 +114,12 @@ public class PhoneList {
 		return "home";
 	}
 	@RequestMapping("/PhoneDelete")
-	public String PhoneDelete(@RequestParam String telecom_num) {
+	public ModelAndView PhoneDelete(@RequestParam String telecom_num) {
 		service.phoneDelete(telecom_num);
-		return "home";
+		List<PhoneDTO> list = service.PhoneList();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("phoneList");
+		return mav;
 	}
 }

@@ -245,7 +245,7 @@
 			&phone_name=${dto.phone_name}&phone_price=${dto.phone_price}&phone_image=${dto.phone_image}
 			&telecom_num=${dto.telecom_num}&telecom=${dto.telecom}">장바구니 담기</a>
 			<br><a href="updateForm?telecom_num=${dto.telecom_num}">수정</a>    &nbsp;
-			 <a href="PhoneDelete?telecom_num=${dto.telecom_num}">삭제</a></td>
+			 <a href="PhoneDelete?telecom_num=${dto.telecom_num}&phone_name=${dto.phone_name}">삭제</a></td>
 			
 		</tr>
 	</table>

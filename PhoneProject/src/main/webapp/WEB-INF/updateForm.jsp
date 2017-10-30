@@ -7,104 +7,58 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
- body{
- 	font:14px/1.8 Arial,Helvetica, sans-serif;
- }
- .frame{
- 	width:1000px;
- 	margin: 0 auto;
- 	border: 1px solid #aaa;
- }
- .header{
- 	padding : 40px 10px;
- 	text-align : center;
- 	background : #eee;
- 	margin-bottom : 20px;
- }
- .logo{
- 	font-size : 2em;
- 	font-weight : bold;
- 	background:#5457de;
- 	color: #fff;
- 	display : inline-block;
- 	padding : 0 8px;
- }
- .container{
- 	overflow:hidden;
- }
+<style>
 
-.nav{
-	float: left;
-	width: 150px;
-	background: #eee;
-	color : #fff;
-	margin-right: 50px;
-}
-.nav-list{
-	list-style:none;
-	margin:0;
-	padding: 10px 0;
-}
-.nav-item{
-	margin: 4px 0;
-}
-.nav-link{
-	display:block;
-	text-decoration: none;
-	padding: 4px 10px;
-	color: #fff;
-}
-.nav-link:hover{
-	background: #5457de;
-}
-.content{
-	float: left;
-	width : 600px;
-}
-.footer{
-	text-align:center;
-	border-top: 1px solid #aaa;
-	margin: 20px 20px 0;
-	font-size: 12px;
-}
-.container{
-	display: table;
-	
-	background: url
-}
-.nav, .content{
-	display: table-cell;
-}
-.content{
-	background:#fff;
-}
-
-</style>
-
+.carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #000000;
+  }
+  .carousel-indicators li {
+      border-color: #000000;
+  }
+  .carousel-indicators li.active {
+      background-color: #000000;
+  }
+  .item img {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  </style>
 </head>
 <body>
-<div class="frame"><a href="">회원가입</a> &nbsp;&nbsp;&nbsp;<a href="">로그인</a>
-<div class="header">
-<div class="logo"><a href="home">Phone82</a> </div>
+<div class="collapse navbar-collapse" align="right">
+	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
-	<div class="container">
-		<div class="nav">
-		<ul class="nav-list">
-			<li class="nav-item"><a href="PhoneList" style="color:red">휴대폰 리스트</a></li>
-			<li class="nav-item"><a href="List?phone_model_num=galaxy">갤럭시 제품만 보기</a></li>
-			<li class="nav-item"><a href="List?phone_model_num=iphone">아이폰만 보기</a></li>
-		</ul>
+<div align="center"><a href="/phone/"><img src="/phone/images/cc.jpg" width="400" height="100"></a> </div>
+	<jsp:include page="include/submenu.jsp"></jsp:include>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+  		<jsp:include page="phone/updateForm.jsp"/>
 		</div>
-		<div class="content">
-		<jsp:include page="phone/updateForm.jsp"/>
-		</div>
-	</div>
-	<div class="footer">
-		<p class="copyright">&copy;copy</p>
-	</div>
+  <div class="col-sm-1"></div>
 </div>
+
+<!-- copyright -->
+<footer class="page-footer center-on-small-only stylish-color-dark">
+<hr>
+<div class="footer-copyright" align="center">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
 
 </body>
 </html>
