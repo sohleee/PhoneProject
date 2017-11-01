@@ -62,5 +62,10 @@ public class QNAController {
 				m.addAttribute("retrieve",service.qnaRetrieve(num));
 				return "qnaRetrieve";
 		}
+		@RequestMapping(value="/qnaResponseRetrieve", method=RequestMethod.GET)
+		public String qnaResponseRetrieve(@RequestParam int num,Model m) {
+				m.addAttribute("retrieve",service.qnaSingleRetrive(num));
+				return "admin/qnaRetrieve";
+		}
 	
 }

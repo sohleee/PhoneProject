@@ -32,7 +32,7 @@ public class AdminService {
 		return  dao.getSalesChartDatas(map);
 	}
 	
-	public MemberMngPageDTO page(HashMap<String, String> map){
+	public MemberMngPageDTO page(Map<String, String> map){
 	
 		return dao.page( map);
 
@@ -65,5 +65,8 @@ public class AdminService {
 		
 			
 		}
+	public void qnaDelete(int num) {
+		qnadao.qna_delete(num);
+	}
 
 }

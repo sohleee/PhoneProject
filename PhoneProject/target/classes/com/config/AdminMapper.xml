@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getSalesChartDatas" resultType="SalesDTO"
 		parameterType="hashmap">
-		select telecom_num , sum(phone_price)as
+		select telecom, sum(phone_price)as
 		"phone_price",sum(phone_amount)as "phone_amount",
 		to_char(orderdate,'MM')as "orderdate"
 		from sales_status
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		orderdate
 		between #{start} and #{finish}
 		group by
-		telecom_num,to_char(orderdate,'MM')
+		telecom,to_char(orderdate,'MM')
 		order by to_char(orderdate,'MM')
 
 	</select>

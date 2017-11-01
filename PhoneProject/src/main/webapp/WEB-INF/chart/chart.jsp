@@ -44,34 +44,40 @@
 	
 <%
 List<SalesDTO> list = (List<SalesDTO>) request.getAttribute("list");
-ArrayList<Integer> iphone = new ArrayList();
-ArrayList<Integer> galaxy = new ArrayList();
+ArrayList<Integer> kt_v = new ArrayList();
+ArrayList<Integer> lg_v = new ArrayList();
+ArrayList<Integer> skt_v = new ArrayList();
 ArrayList<String> category =new ArrayList();
 
 
 for (int j = 0; j < list.size(); j++) {
 	
-	if ("I".equals(list.get(j).getTelecom_num().substring(0,1))) {
+	if ("K".equals(list.get(j).getTelecom().substring(0,1))) {
 
-		iphone.add(list.get(j).getPhone_price()*list.get(j).getPhone_amount());
+		kt_v.add(list.get(j).getPhone_price()*list.get(j).getPhone_amount());
 		category.add(list.get(j).getOrderdate());
 	}
-	if ("G".equals(list.get(j).getTelecom_num().substring(0,1))) {
+	if ("L".equals(list.get(j).getTelecom().substring(0,1))) {
 
-		galaxy.add(list.get(j).getPhone_price()*list.get(j).getPhone_amount());
+		lg_v.add(list.get(j).getPhone_price()*list.get(j).getPhone_amount());
 	}
-	
-}//for
+	if ("S".equals(list.get(j).getTelecom().substring(0,1))) {
 
-request.setAttribute("iphone", iphone);
-request.setAttribute("galaxy", galaxy);
+		skt_v.add(list.get(j).getPhone_price()*list.get(j).getPhone_amount());
+	}
+}//for
+	
+request.setAttribute("kt_v", kt_v);
+request.setAttribute("lg_v", lg_v);
+request.setAttribute("skt_v", skt_v);
 request.setAttribute("category", category);
 %>
-	
+
 	<script type="text/javascript">
 		// Set up the chart
-		var iphoneArr= ${iphone};
-		var galaxyArr= ${galaxy};
+		var kt_v=${kt_v};
+		var lg_v=${lg_v};
+		var skt_v=${skt_v};
 		var categoryItems= ${category};
 		var chart = new Highcharts.Chart({
 			chart : {
@@ -99,43 +105,21 @@ request.setAttribute("category", category);
 
 			series : [
 					{
-						name : "iphone",
-						data : iphoneArr
-							<%-- [
-							
-						<%=iphone.get(0).getPhone_price()*iphone.get(0).getPhone_amount()%>	,
-						<%=iphone.get(1).getPhone_price()*iphone.get(1).getPhone_amount()%>	,
-						<%=iphone.get(2).getPhone_price()*iphone.get(2).getPhone_amount()%> ,
-						<%=iphone.get(3).getPhone_price()*iphone.get(3).getPhone_amount()%>	,
-						<%=iphone.get(4).getPhone_price()*iphone.get(4).getPhone_amount()%>	,
-						<%=iphone.get(5).getPhone_price()*iphone.get(5).getPhone_amount()%>	,
-						<%=iphone.get(6).getPhone_price()*iphone.get(6).getPhone_amount()%>	,
-						<%=iphone.get(7).getPhone_price()*iphone.get(7).getPhone_amount()%>	,
-						<%=iphone.get(8).getPhone_price()*iphone.get(8).getPhone_amount()%>	,
-						<%=iphone.get(9).getPhone_price()*iphone.get(9).getPhone_amount()%>	,
-						<%=iphone.get(10).getPhone_price()*iphone.get(10).getPhone_amount()%>,
-						<%=iphone.get(11).getPhone_price()*iphone.get(11).getPhone_amount()%>
-						] --%>
+						name : "KT",
+						data : kt_v
+						
 					},
-					{	<%-- [
-							<%=iphone.get(0).getPhone_price()*iphone.get(0).getPhone_amount()%>	,
-						<%=galaxy.get(1).getPhone_price()*galaxy.get(1).getPhone_amount()%>	,
-						<%=galaxy.get(2).getPhone_price()*galaxy.get(2).getPhone_amount()%> ,
-						<%=galaxy.get(3).getPhone_price()*galaxy.get(3).getPhone_amount()%>	,
-						<%=galaxy.get(4).getPhone_price()*galaxy.get(4).getPhone_amount()%>	,
-						<%=galaxy.get(5).getPhone_price()*galaxy.get(5).getPhone_amount()%>	,
-						<%=galaxy.get(6).getPhone_price()*galaxy.get(6).getPhone_amount()%>	,
-						<%=galaxy.get(7).getPhone_price()*galaxy.get(7).getPhone_amount()%>	,
-						<%=galaxy.get(8).getPhone_price()*galaxy.get(8).getPhone_amount()%>	,
-						<%=galaxy.get(9).getPhone_price()*galaxy.get(9).getPhone_amount()%>	,
-						<%=galaxy.get(10).getPhone_price()*galaxy.get(10).getPhone_amount()%>,
-						<%=galaxy.get(11).getPhone_price()*galaxy.get(11).getPhone_amount()%>
-						] --%>
-						name : "galaxy",
-						data :galaxyArr
+					{	
+						name : "LG",
+						data :lg_v
 						
 					}
-					
+					,
+					{	
+						name : "SKT",
+						data :skt_v
+						
+					}
 				]
 			,
 			xAxis: {

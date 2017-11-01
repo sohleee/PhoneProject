@@ -45,7 +45,7 @@ select count(*) from QNARESPONSE where num=#{num}
 </insert>
 
 <select id="AdminQNAselectByNum" parameterType="int" resultType="QNADTO">
-	select num, userid, content,to_char(writeday,'YYYY/MM/DD') writeday 
+	select num, userid, content,to_char(writeday,'YYYY/MM/DD') writeday ,title
 	from QNARESPONSE
 	where num=#{num}
 </select>
@@ -60,6 +60,10 @@ select count(*) from QNARESPONSE where num=#{num}
 	where num=#{num} and userid=#{userid}
 </delete>
 <delete id="deleteAnswer" parameterType="hashmap">
+	delete from qnaresponse
+	where num=#{num}
+</delete>
+<delete id="delete_Answer" parameterType="int">
 	delete from qnaresponse
 	where num=#{num}
 </delete>

@@ -11,7 +11,9 @@
    <c:set var="curIdx" value="${dto.curIdx}"/>
    <c:set var="totalCount" value="${dto.getTotalCount()}"></c:set>
    	<c:set var="length" value="${curIdx*curPage*perPage}"/>
-   	<fmt:parseNumber integerOnly="true" var="totalNum" value="${totalCount/perPage}" />
+   	${totalCount}
+  
+   	<fmt:parseNumber  var="totalNum" pattern="0" value="${totalCount/perPage}" />
    	<c:if test="${totalCount%perPage!=0}">
    		<c:set var="totalNum" value="${totalNum+1}"/>
    	</c:if>

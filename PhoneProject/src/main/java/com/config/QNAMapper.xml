@@ -47,6 +47,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	delete from qna
 	where num=#{num} and userid=#{userid}
 </delete>
+<delete id="qnadeleteAndNumber" parameterType="int">
+	delete from qna
+	where num=#{num} 
+</delete>
 
 <update id="qnaupdateByNum" parameterType="QNADTO">
 	update qna

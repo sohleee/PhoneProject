@@ -99,7 +99,7 @@
 		<td colspan="7" align="center"><select id="searchName">
 				<option value="userid">아이디</option>
 				<option value="member_num">회원번호</option>
-		</select> <input type="text" id="searchValue""> <input type="button"
+		</select> <input type="text" id="searchValue"> <input type="button"
 			id="searchButton" class="btn btn-default" value="검색"> <%
  	MemberMngPageDTO bpage = (MemberMngPageDTO) request.getAttribute("membermanagepage");
  	int perPage = bpage.getPerPage();

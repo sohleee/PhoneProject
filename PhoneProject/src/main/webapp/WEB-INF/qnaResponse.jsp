@@ -9,21 +9,12 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/adminCss.css">
+<link rel="stylesheet" type="text/css" href="/phone/css/adminCss.css">
 <style>
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
+
 </style>
 <script>
 	$(this).mousemove(function(e) {
@@ -32,7 +23,7 @@
 		      e.pageX : x좌표
 		              e.pageY : y좌표
 		 */
-		console.log(e.pageX, e.pageY);
+		//console.log(e.pageX, e.pageY);
 		if (e.pageX < 100) {
 
 			$('.sidenav').css("width", "200px");

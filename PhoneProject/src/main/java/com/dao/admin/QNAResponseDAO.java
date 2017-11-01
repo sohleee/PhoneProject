@@ -59,6 +59,11 @@ public class QNAResponseDAO {
 		int n=template.delete("qnadelete",map);
 		return n;
 	}
+	public void qna_delete(int num) {
+		template.delete("qnadeleteAndNumber",num);
+		
+	}
+	
 	public List<QNADTO> qnaretrieve( int num){
 		List<QNADTO> list=template.selectList("qnaselectByNum", num);
 		return list;

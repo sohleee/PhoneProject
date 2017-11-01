@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="css/adminCss.css">
 
 <script src="https://code.highcharts.com/highcharts.src.js"></script>
-<script src="chart/highcharts.js"></script>
+
 <script src="chart/highcharts-3d.js"></script>
 <style>
 @media screen and (max-height: 450px) {
@@ -40,7 +40,7 @@
 			      e.pageX : x좌표
 			              e.pageY : y좌표
 			 */
-			console.log(e.pageX, e.pageY);
+			//console.log(e.pageX, e.pageY);
 			if (e.pageX < 150) {
 				
 				$('.sidenav').css("width", "200px");

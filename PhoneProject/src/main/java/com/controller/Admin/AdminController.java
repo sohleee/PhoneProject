@@ -33,7 +33,7 @@ public class AdminController {
 		return "chart";
 	}
 
-	@RequestMapping("chartData")
+	@RequestMapping("/chartData")
 	public String chartdata(@RequestParam Map<String, String> map, Model m) {
 		System.out.println(map.get("start"));
 		List<SalesDTO> list = service.getSalesChartDatas(map);
@@ -43,28 +43,8 @@ public class AdminController {
 
 	@RequestMapping("memberMng")
 	public String memberManger(@RequestParam Map<String, String> map, Model m) {
-		String curPage = map.get("curPage");
-		String curIdx = map.get("curIdx");
-		String perPage = map.get("perPage");
-
-		String searchName = map.get("searchName");
-		String searchValue = map.get("searchValue");
-		if (curPage == null || curPage.equals("")) {
-			curPage = "1";
-		}
-		if (perPage == null || curPage.equals("")) {
-			perPage = "3";
-		}
-		if (curIdx == null || curIdx.equals("")) {
-			curIdx = "0";
-		}
-		HashMap<String, String> h_map = new HashMap<>();
-		h_map.put("curPage", curPage);
-		h_map.put("perPage", perPage);
-		h_map.put("curIdx", curIdx);
-		h_map.put("searchName", searchName);
-		h_map.put("searchValue", searchValue);
-		MemberMngPageDTO mmpdto = service.page(h_map);
+	
+		MemberMngPageDTO mmpdto = service.page(init_page(map));
 		m.addAttribute("membermanagepage", mmpdto);
 		return "membermanagepage";
 
@@ -73,27 +53,8 @@ public class AdminController {
 	@RequestMapping(value = "/memberMngDelete", method = RequestMethod.GET)
 	public String memberMngDelete(@RequestParam String num, @RequestParam Map<String, String> map, Model m) {
 		String[] nums = num.split("/");
-		String curPage = map.get("curPage");
-		String curIdx = map.get("curIdx");
-		String perPage = map.get("perPage");
-		String searchName = map.get("searchName");
-		String searchValue = map.get("searchValue");
-		if (curPage == null || curPage.equals("")) {
-			curPage = "1";
-		}
-		if (perPage == null || curPage.equals("")) {
-			perPage = "3";
-		}
-		if (curIdx == null || curIdx.equals("")) {
-			curIdx = "0";
-		}
-		HashMap<String, String> h_map = new HashMap<>();
-		h_map.put("curPage", curPage);
-		h_map.put("perPage", perPage);
-		h_map.put("curIdx", curIdx);
-		h_map.put("searchName", searchName);
-		h_map.put("searchValue", searchValue);
-		MemberMngPageDTO mmpdto = service.membersDelete(nums, h_map);
+	
+		MemberMngPageDTO mmpdto = service.membersDelete(nums, init_page(map));
 		m.addAttribute("membermanagepage", mmpdto);
 		return "admin/membermanagepage";
 
@@ -102,28 +63,9 @@ public class AdminController {
 	@RequestMapping(value = "/memberMngUpdate", method = RequestMethod.GET)
 	public @ResponseBody String memberMngUpdate(@RequestParam Map<String, String> map, Model m) {
 
-		String curPage = map.get("curPage");
-		String curIdx = map.get("curIdx");
-		String perPage = map.get("perPage");
-		String searchName = map.get("searchName");
-		String searchValue = map.get("searchValue");
-		if (curPage == null || curPage.equals("")) {
-			curPage = "1";
-		}
-		if (perPage == null || curPage.equals("")) {
-			perPage = "3";
-		}
-		if (curIdx == null || curIdx.equals("")) {
-			curIdx = "0";
-		}
-		HashMap<String, String> h_map = new HashMap<>();
-		h_map.put("curPage", curPage);
-		h_map.put("perPage", perPage);
-		h_map.put("curIdx", curIdx);
-		h_map.put("searchName", searchName);
-		h_map.put("searchValue", searchValue);
+	
 
-		MemberMngPageDTO mmpdto = service.memberUpdate(map, h_map);
+		MemberMngPageDTO mmpdto = service.memberUpdate(map, init_page(map));
 		m.addAttribute("membermanagepage", mmpdto);
 		return "admin/membermanagepage";
 
@@ -131,33 +73,11 @@ public class AdminController {
 
 	@RequestMapping(value="/QNAResponseForm", method = RequestMethod.GET)
 	public String QNAResponse(@RequestParam Map<String, String> map, Model m) {
-		String searchName = map.get("searchName");
-		String searchValue = map.get("searchValue");
-		String curPage = map.get("curPage");
-		String perPage = map.get("perPage");
-		String curIdx = "";
-		if (map.get("curIdx") != null)
-			curIdx = map.get("curIdx");
-		else
-			curIdx = "0";
-		if (curPage == null) {
-			curPage = "1";
-		}
-
-		if (perPage == null) {
-			perPage = "3";
-		}
-		
-		Map<String,String> hmap = new HashMap<>();
-		hmap.put("searchName", searchName);
-		hmap.put("searchValue", searchValue);
-		hmap.put("curPage", curPage);
-		hmap.put("perPage", perPage);
-		hmap.put("curIdx", curIdx);
-		QNAPageDTO dto = service.qnapage(hmap);
+	
+		QNAPageDTO dto = service.qnapage(init_page(map));
 
 		m.addAttribute("page", dto);
-		m.addAttribute("perPage", perPage);
+		m.addAttribute("perPage", init_page(map).get("perPage"));
 
 		return "qnaResponse";
 	}
@@ -166,11 +86,15 @@ public class AdminController {
 		m.addAttribute("num",num);
 		return "admin/response_window";
 	}
-	@RequestMapping(value="/aaa",method=RequestMethod.GET)
-	public String aaaa() {
-		System.out.println("come in");
+	@RequestMapping(value="/qnaDeleteData",method=RequestMethod.GET)
+	public String qnaDelete(@RequestParam Map<String,String> map ,Model m) {
+		service.qnaDelete(Integer.parseInt(map.get("num")));
+		QNAPageDTO dto =service.qnapage(init_page(map));
+		System.out.println("dto :"+dto.toString());
+		m.addAttribute("page",dto );
+		
+		return "qnaResponse";
 	
-		return "qnaRetrieve";
 	}
 	@RequestMapping(value="/QNARequestMng/title/{title}/content/{content}/num/{num}",method=RequestMethod.GET)
 	public String QNARequestMng(@PathVariable String title,@PathVariable String content,@PathVariable String num,Model m ) {
@@ -186,6 +110,14 @@ public class AdminController {
 		
 		service.qnaMngretrieve(map);
 		
+	
+		QNAPageDTO dto = service.qnapage(init_page(map));
+
+		m.addAttribute("page", dto);
+		m.addAttribute("perPage", init_page(map).get("perPage"));
+		return "qnaResponse";
+	}
+	Map<String,String> init_page(Map<String,String> map){
 		String searchName = map.get("searchName");
 		String searchValue = map.get("searchValue");
 		String curPage = map.get("curPage");
@@ -200,19 +132,15 @@ public class AdminController {
 		}
 
 		if (perPage == null) {
-			perPage = "3";
+			perPage = "10";
 		}
-		
+		System.out.println(curIdx);
 		Map<String,String> hmap = new HashMap<>();
 		hmap.put("searchName", searchName);
 		hmap.put("searchValue", searchValue);
 		hmap.put("curPage", curPage);
 		hmap.put("perPage", perPage);
 		hmap.put("curIdx", curIdx);
-		QNAPageDTO dto = service.qnapage(hmap);
-
-		m.addAttribute("page", dto);
-		m.addAttribute("perPage", perPage);
-		return "qnaResponse";
+		return hmap;
 	}
 }

@@ -13,7 +13,7 @@
 			var x=$(this).children("td").eq(0).text();
 				$.ajax({
 					type:"get",
-					url:"QNAReqeust",
+					url:"qnaResponseRetrieve",
 					dataType:"text",
 					data:{
 						num:x
@@ -39,6 +39,7 @@
 				});
 			
 		});
+		
 	});
 </script>
 

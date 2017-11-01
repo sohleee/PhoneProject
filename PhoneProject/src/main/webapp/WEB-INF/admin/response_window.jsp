@@ -19,6 +19,7 @@
 			console.log(title,content,num);
 		//	$(opener.document).attr('href', "QNARequestMng/title/"+title+"/content/"+content+"/num/"+num);
 			opener.location.href='/phone/QNARequestMng/title/'+title+'/content/'+content+"/num/"+num;	
+			alert("답변을 완료하였습니다.");
 		close();
 			
 		//	close();

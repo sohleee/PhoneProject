@@ -59,7 +59,7 @@ public class QNADAO {
 	}
 	
 	public QNADTO qnaselectByNum(int num) {
-		QNADTO dto=template.selectOne("qnaselectByNum",num);
+		QNADTO dto=template.selectOne("AdminQNAselectByNum",num);
 		return dto;
 	}
 	

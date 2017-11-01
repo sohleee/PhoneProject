@@ -36,6 +36,9 @@ public class QNAService {
 	public List<QNADTO> qnaRetrieve(int num){
 		return dao.qnaretrieve(num);
 	}
+	public QNADTO qnaSingleRetrive (int num){
+		return dao.qnaselectByNum(num);
+	}
 	
 	public void qnaUpdateByNum(QNADTO dto){
 		dao.qnaupdateByNum(dto);
