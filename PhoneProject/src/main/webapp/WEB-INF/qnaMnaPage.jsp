@@ -7,14 +7,14 @@
 
    <c:set var="dto" value="${page}"></c:set>
    <c:set var="curPage" value="${dto.curPage}"></c:set>
-   <c:set var="perPage" value="${perPage}"></c:set>
+   <c:set var="perPage" value="${dto.perPage}"></c:set>
    <c:set var="curIdx" value="${dto.curIdx}"/>
    <c:set var="totalCount" value="${dto.getTotalCount()}"></c:set>
    	<c:set var="length" value="${curIdx*curPage*perPage}"/>
-   	${totalCount}
-  
-   	<fmt:parseNumber  var="totalNum" pattern="0" value="${totalCount/perPage}" />
-   	<c:if test="${totalCount%perPage!=0}">
+   	<fmt:parseNumber  var="totalNum"  value="${totalCount div perPage}" />
+   	
+   <c:out	value="${totalCount mod perPage}"/>
+   	<c:if test="${totalCount mod perPage!=0}">
    		<c:set var="totalNum" value="${totalNum+1}"/>
    	</c:if>
    	

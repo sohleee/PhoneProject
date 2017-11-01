@@ -19,30 +19,16 @@
 		$(".deleteQNA").on("click",function(){
 			console.log("in");
 			var num = $(this).attr("data-num");
-			var searchName =  $("#searchName").val();
-			var searchValue =  $("#searchValue").val();
-			var curPage = $("#curPage").val();
-			var perPage =$("#perPage").val();
-			var curIdx = '${curIdx}';
-			if(curIdx==null||curIdx=='')
-				curIdx="0";
+			
 			$.ajax({
-				type:"get",
-				url:"qnaDeleteData",
+				type:"DELETE",
+				url:"qnaDeleteData/num/"+num,
 				dataType:"text",
-				data:{
-					num:num,
-					searchName:searchName,
-					searchValue:searchValue,
-					curPage:curPage,
-					perPage:perPage,
-					curIdx:curIdx
-					
-					
-				},
+				
 				success:function(responseData,status,xhr){
 					console.log(responseData);
-					// $("#a"+num).html(responseData)
+					 rePagging();
+					 
 				},
 				error:function(xhr,status,e){
 					console.log(status,e);
@@ -92,6 +78,8 @@
 			success:function(responseData,status,xhr){
 				console.log(responseData);
 				$("#a" + num).remove();
+				
+				
 			},
 			error:function(xhr,status,e){
 				console.log(status,e);
@@ -99,9 +87,20 @@
 			
 		});
 	});
-	
+	function rePagging(){
+		var searchName = '${searchName}';
+		var searchValue = '${searchValue}';
+		var curPage = '${curPage}';
+		var perPage ='${perPage}';
+		var curIdx ='${curIdx}';
+		if(curIdx==null||curIdx=='')
+			curIdx="0";
+		location.href="QNAResponseForm?searchName="+searchName+"&searchValue="+searchValue
+				+"&curPage="+curPage+"&perPage="+perPage+"&curIdx="+curIdx;
+	}
+		
 	});	
-
+	
 	
 </script>
 

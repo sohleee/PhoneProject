@@ -77,7 +77,6 @@ public class AdminController {
 		QNAPageDTO dto = service.qnapage(init_page(map));
 
 		m.addAttribute("page", dto);
-		m.addAttribute("perPage", init_page(map).get("perPage"));
 
 		return "qnaResponse";
 	}
@@ -86,15 +85,10 @@ public class AdminController {
 		m.addAttribute("num",num);
 		return "admin/response_window";
 	}
-	@RequestMapping(value="/qnaDeleteData",method=RequestMethod.GET)
-	public String qnaDelete(@RequestParam Map<String,String> map ,Model m) {
-		service.qnaDelete(Integer.parseInt(map.get("num")));
-		QNAPageDTO dto =service.qnapage(init_page(map));
-		System.out.println("dto :"+dto.toString());
-		m.addAttribute("page",dto );
-		
-		return "qnaResponse";
-	
+	@RequestMapping(value="/qnaDeleteData/num/{num}",method=RequestMethod.DELETE)
+	@ResponseBody
+	public void qnaDelete(@PathVariable String num ) {
+		service.qnaDelete(Integer.parseInt(num));
 	}
 	@RequestMapping(value="/QNARequestMng/title/{title}/content/{content}/num/{num}",method=RequestMethod.GET)
 	public String QNARequestMng(@PathVariable String title,@PathVariable String content,@PathVariable String num,Model m ) {
@@ -114,7 +108,6 @@ public class AdminController {
 		QNAPageDTO dto = service.qnapage(init_page(map));
 
 		m.addAttribute("page", dto);
-		m.addAttribute("perPage", init_page(map).get("perPage"));
 		return "qnaResponse";
 	}
 	Map<String,String> init_page(Map<String,String> map){
@@ -127,14 +120,13 @@ public class AdminController {
 			curIdx = map.get("curIdx");
 		else
 			curIdx = "0";
-		if (curPage == null) {
+		if (curPage == null|| curPage.equals("")) {
 			curPage = "1";
 		}
 
-		if (perPage == null) {
+		if (perPage == null|| perPage.equals("")) {
 			perPage = "10";
 		}
-		System.out.println(curIdx);
 		Map<String,String> hmap = new HashMap<>();
 		hmap.put("searchName", searchName);
 		hmap.put("searchValue", searchValue);
