@@ -45,25 +45,25 @@
  		</c:if>
  		<c:if test="${curPage==1}">&lt;</c:if>
  		<c:if test="${curPage!=1}">
- 				<a href='QNAListServlet?
+ 				<a href='qnaList?
  				perPage=${perPage}&searchName=${dto.searchName}
  				&searchValue=${dto.searchValue}&curPage=${curPage-1}'>&lt;</a>
  		</c:if>&nbsp;
  			<c:forEach begin="${startPage}" end="${endPage}" varStatus="status">
  			<c:if test="${curPage==status.index}">${status.index}</c:if>
  			<c:if test="${curPage!=status.index}">
-			<a href='QNAListServlet?perPage=${perPage}&searchName=${dto.searchName}&searchValue=${dto.searchValue}&curPage=${status.index}'>${status.index}</a>&nbsp;
+			<a href='qnaList?perPage=${perPage}&searchName=${dto.searchName}&searchValue=${dto.searchValue}&curPage=${status.index}'>${status.index}</a>&nbsp;
 			</c:if>
  			</c:forEach>&nbsp;
  			<c:if test="${curPage>=totalNum}">&gt;</c:if>
  			<c:if test="${curPage<totalNum}">
- 				<a href='QNAListServlet?
+ 				<a href='qnaList?
  				perPage=${perPage}&searchName=${dto.searchName}
  				&searchValue=${dto.searchValue}&curPage=${curPage+1}'>&gt;</a>
  			</c:if>
  			<c:if test="${endPage>=totalNum}">&gt;&gt;</c:if>
  			<c:if test="${endPage<totalNum}">
- 				<a href='QNAListServlet?
+ 				<a href='qnaList?
  				perPage=${perPage}&searchName=${dto.searchName}
  				&searchValue=${dto.searchValue}&curPage=${endPage+1}'>&gt;&gt;</a>
  			</c:if>
