@@ -48,12 +48,7 @@ border: none;
 			var checkbox= document.querySelectorAll(".box");
 			var checkboxList="";
 			
-			var perPage=$("#perPage").val();
-			var curPage=$("#curPage").val();
-			var searchName = $("#searchName").val();
-			var searchValue = $("#searchValue").val();
-			console.log("perPage"+perPage);
-			console.log("curPage"+curPage);
+			
 		 	   for(i=0;i<checkbox.length;i++){
 		 		
 		 		   if(checkbox[i].checked){
@@ -70,17 +65,12 @@ border: none;
 					url:"memberMngDelete",
 					dataType:"text",
 					data:{
-						num:checkboxList,
-						perPage:perPage,
-						curPage:curPage,
-						searchName:searchName,
-						searchValue:searchValue
+						num:checkboxList
 					},
 					success:(responseData,status,xhr)=>{
 						
+						rePagging();
 						
-						$("#initView").empty();
-						$("#initView").wrapInner(responseData);
 					},
 					error:(xhr,status,e)=>{
 						
@@ -98,7 +88,7 @@ border: none;
 		console.log(searchName+":"+searchValue);
 		  $.ajax({
 		 		 type:"get",
-					url:"memberSearch",
+					url:"memberManger",
 					dataType:"text",
 					data:{
 						searchName:searchName,
@@ -107,9 +97,7 @@ border: none;
 					},
 					success:(responseData,status,xhr)=>{
 						
-					
-						$("#initView").empty();
-						$("#initView").wrapInner(responseData);
+						rePagging();
 					
 					},
 					error:(xhr,status,e)=>{
@@ -158,7 +146,7 @@ border: none;
 									
 									console.log(responseData);
 									alert("수정이 완료되었습니다.");
-								
+									rePagging();
 								},
 								error:(xhr,status,e)=>{
 									
@@ -177,7 +165,8 @@ border: none;
 		      e.pageX : x좌표
 		              e.pageY : y좌표
 		 */
-		console.log(e.pageX, e.pageY);
+	/* 	console.log(e.pageX, e.pageY); */
+	
 		if (e.pageX < 100) {
 			
 			$('.sidenav').css("width", "200px");
@@ -186,7 +175,17 @@ border: none;
 			$('.sidenav').css("width", "0");
 		}
 	});
-
+	function rePagging(){
+		var searchName = '${searchName}';
+		var searchValue = '${searchValue}';
+		var curPage = '${curPage}';
+		var perPage ='${perPage}';
+		var curIdx ='${curIdx}';
+		if(curIdx==null||curIdx=='')
+			curIdx="0";
+		location.href="memberMng?searchName="+searchName+"&searchValue="+searchValue
+				+"&curPage="+curPage+"&perPage="+perPage+"&curIdx="+curIdx;
+	}
 	});
 </script>
 </head>

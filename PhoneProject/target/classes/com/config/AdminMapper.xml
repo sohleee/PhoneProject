@@ -35,6 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test='searchName=="userid"'>
 			where userid like '%'||#{searchValue}||'%'
 		</if>
+		
+		order by member_num
 	</select>
 	<delete id="membersDelete" parameterType="arraylist">
 		delete from member

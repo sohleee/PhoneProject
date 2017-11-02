@@ -51,13 +51,11 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/memberMngDelete", method = RequestMethod.GET)
-	public String memberMngDelete(@RequestParam String num, @RequestParam Map<String, String> map, Model m) {
+	@ResponseBody
+	public void memberMngDelete(@RequestParam String num, @RequestParam Map<String, String> map) {
 		String[] nums = num.split("/");
-	
-		MemberMngPageDTO mmpdto = service.membersDelete(nums, init_page(map));
-		m.addAttribute("membermanagepage", mmpdto);
-		return "admin/membermanagepage";
-
+		service.membersDelete(nums);
+		
 	}
 
 	@RequestMapping(value = "/memberMngUpdate", method = RequestMethod.GET)

@@ -42,13 +42,12 @@ public class AdminService {
 		return qnadao.qnapage( map);
 
 	}
-	public MemberMngPageDTO membersDelete(String[] num,Map<String,String> map) {
+	public void membersDelete(String[] num) {
 		ArrayList<String>numlist= new ArrayList<>();
 		for (String string : num) {
 			numlist.add(string);
 		}
 		 dao.membersDelete(numlist);
-		return dao.page(map);
 	}
 	@Transactional
 	public MemberMngPageDTO memberUpdate(Map<String, String> map2,Map<String,String> map){
