@@ -94,7 +94,7 @@
 		$("#amountUpdate").on("click", function() {
 			var num = $(this).attr("data-num");
 			console.log(num);
-			var phone_amount = $("#CART_AMOUNT" + num).val();
+			var phone_amount = $("#phone_amount" + num).val();
 			var phone_price = $("#phone_price" + num).val();
 			$.ajax({
 				type : "get",
@@ -102,14 +102,15 @@
 				dataType : "text",
 				data : {
 					num : num,
-					gAmount : gAmount
+					phone_amount : phone_amount,
+					phone_price:phone_price
 				},
 
 				success : function(responseData, status, xhr) {
 
 					console.log(responseData);
 					$("#sum" + num).empty();
-					var value = (gAmount * gPrice).toLocaleString();
+					var value = (phone_amount * phone_price).toLocaleString();
 					$("#sum" + num).wrapInner("￦" + value);
 				},
 				error : function(xhr, status, e) {
