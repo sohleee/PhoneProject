@@ -71,6 +71,7 @@
 
 <c:if test="${!empty sessionScope.login}">
 <ul class="nav navbar-nav navbar-right"> 
+
 <li id="navbar-page"><a>${sessionScope.login.username}님</a></li>
 <li id="navbar-page"><a href="/phone/"><i class="fa fa-home fa-fw"></i><span class="glyphicon glyphicon-home"></span> Home</a></li>
 <li id="navbar-login"><a href="/phone/loginX/logout"><i class="fa fa-book fa-fw"></i><span class="glyphicon glyphicon-plus"></span>Logout</a></li>

@@ -36,7 +36,7 @@
 <div class="collapse navbar-collapse" align="right">
 	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
-<div align="center"><a href="/phone/"><img src="/phone/images/cc.jpg" width="400" height="100"></a> </div>
+<div align="center"><a href="/phone/"><img src="/phone/images/cc.jpg" width="300px" height="100"></a> </div>
 	<jsp:include page="include/submenu.jsp"></jsp:include>
 <div class="row">
   <div class="col-sm-1"></div>

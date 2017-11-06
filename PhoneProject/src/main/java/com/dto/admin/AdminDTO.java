@@ -1,34 +1,19 @@
 package com.dto.admin;
 
-public class AdminDTO {
+import com.dto.member.ParentsMember;
 
-	private String userid;
-	private String passwd;
+public class AdminDTO extends ParentsMember{
+
 	public AdminDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AdminDTO(String userid, String passwd) {
+
+	public AdminDTO(String userid, String passwd, String username) {
 		super();
 		this.userid = userid;
 		this.passwd = passwd;
-	}
-	public String getAdminid() {
-		return userid;
-	}
-	public void setAdminid(String adminid) {
-		this.userid = adminid;
-	}
-	public String getAdminpw() {
-		return passwd;
-	}
-	public void setAdminpw(String adminpw) {
-		this.passwd = adminpw;
-	}
-	@Override
-	public String toString() {
-		return "AdminDTO [" + (userid != null ? "userid=" + userid + ", " : "")
-				+ (passwd != null ? "passwd=" + passwd : "") + "]";
+		this.username=username;
 	}
 	
 }

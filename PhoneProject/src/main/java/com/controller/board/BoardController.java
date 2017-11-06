@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.admin.AdminDTO;
 import com.dto.board.BoardDTO;
 import com.dto.board.CommentDTO;
 import com.dto.board.FileDTO;
 import com.dto.member.MemberDTO;
+import com.dto.member.ParentsMember;
 import com.service.board.BoardService;
 import com.service.board.CommentService;
 
@@ -121,8 +123,15 @@ public class BoardController {
 		
 		@RequestMapping(value="/boardDelete", method=RequestMethod.GET)
 		public String boardDelete(@RequestParam int boardnum, @RequestParam String userid, HashMap<String,String> map,HttpSession session, Model m){
-			MemberDTO mdto=(MemberDTO)session.getAttribute("login");
-			map.put("userid", mdto.getUserid());
+			ParentsMember mdto=null;
+			if(((ParentsMember)session.getAttribute("login")).getUserid().equals("master")) {
+				mdto=(AdminDTO)session.getAttribute("login");
+				mdto.setUserid(userid);
+				map.put("userid", userid);
+			}else {
+				 mdto=(ParentsMember)session.getAttribute("login");
+				map.put("userid", mdto.getUserid());
+			}
 			map.put("boardnum", String.valueOf(boardnum));
 			if(mdto!=null) {
 				if(mdto.getUserid().equals(userid)) {

@@ -15,6 +15,7 @@
 		<li><a href="chartForm">판매현황</a></li>
 		<li><a href="memberMng">회원관리</a></li>
 		<li><a href="QNAResponseForm">질의응답</a></li>
+		<li><a href="/phone/">메인페이지로 </a></li>
 		<li><a href="/phone/loginX/logout">로그아웃</a></li>
 	</ul>
 
