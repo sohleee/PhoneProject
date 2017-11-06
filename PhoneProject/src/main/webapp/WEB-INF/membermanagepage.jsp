@@ -13,7 +13,8 @@
 <title>Admin</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -32,8 +33,9 @@
 		font-size: 18px;
 	}
 }
-.datainput{
-border: none;
+
+.datainput {
+	border: none;
 	border-right: 0px;
 	border-top: 0px;
 	boder-left: 0px;
@@ -193,7 +195,7 @@ border: none;
 	<div class="container-fluid"
 		style="background-color: gray; color: #fff; height: 100px;">
 		<h1>관리자 페이지</h1>
-		안녕하세요 ${sessionScope.login.getAdminid()}<br>
+		안녕하세요 ${sessionScope.login.username}<br>
 	</div>
 	<jsp:include page="admin/adminForm.jsp" flush="true" />
 	<div id="initView">

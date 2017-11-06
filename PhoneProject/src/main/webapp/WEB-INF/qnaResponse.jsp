@@ -45,7 +45,7 @@
 	<div class="container-fluid"
 		style="background-color: gray; color: #fff; height: 100px;">
 		<h1>관리자 페이지</h1>
-		안녕하세요 ${sessionScope.login.getAdminid()}<br>
+	안녕하세요 ${sessionScope.login.username}<br>
 	</div>
 	<jsp:include page="admin/adminForm.jsp" flush="false" />
 	<jsp:include page="admin/qnaResponse.jsp"></jsp:include>
