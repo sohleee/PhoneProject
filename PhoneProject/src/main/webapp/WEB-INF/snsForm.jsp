@@ -18,11 +18,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<c:if test="${!empty requestScope.resultMsg}">
-	<script>
-		alert("${requestScope.resultMsg}");
-	</script>
-</c:if>
 <!-- 메인,서브 네비 -->
 <div class="collapse navbar-collapse" align="right">
 	<jsp:include page="include/top.jsp"></jsp:include>
@@ -33,6 +28,8 @@
 </div>
 <jsp:include page="include/submenu.jsp"></jsp:include>
 <!-- //메인,서브 네비 -->
-<jsp:include page="login/findPasswdForm.jsp"/>
+
+
+<jsp:include page="member/snsForm.jsp"/>
 </body>
 </html>

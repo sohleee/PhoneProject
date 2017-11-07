@@ -1,11 +1,13 @@
 package com.service.member;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dao.member.MemberDAO;
+import com.dto.admin.AdminDTO;
 import com.dto.member.MemberDTO;
 
 @Service
@@ -13,6 +15,11 @@ public class MemberService {
 	
 	@Autowired
 	MemberDAO dao;
+	
+
+	public void updatePasswd(HashMap<String, String> map) {
+		dao.updatePasswd(map);
+	}
 	
 	public MemberDTO  login(Map<String, String> map) {
 		return dao.login(map);
@@ -24,7 +31,6 @@ public class MemberService {
 	
 	public MemberDTO mypage(String userid) {
 		return dao.mypage(userid);
-		
 	}
 	
 	public void updateMember(MemberDTO dto) {
@@ -49,6 +55,14 @@ public class MemberService {
 	
 	public MemberDTO findPasswd(Map<String, String> map) {
 		return dao.findPasswd(map);
+	}
+	
+	public void insertSNSMember(MemberDTO dto) {
+		dao.insertSNSMember(dto);
+	}
+	
+	public MemberDTO snsMember(String str) {
+		return dao.snsMember(str);
 	}
 	
 

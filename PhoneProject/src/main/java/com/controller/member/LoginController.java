@@ -1,8 +1,11 @@
 package com.controller.member;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
+import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,13 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.admin.AdminDTO;
 import com.dto.member.MemberDTO;
 import com.service.admin.AdminService;
+import com.service.member.MailService;
 import com.service.member.MemberService;
 
 @Controller
@@ -27,8 +33,10 @@ public class LoginController {
 	@Autowired
 	AdminService amservice;
 
+
+
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
-	public String memberForm() {
+	public String loginForm() {
 		return "loginForm";
 	}
 
@@ -41,7 +49,6 @@ public class LoginController {
 			MemberDTO dto = service.login(map);
 			if (dto == null) {
 				m.addAttribute("mesg", "아이디또는 비밀번호가 일치하지 않습니다.");
-				session.setAttribute("login", adto);
 				return "loginForm";
 			} else {
 
@@ -53,41 +60,11 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(value = "/findIDForm", method = RequestMethod.GET)
-	public String findIDForm() {
-		return "findIDForm";
-	}
-
-	@RequestMapping(value = "/findIDResult", method = RequestMethod.POST)
-	public String findIDResult(@RequestParam Map<String, String> map, Model m) {
-		MemberDTO dto = service.findID(map);
-		if (dto != null) {
-			m.addAttribute("mesg", "귀하의 아이디는 " + dto.getUserid() + "입니다.");
-		} else {
-			m.addAttribute("mesg", "입력하신 정보가 존재하지않습니다.");
-		}
-		return "findIDResult";
-	}
-
-	@RequestMapping(value = "/findPasswdForm", method = RequestMethod.GET)
-	public String findPasswdForm() {
-		return "findPasswdForm";
-	}
-
-	@RequestMapping(value = "/findPasswdResult", method = RequestMethod.POST)
-	public String findPasswdResult(@RequestParam Map<String, String> map, Model m) {
-		MemberDTO dto = service.findPasswd(map);
-		if (dto != null) {
-			m.addAttribute("mesg", dto.getUsername() + "님의 비밀번호는 " + dto.getPasswd() + "입니다.");
-		} else {
-			m.addAttribute("mesg", "입력하신 정보가 존재하지않습니다.");
-		}
-		return "findPasswdResult";
-	}
+	
+	//------------------------------------------------------------------------------
 
 	@RequestMapping("/loginX/logout")
 	public String logout(HttpSession session) {
-		System.out.println("logout");
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -99,10 +76,44 @@ public class LoginController {
 		return "adminForm";
 	}
 
-	@ExceptionHandler(Exception.class)
-	public String error(Exception exception) {
-		exception.printStackTrace();
+/*	@ExceptionHandler(Exception.class)
+	public String error() {
 		return "error";
+	}*/
+
+	//sns ---------------------------------------------------------------------------
+	@RequestMapping(value = "/callback", method = RequestMethod.GET)
+	public String callback() {
+		return "callback";
 	}
+	
+	//Form or home
+	@RequestMapping(value="/session")
+	public String session(@RequestParam String email, @RequestParam String username,
+			@RequestParam String snsid, HttpSession session, Model m) {
+		MemberDTO dto = service.snsMember(snsid);
+		if(dto != null) {
+			session.setAttribute("login", dto);
+			return "home";
+		}else {
+			m.addAttribute("email", email);
+			m.addAttribute("username", username);
+			m.addAttribute("snsid", snsid);
+			return "snsForm";
+		}
+	}
+	
+	@RequestMapping(value="/snsAdd", method=RequestMethod.POST)
+	public String insertSNSMember(@ModelAttribute MemberDTO mDTO, Model m) {
+		service.insertSNSMember(mDTO);
+		System.out.println(mDTO.getUsername());
+		m.addAttribute("result", mDTO.getUsername()+"님 회원가입을 축하합니다. 다시 한번 로그인하세요.");
+		return "home";
+	}
+	
+	
+	
+
+
 
 }

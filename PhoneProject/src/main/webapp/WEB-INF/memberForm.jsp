@@ -10,9 +10,27 @@
 <title>Insert title here</title>
 <link rel= "stylesheet" type="text/css" href="css/form.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- 메인,서브 네비 -->
+<div class="collapse navbar-collapse" align="right">
+	<jsp:include page="include/top.jsp"></jsp:include>
+</div>
+<div align="center">
+	<a href="/phone/"><img src="/phone/images/cc.jpg" width="400"
+		height="100"></a>
+</div>
+<jsp:include page="include/submenu.jsp"></jsp:include>
+<!-- //메인,서브 네비 -->
+
 
 <jsp:include page="member/memberForm.jsp"/>
+
 </body>
 </html>

@@ -115,7 +115,6 @@ $("#passwd2").on("keyup",function(event){
     /* border-collapse: collapse; */}
   th, td { padding: 15px;}
   th{background-color: #F6F6F6; text-align: left;} 
-
 </style>
 
 <!-- DAUM 주소 라이브러리 시작 -->  
@@ -124,9 +123,6 @@ $("#passwd2").on("keyup",function(event){
 <!-- DAUM 주소 라이브러리 끝 -->    
 
 
-
-
-<p align="center"><a href="/Phone82/"><img src="images/ddd.png" height="50" width="50"></a></p>
 <form name="myform" action="memberUpdate">
 <p style="font-size:12px; color:blue; margin-top:-2px; margin-left:10px;" align="center">*는 필수입력사항입니다.</p>
 <table align="center">
