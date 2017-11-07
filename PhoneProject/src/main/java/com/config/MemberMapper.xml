@@ -4,11 +4,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.MemberMapper">
 
+	<update id="updatePasswd" parameterType="hashmap">
+		update member
+		set  passwd= #{passwd}
+		where email= #{email}
+	</update>
+
+	<select id="snsMember" resultType="MemberDTO" parameterType="string">
+		select userid, passwd, username, phone1,phone2,phone3, post1,post2, addr1, addr2, email
+		from member 
+		where snsid=#{snsid}
+	</select>
+	
+	<insert id="insertSNSMember" parameterType="MemberDTO">
+		insert into member(member_num, snsid, userid, username, phone1,phone2,phone3)
+		values(seq_member_num.nextval, #{snsid},#{userid},#{username},#{phone1},#{phone2},#{phone3})
+	</insert>
+	
 	<select id="login" parameterType="map" resultType="MemberDTO">
 		select userid, passwd, username, phone1,phone2,phone3, post1,post2, addr1, addr2, email
 		from member
 		where userid=#{userid} and passwd=#{passwd}
 	</select>
+
 	
 	<insert id="insertMember" parameterType="MemberDTO">
 		insert into member(member_num,userid, passwd, username, phone1,phone2,phone3, post1,post2, addr1, addr2, email)

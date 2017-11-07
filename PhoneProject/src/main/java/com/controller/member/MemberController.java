@@ -95,10 +95,10 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@ExceptionHandler(Exception.class)
+	/*@ExceptionHandler(Exception.class)
 	public String error() {
 		return "home";
-	}
+	}*/
 	
 	//mail----------------------------------------------------------------
 		@RequestMapping(value = "/findIDForm", method = RequestMethod.GET)
@@ -118,7 +118,7 @@ public class MemberController {
 	            
 				String subject = "Phone 아이디 찾기 안내입니다."; //제목
 				StringBuilder sb = new StringBuilder();
-	            sb.append("귀하의 임시 비밀번호는 " + dto.getUserid() + " 입니다.");
+	            sb.append("귀하의 아이디는 " + dto.getUserid() + " 입니다.");
 	            mailService.send(subject, sb.toString(), " p.h.o.n.e.8.2.2.2.2@gmail.com", email, null);
 	            m.addAttribute("resultMsg", "귀하의 이메일 주소로 해당 이메일로 가입된 아이디를 발송 하였습니다.");
 	            return "loginForm";
@@ -134,14 +134,11 @@ public class MemberController {
 		public String findPasswdForm() {
 			return "findPasswdForm";
 		}
-		
 		//비밀번호 찾기
 		@RequestMapping(value = "/findPasswd", method = RequestMethod.POST)
 		public String findPasswd(@RequestParam Map<String, String> map, 
 				@RequestParam String email, RedirectAttributes ra, HashMap<String, String> hashmap
 				,Model m){
-			//RedirectAttributes : redirect->url에 정보안보이게저장x
-			//scope가 redirect-forword 사이: 요청할때 딱 한번만 저장된정보 받아오는것
 			MemberDTO dto = service.findPasswd(map);
 			if (dto != null) {
 				if(!dto.getEmail().equals(email)) {
@@ -149,7 +146,7 @@ public class MemberController {
 					return "redirect:/findPasswdForm";
 				}
 				//임시 비밀번호
-				int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+				int ran = new Random().nextInt(100000) + 10000; 
 	            String password = String.valueOf(ran);
 	            hashmap.put("passwd", password);
 	            System.out.println("1<<"+password);
@@ -161,7 +158,6 @@ public class MemberController {
 				String subject = "Phone 임시 비밀번호 발급 안내 입니다."; //제목
 				StringBuilder sb = new StringBuilder();
 	            sb.append("귀하의 임시 비밀번호는 " + password + " 입니다.");
-	            //System.out.println(sb instanceof StringBuilder);
 	            /** 메일 전송
 	             * subject 제목 ,text 내용, from 보내는 메일 주소,to 받는 메일 주소, filePath 첨부 파일 경로: 첨부파일 없을시 null **/
 	            mailService.send(subject, sb.toString(), " p.h.o.n.e.8.2.2.2.2@gmail.com", email, null);
@@ -169,7 +165,7 @@ public class MemberController {
 	            m.addAttribute("resultMsg", "귀하의 이메일 주소로 새로운 임시 비밀번호를 발송 하였습니다.");
 	            return "loginForm";
 	        } else {
-	            ra.addFlashAttribute("resultMsg", "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.");
+	            m.addAttribute("resultMsg", "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.");
 	            return "redirect:/findPasswdForm";
 	        }
 	    }

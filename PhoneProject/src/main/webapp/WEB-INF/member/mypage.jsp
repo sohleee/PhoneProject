@@ -13,15 +13,15 @@ var re_nums = /^[0-9]{3,4}$/; //숫자 검사식
 var re_mail = /^([\w\.-]+)@([a-z\d\.-]+)\.([a-z\.]{2,6})$/; // 이메일 검사식
 
 //비밀번호 일치여부
-$("#passwd2").on("keyup",function(event){
+$("#passwdCheck").on("keyup",function(event){
 	var passwd = $("#passwd").val();
-	var passwd2 = $("#passwd2").val();
-	if(passwd2 =='' || passwd.length ==0){
-		$("#passwd2").next().text('필수 입력 사항입니다.').css({"color":"red", "font-size":"12px"});
-	} else if(passwd != passwd2){
-		$("#passwd2").next().text('비밀번호가 일치하지 않습니다.').css({"color":"red", "font-size":"12px"});
+	var passwdCheck = $("#passwdCheck").val();
+	if(passwdCheck =='' || passwd.length ==0){
+		$("#passwdCheck").next().text('필수 입력 사항입니다.').css({"color":"red", "font-size":"12px"});
+	} else if(passwd != passwdCheck){
+		$("#passwdCheck").next().text('비밀번호가 일치하지 않습니다.').css({"color":"red", "font-size":"12px"});
 	 } else {
-		$("#passwd2").next($("div")).empty();
+		$("#passwdCheck").next($("div")).empty();
 	}
 });
 
@@ -57,9 +57,9 @@ $("#passwd2").on("keyup",function(event){
 		 alert("비밀번호에 5자리 이상 15자리 이하 영문과 숫자를 입력하세요.");    
 	 		$("#passwd").focus();
 	 		event.preventDefault();
-	 } else if($("#passwd").val() != $("#passwd2").val()){
+	 } else if($("#passwd").val() != $("#passwdCheck").val()){
 	 		alert("비밀번호가 일치하지 않습니다.");
-	 		$("#passwd2").focus();
+	 		$("#passwdCheck").focus();
 	 		event.preventDefault();
 	 } else if($("#post1").val() == '' || $("#post1").val().length == 0){
 	 		alert("올바른 우편번호를 입력하세요");
@@ -122,52 +122,85 @@ $("#passwd2").on("keyup",function(event){
 <script src="js/daum.js"></script> 
 <!-- DAUM 주소 라이브러리 끝 -->    
 
+<div class="container">
 
-<form name="myform" action="memberUpdate">
-<p style="font-size:12px; color:blue; margin-top:-2px; margin-left:10px;" align="center">*는 필수입력사항입니다.</p>
-<table align="center">
+	<br> <br>
+	<!-- 페이지title -->
+	<div class="tit-subpage">
+		<h2>회원 정보</h2>
+	</div>
+	<!-- 모달자리 -->
+	<hr />
+	<br>
+	<!-- 본문 들어가는 부분 -->
 
- <tr>
-  <th>*아이디</th>
-  <td colspan="3" >${login.userid}<input type="hidden" name="userid" id="userid" value="${login.userid}"></td>
- </tr>
- <tr>
-  <th>*비밀번호</th>
-  <td colspan="3"><input type="password" name="passwd" id="passwd" placeholder="*비밀번호" value="${login.passwd}" ><div></div></td>
- </tr>
- <tr> 
-  <th>*비밀번호 재확인</th>
-  <td colspan="3"><input type="password" name="passwd2" id="passwd2" placeholder="*비밀번호 재확인 " ><div></div></td>
- </tr>
- <tr>
-  <th>*이름</th>
-  <td colspan="3">${login.username}<input type="hidden" name="username" id="username" value="${login.username}"></td>
- </tr>
- <tr>
-  <th>*주소</th>
-  <td colspan="3">
- <!-- 다음주소 시작:다음에서 제공한것->id,name값 수정x-->
-	<input name="post1" id="post1" size="5" readonly="" value="${login.post1}"> -
-	<input name="post2" id="post2" size="5" readonly="" value="${login.post2}">
-	<input onclick="openDaumPostcode()" type="button" value="*우편번호찾기" >
-	<br>
-	<input name="addr1" id="addr1" size="40" readonly=""
-		placeholder="*도로명주소" value="${login.addr1}">
-	<br>
-	<span style="line-height: 10%;"><br></span>
-	<input name="addr2" id="addr2" size="40" placeholder="*지번주소" value="${login.addr2}">
-<!-- 다음주소 끝 -->
-  </td>
- </tr>
-  <tr>
-   <th>*전화번호</th>
-   <td nowrap>
-   <select name="phone1" id="phone1">
+<form name="myform" class="form-horizontal" role="form" method="post" action="memberUpdate">
+
+<div class="form-group" id="divID">
+			<label for="inputId" class="col-lg-2 control-label">*아이디</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control onlyAlphabetAndNumber"
+					id="userid" data-rule-required="true" name="userid"
+					value="${login.userid}" maxlength="15" readonly>
+				<div></div>
+			</div>
+		</div>
+		<div class="form-group" id="divPassword">
+			<label for="inputPassword" class="col-lg-2 control-label">*패스워드</label>
+			<div class="col-lg-10">
+				<input type="password" class="form-control" id="passwd"
+					name="passwd" data-rule-required="true" value="${login.passwd}"
+					maxlength="18">
+				<div></div>
+			</div>
+		</div>
+		<div class="form-group" id="divPasswordCheck">
+			<label for="inputPasswordCheck" class="col-lg-2 control-label">*패스워드
+				확인</label>
+			<div class="col-lg-10">
+				<input type="password" class="form-control" id="passwdCheck"
+					name="passwdCheck" data-rule-required="true"
+					maxlength="18">
+				<div></div>
+			</div>
+			<div></div>
+		</div>
+		<div class="form-group" id="divName">
+			<label for="inputName" class="col-lg-2 control-label">*이름</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control onlyHangul" id="username" name="username"
+					data-rule-required="true"
+					value="${login.username}" readonly maxlength="15">
+				<div></div>
+			</div>
+		</div>
+
+		<div class="form-group" id="divNickname">
+			<label for="inputNickname" class="col-lg-2 control-label">*주소</label>
+			<div class="col-lg-10">
+				<!-- 다음주소 시작:다음에서 제공한것->id,name값 수정x-->
+				<input width="5px" name="post1" id="post1" size="5" readonly="" value="${login.post1}">
+				- <input name="post2" id="post2" size="5" readonly="" value="${login.post2}"> 
+				<input class="btn btn-sm" onclick="openDaumPostcode()" type="button" value="검색"> <br>
+				<br> <input class="form-control ma-t" name="addr1"
+					id="addr1" size="40" readonly="" value="${login.addr1}"> <br>
+				<span style="line-height: 10%;"><br></span> <input
+					class="form-control ma-t" name="addr2" id="addr2" size="40"
+					value="${login.addr2}">
+				<!-- 다음주소 끝 -->
+			</div>
+		</div>
+
+		<div class="form-group" id="divPhoneNumber">
+			<label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰
+				번호</label>
+			<div class="col-lg-10">
+				<select name="phone1" id="phone1">
       <c:choose>
        <c:when test="${login.phone1 == '010'}">
          <option value="010" selected>010</option>
          <option value="011">011</option>
-         <option value="017">>017</option>
+         <option value="017">017</option>
        </c:when>
        <c:when test="${login.phone1 == '011'}">
          <option value="010" >010</option>
@@ -180,37 +213,67 @@ $("#passwd2").on("keyup",function(event){
          <option value="017" selected>017</option>
       </c:when>
     </c:choose>
-     </select>
-  
-  - <input type="text" name="phone2" id="phone2" placeholder="" SIZE="3" placeholder="*" value="${login.phone2}" maxlength="4">
-  - <input type="text" name="phone3" id="phone3" SIZE="3" placeholder="*" value="${login.phone3}" maxlength="4">
-  </td>
- </tr>
- <tr>
-  <th>*이메일</th>
-  <%-- <td colspan="3"><input type="email" name="email" id="email" placeholder="*이메일"  value="${login.email}"  readonly="readonly"><div id="resultCheckEmail"></div></td> --%>
-  <td colspan="3"><input type="text" name="email" id="email" value="${login.email}" readonly></td>
- </tr>
- <tr>
-  <td colspan="2" align="center" nowrap>
-  <span><button  id="memberUpdate" class="button">수정</button> &nbsp;<button onclick="memberDelete(myform)" class="button">탈퇴</button></span>
-  </td>
- </tr> 
-</table>
- 
+     </select> - 
+     <input type="text" name="phone2" id="phone2" SIZE="3"
+					value="${login.phone2}" maxlength="4"> - <input type="text"
+					name="phone3" id="phone3" SIZE="3" value="${login.phone3}" maxlength="4">
+				</td>
 
-</form>
-<script>
+			</div>
+		</div>
+		<div class="form-group" id="divEmail">
+			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+			<div class="col-lg-10">
+				<input type="email" class="form-control" id="email" name="email"
+					data-rule-required="true" value="${login.email}"  maxlength="40">
+				<div></div>
+			</div>
+			
+		</div>
 
-function memberDelete(f){
-	  if($("#passwd").val() != $("#passwd2").val()){
-	 		alert("비밀번호가 일치하지 않습니다.");
-	 		$("#passwd2").focus();
-	 		event.preventDefault();
-	 } else{
-	 f.action="memberDelete"; 
-	 }
-}
-  </script>
+		<div class="form-group">
+			<label for="inputEmailReceiveYn" class="col-lg-2 control-label">이메일
+				수신여부</label>
+			<div class="col-lg-10">
+				<label class="radio-inline"> <input type="radio"
+					id="emailReceiveYn" name="emailReceiveYn" value="Y" checked>
+					동의합니다.
+				</label> <label class="radio-inline"> <input type="radio"
+					id="emailReceiveYn" name="emailReceiveYn" value="N"> 동의하지
+					않습니다.
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPhoneNumber" class="col-lg-2 control-label">SMS
+				수신여부</label>
+			<div class="col-lg-10">
+				<label class="radio-inline"> <input type="radio"
+					id="smsReceiveYn" name="smsReceiveYn" value="Y" checked>
+					동의합니다.
+				</label> <label class="radio-inline"> <input type="radio"
+					id="smsReceiveYn" name="smsReceiveYn" value="N"> 동의하지 않습니다.
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+		<br>
+			<div class="col-lg-offset-2 col-lg-10">
+				  <span><button  id="memberUpdate" class="button">수정</button>
+				   &nbsp;<button onclick="memberDelete(myform)" class="button">탈퇴</button></span>
+			</div>
+		</div>
+	</form>
+	<br><br>
+	<hr />
+	<div>
+		<p class="text-center">
+			<small><strong> phone</strong></small><br> <small>대표 :
+				대표 ㆍ 주소 : 에이콘 ㆍ 사업자등록번호:123-12-12345 ㆍ 전화 : 000-000-0000</small><br> <small>Copyrightⓒ
+				test.com All rights reserved.</small>
+		</p>
+	</div>
+	<!--// 푸터 들어가는 부분 -->
+</div>
   
  
