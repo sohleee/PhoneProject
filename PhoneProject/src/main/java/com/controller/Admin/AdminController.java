@@ -8,11 +8,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.admin.MemberMngPageDTO;
 import com.dto.cart.SalesDTO;
@@ -27,9 +29,11 @@ public class AdminController {
 	AdminService service;
 
 	@RequestMapping("chartForm")
-	public String chartFrom() {
+	public String chartFrom( Model m) {
 
-		
+		m.addAttribute("today",service.getTodaySales());
+		m.addAttribute("month",service.getMonthSales());
+		System.out.println(service.getTodaySales()+":"+service.getMonthSales());
 		return "chart";
 	}
 
@@ -38,6 +42,7 @@ public class AdminController {
 		System.out.println(map.get("start"));
 		List<SalesDTO> list = service.getSalesChartDatas(map);
 		m.addAttribute("list", list);
+	
 		return "chart/chart";
 	}
 
@@ -50,23 +55,23 @@ public class AdminController {
 
 	}
 
-	@RequestMapping(value = "/memberMngDelete", method = RequestMethod.GET)
+	@RequestMapping(value="/memberMngDelete", method = RequestMethod.GET)
 	@ResponseBody
 	public void memberMngDelete(@RequestParam String num, @RequestParam Map<String, String> map) {
 		String[] nums = num.split("/");
 		service.membersDelete(nums);
-		
 	}
 
 	@RequestMapping(value = "/memberMngUpdate", method = RequestMethod.GET)
-	public @ResponseBody String memberMngUpdate(@RequestParam Map<String, String> map, Model m) {
+	public @ResponseBody ModelAndView memberMngUpdate(@RequestParam Map<String, String> map) {
 
 	
-
+		
 		MemberMngPageDTO mmpdto = service.memberUpdate(map, init_page(map));
-		m.addAttribute("membermanagepage", mmpdto);
-		return "admin/membermanagepage";
-
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("membermanagepage", mmpdto);
+		//mav.setViewName("admin/membermanagepage");
+		return mav;
 	}
 
 	@RequestMapping(value="/QNAResponseForm", method = RequestMethod.GET)

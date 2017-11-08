@@ -34,6 +34,31 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(()=>{
+		$(this).one(function(){
+			
+		});
+		var dataa ={
+				/* 	start:encodeURI($("#start").val()),
+					finish:encodeURI($("#finish").val()) */
+					start:'2017-01-31',
+					finish:'2017-12-31'
+				};
+			var result="";
+		$.ajax({
+			type:"get",
+			url:"chartData",
+			dataType:"text",
+			data:dataa,
+			success:(responseData,status,xhr)=>{
+				console.log(responseData);
+				$("#result").html(responseData);
+			},
+			error:(xhr,status,e)=>{
+				console.log("bbbbbbbbb");
+				console.log(e);
+				
+			}// httpxml,errorState, message
+			});
 		$(this).mousemove(function(e) {
 			//	 console.log(e.pageX,e.pageY);
 			/*
@@ -74,6 +99,8 @@
 			}// httpxml,errorState, message
 			});
 		});
+		
+		
 	});
 </script>
 </head>
@@ -84,14 +111,42 @@
 		안녕하세요 ${sessionScope.login.username}<br>
 	</div>
 	<jsp:include page="admin/adminForm.jsp" flush="false" />
+
 	<div class="row">
-   	 <div class="col-lg-2 col-lg-offset-4">
-			<input type="date" class="form-control" name="start" id="start"
-				value="2017/01/01">~ <input type="date" class="form-control"
-				name="finish" id="finish" value="2017/12/31"> <input
-				type="button"  class="btn btn-default" id="dateSearch" value="검색" />
+
+		<div class=" col-lg-offset-4">
+
+			<table border="1"
+				style="text-align: center; font-weight: bold; margin-top: 3%;"
+				width="400">
+				<tr>
+					<td>핸드폰 판매 실적</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1">
+							<tr>
+								<td>ToDay</td>
+								<td>Month</td>
+								<td class="col-lg-2"><input type="date" name="start"
+									class="form-control" id="start" value="2017-01-01">~ <input
+									type="date" class="form-control" name="finish" id="finish"
+									value="2017-12-31"></td>
+							</tr>
+							<tr>
+								<td>${today}개</td>
+								<td>${month}개</td>
+								<td><input type="button" class="btn btn-default"
+									id="dateSearch" value="검색" /></td>
+							</tr>
+
+						</table>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
+
 	<div id="result"></div>
 </body>
 </html>

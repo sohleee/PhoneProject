@@ -126,8 +126,10 @@
 					var addr1= $("#addr1"+x).val();
 					var addr2= $("#addr2"+x).val();
 					console.log(addr1,addr2);
+					var jobj = new Map();
+					jobj.set();
 			 		  $.ajax({
-					 		 method:"get",
+					 		 method:"GET",
 								url:"memberMngUpdate",
 								dataType:"text",
 							

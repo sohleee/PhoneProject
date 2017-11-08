@@ -67,5 +67,10 @@ public class AdminService {
 	public void qnaDelete(int num) {
 		qnadao.qna_delete(num);
 	}
-
+	public int getTodaySales() {
+		return dao.getTodaySales();
+	}
+	public int getMonthSales() {
+		return dao.getMonthSales();
+	}
 }
