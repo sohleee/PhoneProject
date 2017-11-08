@@ -39,6 +39,7 @@
 		<table >
 			<tr>
 				<td>Alpha Angle</td>
+				
 				<td><input id="alpha" type="range" min="0" max="45" value="15" />
 					<span id="alpha-value" class="value"></span></td>
 			</tr>
