@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.member.MemberDTO;
@@ -68,26 +69,28 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/loginX/mypage")
-	@ModelAttribute("login")
-	public MemberDTO mypage(HttpSession session) {
+	public ModelAndView mypage(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		dto= service.mypage(dto.getUserid());
-		return dto;
+		mav.addObject("login",dto);
+		mav.setViewName("/loginX/mypage");
+		return mav;
 	}
 	
-	@RequestMapping(value="/loginX/memberUpdate" , method=RequestMethod.GET)
-	public String memberUpdate( @ModelAttribute("dto") MemberDTO dto , Model m) {
+	@RequestMapping(value="/loginX/memberUpdate" , method=RequestMethod.POST)
+	public String memberUpdate( @ModelAttribute("dto") MemberDTO dto , Model m, RedirectAttributes ra) {
 		service.updateMember(dto);
-		m.addAttribute("mesg", "회원 수정 성공");
+		//m.addAttribute("mesg", "회원정보가 수정되었습니다.");
+		ra.addFlashAttribute("mesg", "회원 정보가 수정되었습니다.");
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/loginX/memberDelete" , method=RequestMethod.GET)
-	public String memberDelete(@RequestParam String userid, Model m, HttpSession session) {
-	
+	@RequestMapping(value="/loginX/memberDelete" , method=RequestMethod.POST)
+	public String memberDelete(@RequestParam String userid,RedirectAttributes ra, HttpSession session) {
 		try {
 		service.deleteMember(userid);
-		m.addAttribute("mesg", "회원 삭제 성공");
+		ra.addFlashAttribute("mesg", "회원 탈퇴가 완료되었습니다.");
 		session.invalidate();
 		} catch(Exception e) {
 			e.printStackTrace();

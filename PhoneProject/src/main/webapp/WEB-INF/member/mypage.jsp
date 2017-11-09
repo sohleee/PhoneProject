@@ -24,31 +24,11 @@ $("#passwdCheck").on("keyup",function(event){
 		$("#passwdCheck").next($("div")).empty();
 	}
 });
+//
 
-/* //이메일 중복검사
-	$("#email").on("blur",function(){
- var email = $(this).val();
- if(email != '' || email.length != 0 ){
-	 $.ajax({
-		type:"get",
-		url : "CheckEmailServlet",
-		data : {
-			email: $("#email").val()
-		},
-		success : function(responseData, status, xhr){
-			console.log(responseData);
-			$("#resultCheckEmail").text(responseData).css({"color":"blue", "font-size":"12px"});
-		},
-		error: function(xhr,status,e){
-			console.log(status,e);
-		} 
-		});
- }
-}); */
 
 //회원 정보 수정
  $("#memberUpdate").on("click",function(event){
-    
 	 if($("#passwd").val() == '' || $("#passwd").val().length == 0){
 	 		alert("비밀번호를 입력하세요");
 	 		$("#passwd").focus();
@@ -88,11 +68,11 @@ $("#passwdCheck").on("keyup",function(event){
 	 		$("#phone2").focus();
 	 		event.preventDefault();
 	 } else if($("#phone2").val() == '' || $("#phone2").val().length == 0){
-	 		alert("전화번호을 다시 입력하세요");
+	 		alert("휴대전화을 다시 입력하세요");
 	 		$("#phone2").focus();
 	 		event.preventDefault();
 	 } else if($("#phone3").val() == '' || $("#phone3").val().length == 0){
-	 		alert("전화번호을 다시 입력하세요");
+	 		alert("휴대전화을 다시 입력하세요");
 	 		$("#phone3").focus();
 	 		event.preventDefault();
 	 } else if(! re_nums.test($("#phone3").val())){
@@ -102,8 +82,23 @@ $("#passwdCheck").on("keyup",function(event){
 	 		$("#phone3").focus();
 	 		event.preventDefault();
 	 } 
-	  
+ });
+ //
+ 
+$("#memberDelete").on("click",function(event){
+	  if($("#passwd").val() != $("#passwdCheck").val()){
+	 		alert("비밀번호가 일치하지 않습니다.");
+	 		$("#passwdCheck").focus();
+	 		event.preventDefault();
+	 } else{
+	 var y = confirm("정말 탈퇴하시겠습니까?");
+	 if(y==true){
+		 $("#myform").attr("action",'http://localhost:8090/phone/loginX/memberDelete');
+	 } else {
+		 event.preventDefault();
+	 }
 		
+	 }
  });
 
  
@@ -134,7 +129,7 @@ $("#passwdCheck").on("keyup",function(event){
 	<br>
 	<!-- 본문 들어가는 부분 -->
 
-<form name="myform" class="form-horizontal" role="form" method="post" action="memberUpdate">
+<form name="myform" id="myform"  class="form-horizontal" role="form" method="post" action="memberUpdate">
 
 <div class="form-group" id="divID">
 			<label for="inputId" class="col-lg-2 control-label">*아이디</label>
@@ -159,7 +154,7 @@ $("#passwdCheck").on("keyup",function(event){
 				확인</label>
 			<div class="col-lg-10">
 				<input type="password" class="form-control" id="passwdCheck"
-					name="passwdCheck" data-rule-required="true"
+					name="passwdCheck" data-rule-required="true"  value="${login.passwd}"
 					maxlength="18">
 				<div></div>
 			</div>
@@ -260,7 +255,7 @@ $("#passwdCheck").on("keyup",function(event){
 		<br>
 			<div class="col-lg-offset-2 col-lg-10">
 				  <span><button  id="memberUpdate" class="button">수정</button>
-				   &nbsp;<button onclick="memberDelete(myform)" class="button">탈퇴</button></span>
+				   &nbsp;<button  id="memberDelete" class="button">탈퇴</button></span>
 			</div>
 		</div>
 	</form>
