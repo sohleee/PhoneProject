@@ -9,15 +9,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel= "stylesheet" type="text/css" href="css/form.css">
-
-<c:if test="${! empty requestScope.mesg}">
- <script>
-  alert('${requestScope.mesg}');
- </script>
-</c:if>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:if test="${!empty requestScope.resultMsg}">
+	<script>
+		alert("${requestScope.resultMsg}");
+	</script>
+</c:if>
+<c:if test="${!empty requestScope.mesg}">
+	<script>
+		alert("${requestScope.mesg}");
+	</script>
+</c:if>
+<!-- 메인,서브 네비 -->
+<div class="collapse navbar-collapse" align="right">
+	<jsp:include page="include/top.jsp"></jsp:include>
+</div>
+<div align="center">
+	<a href="/phone/"><img src="/phone/images/cc.jpg" width="400"
+		height="100"></a>
+</div>
+<jsp:include page="include/submenu.jsp"></jsp:include>
+<!-- //메인,서브 네비 -->
+
 <jsp:include page="login/loginForm.jsp"/>
 
 

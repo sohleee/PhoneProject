@@ -17,25 +17,60 @@
 				event.preventDefault();
 			} 
 			//console.log(this);
-			this.action="findIDResult";		
+			this.action="findID";		
 			
 		});
 	});
 </script>
 
-<form onsubmit="formchecked" method="post">
- <table align="center">
- 	<tr>
- 	 <td>이름 </td>
- 	 <td><input type="text" name="username" id="username"></td>
- 	</tr>
- 	<tr>
- 	 <td>이메일 </td>
- 	 <td><input type="email" name="email" id="email"></td>
- 	</tr>
- 	<tr>
- 	 <td colspan="2" align="center"><input type="submit" value="아이디 찾기" class="button"></td>
- 	</tr>
- </table>
-</form>
+<style>
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+<div class="container">
+
+      <form class="form-signin" onsubmit="formchecked" method="post">
+        <h3 class="form-signin-heading">Find your ID</h3>
+        <hr width="300px;">
+        <label for="username" class="sr-only">username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Name" required>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+        <br><br>
+        <button type="submit" value="로그인" class="button" style="width: 300px; height: 45.31px; border-radius: 4px;">아이디 찾기</button>
+      </form>
+
+    </div> <!-- /container -->
 
