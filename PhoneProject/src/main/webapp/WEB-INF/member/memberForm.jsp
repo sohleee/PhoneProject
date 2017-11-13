@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 
 <!-- DAUM 주소 라이브러리 시작 -->
@@ -81,10 +81,10 @@ $(document).ready(function(){
 		} else if(passwd != passwdCheck){
 			$("#passwdCheck").next().text('비밀번호가 일치하지 않습니다.').css({"color":"red", "font-size":"12px"});
 		 } else {
-			$("#passwd2").next($("div")).empty();
+			$("#passwdCheck").next().empty();
 		}
 	});
-	
+
 	//이메일 중복검사
  	$("#email").on("blur",function(){
 	 var email = $(this).val();
@@ -114,7 +114,6 @@ $(document).ready(function(){
 		 		alert("아이디를 입력하세요");    
 		 		$("#userid").focus();
 		 		event.preventDefault();
-		 		//result=false;
 		 } else if(!re_id.test($("#userid").val())){
 		 		alert("아이디는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다.");    
 		 		$("#userid").focus();
@@ -176,7 +175,6 @@ $(document).ready(function(){
 		 } else if(! re_nums.test($("#phone3").val())){
 			 	alert("전화번호 항목이 숫자 형식이 아닙니다");
 		 		console.log($("#phone3").val());
-		 		//$("#phone3").val()="";
 		 		$("#phone3").focus();
 		 		event.preventDefault();
 		 } else if($("#email").val() == '' || $("#email").val().length == 0){

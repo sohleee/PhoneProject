@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+//github.com/sohleee/PhoneProject.git
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,6 @@ public class LoginController {
 			MemberDTO dto = service.login(map);
 			if (dto == null) {
 				m.addAttribute("mesg", "아이디또는 비밀번호가 일치하지 않습니다.");
-				session.setAttribute("login", adto);
 				return "loginForm";
 			} else {
 
@@ -53,7 +53,6 @@ public class LoginController {
 			return AdminLogin(map, session, adto);
 		}
 	}
-	
 	//------------------------------------------------------------------------------
 
 	@RequestMapping("/loginX/logout")
@@ -79,13 +78,30 @@ public class LoginController {
 	public String callback() {
 		return "callback";
 	}
-	
 
+	//Form or home
+	@RequestMapping(value="/session")
+	public String session(@RequestParam String email, @RequestParam String username,
+			@RequestParam String snsid, HttpSession session, Model m) {
+		MemberDTO dto = service.snsMember(snsid);
+		if(dto != null) {
+			session.setAttribute("login", dto);
+			return "home";
+		}else {
+			m.addAttribute("email", email);
+			m.addAttribute("username", username);
+			m.addAttribute("snsid", snsid);
+			return "snsForm";
+		}
+	}
 	
-	
-	
-	
-	
+	@RequestMapping(value="/snsAdd", method=RequestMethod.POST)
+	public String insertSNSMember(@ModelAttribute MemberDTO mDTO, Model m) {
+		service.insertSNSMember(mDTO);
+		System.out.println(mDTO.getUsername());
+		m.addAttribute("result", mDTO.getUsername()+"님 회원가입을 축하합니다. 다시 한번 로그인하세요.");
+		return "home";
+	}
 
 
 
