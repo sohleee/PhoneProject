@@ -9,13 +9,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.member.MemberDTO;
+import com.service.member.MailService;
 import com.service.member.MemberService;
 
 @Controller
@@ -23,13 +26,15 @@ public class MemberController {
 	
 	@Autowired
 	MemberService service;
+	@Autowired
+	MailService mailService;
 	
 	@RequestMapping(value="/terms", method=RequestMethod.GET)
 	public String terms() {
 		return "terms";
 	}
 	
-	@RequestMapping(value="/memberForm", method=RequestMethod.GET)
+	@RequestMapping(value="/memberForm", method=RequestMethod.POST)
 	public String memberForm() {
 		return "memberForm";
 	}
@@ -64,26 +69,28 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/loginX/mypage")
-	@ModelAttribute("login")
-	public MemberDTO mypage(HttpSession session) {
+	public ModelAndView mypage(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		MemberDTO dto = (MemberDTO)session.getAttribute("login");
 		dto= service.mypage(dto.getUserid());
-		return dto;
+		mav.addObject("login",dto);
+		mav.setViewName("/loginX/mypage");
+		return mav;
 	}
 	
-	@RequestMapping(value="/loginX/memberUpdate" , method=RequestMethod.GET)
-	public String memberUpdate( @ModelAttribute("dto") MemberDTO dto , Model m) {
+	@RequestMapping(value="/loginX/memberUpdate" , method=RequestMethod.POST)
+	public String memberUpdate( @ModelAttribute("dto") MemberDTO dto , Model m, RedirectAttributes ra) {
 		service.updateMember(dto);
-		m.addAttribute("mesg", "회원 수정 성공");
+		//m.addAttribute("mesg", "회원정보가 수정되었습니다.");
+		ra.addFlashAttribute("mesg", "회원 정보가 수정되었습니다.");
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/loginX/memberDelete" , method=RequestMethod.GET)
-	public String memberDelete(@RequestParam String userid, Model m, HttpSession session) {
-	
+	@RequestMapping(value="/loginX/memberDelete" , method=RequestMethod.POST)
+	public String memberDelete(@RequestParam String userid,RedirectAttributes ra, HttpSession session) {
 		try {
 		service.deleteMember(userid);
-		m.addAttribute("mesg", "회원 삭제 성공");
+		ra.addFlashAttribute("mesg", "회원 탈퇴가 완료되었습니다.");
 		session.invalidate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -115,7 +122,7 @@ public class MemberController {
 				String subject = "Phone 아이디 찾기 안내입니다."; //제목
 				StringBuilder sb = new StringBuilder();
 	            sb.append("귀하의 아이디는 " + dto.getUserid() + " 입니다.");
-	         
+	            mailService.send(subject, sb.toString(), " p.h.o.n.e.8.2.2.2.2@gmail.com", email, null);
 	            m.addAttribute("resultMsg", "귀하의 이메일 주소로 해당 이메일로 가입된 아이디를 발송 하였습니다.");
 	            return "loginForm";
 				}
@@ -147,6 +154,7 @@ public class MemberController {
 	            hashmap.put("passwd", password);
 	            System.out.println("1<<"+password);
 	            hashmap.put("email", dto.getEmail());
+	            service.updatePasswd(hashmap); //DB비번바꿈
 	            System.out.println("2<<"+password);
 	            System.out.println("3>>"+dto.getPasswd());
 	            
@@ -155,7 +163,7 @@ public class MemberController {
 	            sb.append("귀하의 임시 비밀번호는 " + password + " 입니다.");
 	            /** 메일 전송
 	             * subject 제목 ,text 내용, from 보내는 메일 주소,to 받는 메일 주소, filePath 첨부 파일 경로: 첨부파일 없을시 null **/
-	        
+	            mailService.send(subject, sb.toString(), " p.h.o.n.e.8.2.2.2.2@gmail.com", email, null);
 	            //ra.addFlashAttribute("resultMsg", "귀하의 이메일 주소로 새로운 임시 비밀번호를 발송 하였습니다.");
 	            m.addAttribute("resultMsg", "귀하의 이메일 주소로 새로운 임시 비밀번호를 발송 하였습니다.");
 	            return "loginForm";
