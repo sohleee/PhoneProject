@@ -41,6 +41,8 @@
   .sidenav a {font-size: 18px;}
 }
 </style>
+ <jsp:include page="../include/check.jsp"></jsp:include>
+
 <script>
 	function openNav() {
 	    document.getElementById("mySidenav").style.width = "250px";
@@ -53,7 +55,7 @@
 	
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="loginX/mypage">회원정보</a>
+  <a><span data-toggle="modal" data-target="#myModal2">회원정보</span></a>
   <a href="/phone/cartList">Cart</a>
   <a href="/phone/orderHistoryList">주문내역</a>
   <a href="#">Question</a>

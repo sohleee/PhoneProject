@@ -35,7 +35,7 @@
 		</property>
 		<property name="typeAliases">
 			<list>
-				<value>com.dto.board.BoardDTO</value>
+					<value>com.dto.board.BoardDTO</value>
 				<value>com.dto.board.CommentDTO</value>
 				<value>com.dto.board.QNADTO</value>
 				<value>com.dto.board.FAQDTO</value>
@@ -65,4 +65,23 @@
 
 	<!-- //////////////////////////////////////////////// -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- gmail -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    	<property name="host" value="smtp.gmail.com" />
+    	<property name="port" value="587" />
+    	<property name="username" value=" p.h.o.n.e.8.2.2.2.2@gmail.com" />
+    	<property name="password" value="phone0518" />
+    	<property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+            	<prop key="mail.smtp.starttls.enable">true</prop>
+            	<prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="mailService" class="com.service.member.MailServiceImpl">
+    	<property name="javaMailSender" ref="javaMailSender" />
+	</bean>
 </beans>

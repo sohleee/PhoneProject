@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel= "stylesheet" type="text/css" href="../css/form.css">
+<link rel= "stylesheet" type="text/css" href="css/form.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -20,15 +20,15 @@
 <body>
 <!-- 메인,서브 네비 -->
 <div class="collapse navbar-collapse" align="right">
-	<jsp:include page="../include/top.jsp"></jsp:include>
+	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
 <div align="center">
 	<a href="/phone/"><img src="/phone/images/cc.jpg" width="400"
 		height="100"></a>
 </div>
-<jsp:include page="../include/submenu.jsp"></jsp:include>
+<jsp:include page="include/submenu.jsp"></jsp:include>
 <!-- //메인,서브 네비 -->
 
-<jsp:include page="../member/mypage.jsp"/>
+<jsp:include page="member/terms.jsp"/>
 </body>
 </html>
