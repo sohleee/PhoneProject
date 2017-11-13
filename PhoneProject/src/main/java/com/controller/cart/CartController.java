@@ -122,7 +122,6 @@ public class CartController {
 		}
 		if(userid==null) {
 			mem= (MemberDTO)session.getAttribute("login");
-			System.out.println(mem);
 			userid =mem.getUserid();
 		}
 		if(phone_amount==null || phone_amount.equals("")) {
