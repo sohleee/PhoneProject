@@ -65,7 +65,7 @@ public class LoginController {
 
 		session.setAttribute("login", dto);
 
-		return "adminForm";
+		return "chart";
 	}
 
 /*	@ExceptionHandler(Exception.class)
