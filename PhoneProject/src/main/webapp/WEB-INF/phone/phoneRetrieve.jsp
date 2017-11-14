@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -244,8 +246,12 @@
 			<a href="cartAdd?phone_model_num=${dto.phone_model_num}
 			&phone_name=${dto.phone_name}&phone_price=${dto.phone_price}&phone_image=${dto.phone_image}
 			&telecom_num=${dto.telecom_num}&telecom=${dto.telecom}">장바구니 담기</a>
-			<br><a href="updateForm?telecom_num=${dto.telecom_num}">수정</a>    &nbsp;
-			 <a href="PhoneDelete?telecom_num=${dto.telecom_num}&phone_name=${dto.phone_name}">삭제</a></td>
+			<br>
+			<c:if test="${login.userid=='master' }">
+			<a href="updateForm?telecom_num=${dto.telecom_num}">수정</a>    &nbsp;
+			 <a href="PhoneDelete?telecom_num=${dto.telecom_num}&phone_name=${dto.phone_name}">삭제</a>
+			 </c:if>
+		</td>
 			
 		</tr>
 	</table>

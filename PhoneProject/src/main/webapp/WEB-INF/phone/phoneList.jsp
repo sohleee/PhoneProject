@@ -90,6 +90,9 @@
 		</td>
 	</tr>
 	<tr>
+	<c:if test="${login.userid=='master' }">
 		<td height="10"><a href="phoneAddForm">휴대폰 등록하기</a></td>
+	</c:if>
+	
 	</tr>
 </table>
