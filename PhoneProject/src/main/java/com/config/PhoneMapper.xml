@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.list.PhoneMapper">
 
-
+	
 
 	<select id="PhoneList" resultType="PhoneDTO">
 		select telecom_num,
@@ -13,7 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		phone_content,
 		phone_price,
 		phone_image,
-		telecom
+		telecom,
+		rownum
 		from phones
 
 	</select>

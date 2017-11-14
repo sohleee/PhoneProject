@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -91,26 +93,32 @@
 </div>
 	<div class="row">
 	<br>
-	<div class="col-lg-3 col-md-4 col-xs-6">
+	<c:forEach var="xxx" items="${list}" varStatus="status">
+	
+		<c:if test="${xxx.rownum <5 }">
+		<div class="col-lg-3 col-md-1 col-xs-4">
+          <a href="PhoneRetrieve?telecom_num=${xxx.telecom_num}" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src="images/${xxx.phone_image}" 
+            	style="width:200px;height:300px;" />
+          </a>
+        </div>
+        </c:if>
+        <!-- <div class="col-lg-3 col-md-4 col-xs-6">
           <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+            <img class="img-fluid img-thumbnail" src="images/bb.jpg" alt="">
           </a>
         </div>
         <div class="col-lg-3 col-md-4 col-xs-6">
           <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+            <img class="img-fluid img-thumbnail" src="images/bb.jpg" alt="">
           </a>
         </div>
         <div class="col-lg-3 col-md-4 col-xs-6">
           <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+            <img class="img-fluid img-thumbnail" src="images/bb.jpg" alt="">
           </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
+        </div> -->
+       </c:forEach>
 	</div>
 	<br><br>
 	<div class="row">

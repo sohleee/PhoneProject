@@ -37,4 +37,5 @@ public class PhoneDAO {
 	public void phoneDelete(String telecom_num) {
 		template.delete("phoneDelete",telecom_num);
 	}
+	
 }

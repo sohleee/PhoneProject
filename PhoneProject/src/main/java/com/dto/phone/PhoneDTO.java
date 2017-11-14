@@ -12,12 +12,13 @@ public class PhoneDTO {
 	private int phone_price;
 	private String phone_image;
 	private String telecom;
+	private int rownum;
 	public PhoneDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public PhoneDTO(String telecom_num, String phone_model_num, String phone_name, String phone_content,
-			int phone_price, String phone_image, String telecom) {
+			int phone_price, String phone_image, String telecom, int rownum) {
 		super();
 		this.telecom_num = telecom_num;
 		this.phone_model_num = phone_model_num;
@@ -26,6 +27,7 @@ public class PhoneDTO {
 		this.phone_price = phone_price;
 		this.phone_image = phone_image;
 		this.telecom = telecom;
+		this.rownum = rownum;
 	}
 	public String getTelecom_num() {
 		return telecom_num;
@@ -69,11 +71,17 @@ public class PhoneDTO {
 	public void setTelecom(String telecom) {
 		this.telecom = telecom;
 	}
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
 	@Override
 	public String toString() {
 		return "PhoneDTO [telecom_num=" + telecom_num + ", phone_model_num=" + phone_model_num + ", phone_name="
 				+ phone_name + ", phone_content=" + phone_content + ", phone_price=" + phone_price + ", phone_image="
-				+ phone_image + ", telecom=" + telecom + "]";
+				+ phone_image + ", telecom=" + telecom + ", rownum=" + rownum + "]";
 	}
 	
 	

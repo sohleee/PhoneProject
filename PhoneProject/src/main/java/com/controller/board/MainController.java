@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -24,9 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.service.board.BoardService;
 import com.service.board.CommentService;
 import com.service.board.FAQService;
+import com.service.phone.PhoneService;
+import com.controller.phone.PhoneList;
 import com.dto.board.BoardDTO;
 import com.dto.board.CommentDTO;
 import com.dto.board.FileDTO;
+import com.dto.phone.PhoneDTO;
 
 @Controller
 public class MainController {
@@ -37,6 +41,8 @@ public class MainController {
 	CommentService cservice;
 	@Autowired
 	FAQService fservice;
+	@Autowired
+	PhoneService pservice;
 	
 		
 		@RequestMapping(value="/", method=RequestMethod.GET)
@@ -46,6 +52,10 @@ public class MainController {
 		@RequestParam(required=false,defaultValue="title") String searchName,
 		@RequestParam(required=false, defaultValue="all") String category,
 		HashMap<String,String> map,HashMap<String,String> map2,Model m) {
+			
+			List<PhoneDTO> list = pservice.PhoneList();
+			
+			
 			map.put("searchValue", searchValue);
 			map.put("searchName",searchName);
 			m.addAttribute("bpage",service.boardPage(curPage, perPage, map));
@@ -53,6 +63,8 @@ public class MainController {
 				map2.put("category", category);
 				m.addAttribute("category",category);
 				m.addAttribute("fpage",fservice.faqPage(curPage, perPage, map2));
+				m.addAttribute("list", list);
+				System.out.println(">>>>>>>"+ list);
 			return "home";
 		}
 		

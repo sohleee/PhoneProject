@@ -2,25 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#perPage").on("change",function(){
-			var x=$("#perPage").val();
-			location.href="boardList?perPage="+x;
-			
-		});
-		$("[id^='a']").on("click",function(){
-			var x=$(this).children("td").eq(0).text();
-					/* location.href="boardRetrieve?boardnum="+x;  */
-			});
-	});
-		
-		function boardSearch(f){
-			f.action="boardList";
-		};
-		
-		
-</script>
+
 
 <form name="myForm">
 <div align="left"><h3>FAQ</h3></div>
@@ -40,7 +22,7 @@
 		</c:if>
 		<c:if test="${list.size()!=0}">
 		<c:forEach var="dto" items="${list}">
-			<tr id="a${dto.num}">
+			<tr id="${dto.num}">
 				<td>${dto.title}</td>
 			</tr>
 			</c:forEach>
