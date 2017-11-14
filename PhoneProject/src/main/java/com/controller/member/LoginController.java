@@ -47,7 +47,7 @@ public class LoginController {
 			} else {
 
 				session.setAttribute("login", dto);
-				return "home";
+				return "redirect:/";
 			}
 		} else {
 			return AdminLogin(map, session, adto);
@@ -86,7 +86,7 @@ public class LoginController {
 		MemberDTO dto = service.snsMember(snsid);
 		if(dto != null) {
 			session.setAttribute("login", dto);
-			return "home";
+			return "redirect:/";
 		}else {
 			m.addAttribute("email", email);
 			m.addAttribute("username", username);
@@ -100,7 +100,7 @@ public class LoginController {
 		service.insertSNSMember(mDTO);
 		System.out.println(mDTO.getUsername());
 		m.addAttribute("result", mDTO.getUsername()+"님 회원가입을 축하합니다. 다시 한번 로그인하세요.");
-		return "home";
+		return "redirect:/";
 	}
 
 
