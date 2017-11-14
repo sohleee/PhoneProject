@@ -27,10 +27,7 @@
 <div class="collapse navbar-collapse" align="right">
 	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
-<div align="center">
-	<a href="/phone/"><img src="/phone/images/cc.png" width="400"
-		height="100"></a>
-</div>
+<div align="center"><a href="/phone/"><img src="/phone/images/cc.png" style="width: 300px; height: 100px"></a><br><br> </div>
 <jsp:include page="include/submenu.jsp"></jsp:include>
 <!-- //메인,서브 네비 -->
 <jsp:include page="login/findIDForm.jsp"/>
