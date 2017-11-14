@@ -1,7 +1,7 @@
 package com.service.member;
 
 public interface MailService {
-	
+
 	  /** 메일 전송
      *  @param subject 제목
      *  @param text 내용
@@ -11,5 +11,3 @@ public interface MailService {
     public boolean send(String subject, String text, String from, String to, String filePath);
  
 }
-
-

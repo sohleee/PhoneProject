@@ -35,7 +35,7 @@
 		</property>
 		<property name="typeAliases">
 			<list>
-				<value>com.dto.board.BoardDTO</value>
+					<value>com.dto.board.BoardDTO</value>
 				<value>com.dto.board.CommentDTO</value>
 				<value>com.dto.board.QNADTO</value>
 				<value>com.dto.board.FAQDTO</value>
@@ -84,13 +84,4 @@
     <bean id="mailService" class="com.service.member.MailServiceImpl">
     	<property name="javaMailSender" ref="javaMailSender" />
 	</bean>
-
-
-    
-    
-   
-
-
-
-	
 </beans>

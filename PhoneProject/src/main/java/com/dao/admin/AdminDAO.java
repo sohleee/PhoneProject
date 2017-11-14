@@ -88,5 +88,10 @@ public class AdminDAO {
 	
 		return template.selectOne("AdminQNAselectByNum",num);
 	}
-	
+	public int getTodaySales() {
+		return template.selectOne("todaySales");
+	}
+	public int getMonthSales() {
+		return template.selectOne("monthSales");
+	}
 }

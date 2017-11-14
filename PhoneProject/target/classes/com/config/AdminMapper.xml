@@ -25,17 +25,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by to_char(orderdate,'MM')
 
 	</select>
-	<select id="getAllMemberData" resultType="MemberDTO" parameterType="hashmap">
+	<select id="getAllMemberData" resultType="MemberDTO"
+		parameterType="hashmap">
 		select userid, passwd, username, phone1,phone2,phone3, post1,post2,
 		addr1, addr2, email,member_num
 		from member
-	<if test='searchName=="member_num"'>
+		<if test='searchName=="member_num"'>
 			where member_num like '%'||#{searchValue}||'%'
 		</if>
 		<if test='searchName=="userid"'>
 			where userid like '%'||#{searchValue}||'%'
 		</if>
-		
+
 		order by member_num
 	</select>
 	<delete id="membersDelete" parameterType="arraylist">
@@ -68,9 +69,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 
-	<select id="MembertotalCount" resultType="int" >
+	<select id="MembertotalCount" resultType="int">
 
-		select count(*) from member
+		select count(*)
+		from member
 	</select>
 	<select id="MembertotalCount1" resultType="int" parameterType="hashmap">
 		select count(*) from member
@@ -80,6 +82,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test='searchName=="userid"'>
 			where userid like '%'||#{searchValue}||'%'
 		</if>
+	</select>
+
+
+	<select id="todaySales" resultType="int">
+		select nvl(sum(phone_amount),0) from sales_status
+		where orderdate= to_char(sysdate,'yyyy/MM/dd')
+	</select>
+	<select id="monthSales" resultType="int">
+	select sum(phone_amount) from SALES_STATUS
+where orderdate BETWEEN trunc(sysdate) - (to_number(to_char(sysdate,'DD')) - 1) and add_months(trunc(sysdate) - (to_number(to_char(sysdate,'DD')) - 1), 1) -1
+
 	</select>
 </mapper>
 

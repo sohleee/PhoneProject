@@ -1,28 +1,22 @@
 package com.controller.member;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+//github.com/sohleee/PhoneProject.git
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.admin.AdminDTO;
 import com.dto.member.MemberDTO;
 import com.service.admin.AdminService;
-import com.service.member.MailService;
 import com.service.member.MemberService;
 
 @Controller
@@ -59,8 +53,6 @@ public class LoginController {
 			return AdminLogin(map, session, adto);
 		}
 	}
-
-	
 	//------------------------------------------------------------------------------
 
 	@RequestMapping("/loginX/logout")
@@ -86,7 +78,7 @@ public class LoginController {
 	public String callback() {
 		return "callback";
 	}
-	
+
 	//Form or home
 	@RequestMapping(value="/session")
 	public String session(@RequestParam String email, @RequestParam String username,
@@ -110,9 +102,6 @@ public class LoginController {
 		m.addAttribute("result", mDTO.getUsername()+"님 회원가입을 축하합니다. 다시 한번 로그인하세요.");
 		return "home";
 	}
-	
-	
-	
 
 
 

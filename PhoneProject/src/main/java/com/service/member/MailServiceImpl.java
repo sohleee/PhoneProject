@@ -9,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 public class MailServiceImpl implements MailService {
-	
 	// org.springframework.mail.javamail.JavaMailSender
     private JavaMailSender javaMailSender;
     
