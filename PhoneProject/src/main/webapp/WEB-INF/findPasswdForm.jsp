@@ -28,7 +28,7 @@
 	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
 <div align="center">
-	<a href="/phone/"><img src="/phone/images/cc.jpg" width="400"
+	<a href="/phone/"><img src="/phone/images/cc.png" width="400"
 		height="100"></a>
 </div>
 <jsp:include page="include/submenu.jsp"></jsp:include>
