@@ -33,7 +33,7 @@ public class LoginController {
 	@Autowired
 	AdminService amservice;
 
-
+  
 
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginForm() {
