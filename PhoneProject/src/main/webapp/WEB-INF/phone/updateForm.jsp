@@ -26,15 +26,20 @@ html, body, h1, h2, h3, h4, h5, h6, li, p {font-family:'Hanna';}
 		<td>휴대폰 상세 설명과 가격만 변경이 가능합니다.</td>
 	</tr>
 	<tr>
-		<td>내용 : <input type="text" name="phone_content"></td>
+		<td>내용 : <input type="text" name="phone_content" required></td>
 	</tr>
 	<tr>
-		<td>가격 : <input type="text" name="phone_price"></td>
+		<td>가격 : <input type="text" name="phone_price" required></td>
 	</tr>
 	<tr>
 		<td><input type="submit" value="수정하기">  <input type="reset" value="취소"></td>
 	</tr>
 </table>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="/phone/">홈으로 가기</a>
 </form>
 
 
