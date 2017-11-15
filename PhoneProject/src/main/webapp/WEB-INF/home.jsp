@@ -46,6 +46,7 @@
 	</script>
 </c:if>
 <!-- 1번 -->
+
 <div class="collapse navbar-collapse" align="right">
 	<jsp:include page="include/top.jsp"></jsp:include>
 </div>
