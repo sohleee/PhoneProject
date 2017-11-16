@@ -3,7 +3,7 @@ package com.dto.member;
 import org.apache.ibatis.type.Alias;
 
 @Alias("MemberDTO")
-public class MemberDTO {
+public class MemberDTO extends ParentsMember {
 
 	private String userid;
 	private String passwd;
