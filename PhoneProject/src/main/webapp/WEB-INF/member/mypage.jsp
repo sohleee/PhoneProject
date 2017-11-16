@@ -13,7 +13,7 @@ var re_nums = /^[0-9]{3,4}$/; //숫자 검사식
 var re_mail = /^([\w\.-]+)@([a-z\d\.-]+)\.([a-z\.]{2,6})$/; // 이메일 검사식
 
 //비밀번호 일치여부
-$("#passwdCheck").on("keyup",function(event){
+/* $("#passwdCheck").on("keyup",function(event){
 	var passwd = $("#passwd").val();
 	var passwdCheck = $("#passwdCheck").val();
 	if(passwdCheck =='' || passwd.length ==0){
@@ -23,13 +23,13 @@ $("#passwdCheck").on("keyup",function(event){
 	 } else {
 		$("#passwdCheck").next($("div")).empty();
 	}
-});
+}); */
 //
 
 
 //회원 정보 수정
  $("#memberUpdate").on("click",function(event){
-	 if($("#passwd").val() == '' || $("#passwd").val().length == 0){
+	 /* if($("#passwd").val() == '' || $("#passwd").val().length == 0){
 	 		alert("비밀번호를 입력하세요");
 	 		$("#passwd").focus();
 	 		event.preventDefault();
@@ -41,7 +41,7 @@ $("#passwdCheck").on("keyup",function(event){
 	 		alert("비밀번호가 일치하지 않습니다.");
 	 		$("#passwdCheck").focus();
 	 		event.preventDefault();
-	 } else if($("#post1").val() == '' || $("#post1").val().length == 0){
+	 } else */ if($("#post1").val() == '' || $("#post1").val().length == 0){
 	 		alert("올바른 우편번호를 입력하세요");
 	 		$("#post1").focus();
 	 		event.preventDefault();
@@ -86,17 +86,17 @@ $("#passwdCheck").on("keyup",function(event){
  //
  
 $("#memberDelete").on("click",function(event){
-	  if($("#passwd").val() != $("#passwdCheck").val()){
+	 /*  if($("#passwd").val() != $("#passwdCheck").val()){
 	 		alert("비밀번호가 일치하지 않습니다.");
 	 		$("#passwdCheck").focus();
 	 		event.preventDefault();
-	 } else{
+	 } else{ */
 	 var y = confirm("정말 탈퇴하시겠습니까?");
 	 if(y==true){
-		 $("#myform").attr("action",'http://localhost:8090/phone/loginX/memberDelete');
+		 $("#myform").attr("action",'/phone/loginX/memberDelete');
 	 } else {
 		 event.preventDefault();
-	 }
+	/*  } */
 		
 	 }
  });

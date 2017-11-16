@@ -147,7 +147,7 @@ $(document).ready(function(){
 			 alert("비밀번호를 다시 확인해주세요.");
 		 }
 		else{
-			 location.href="http://localhost:8090/phone/loginX/mypage";
+			 location.href="/phone/loginX/mypage";
 		 }
 	});
 		
