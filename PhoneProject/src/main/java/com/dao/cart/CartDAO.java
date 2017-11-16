@@ -47,7 +47,7 @@ public class CartDAO {
 	}
 
 	public int createOrderNum() {
-		template.selectOne("createOrderNum");
+		template.selectList("createOrderNum");
 		int num =template.selectOne("getOrderNum");
 		return num;
 	}
