@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
 
 .imgst {
@@ -13,7 +14,21 @@
 }
 
 </style>
+<script>
 
+	$(document).ready(function(){
+		$("[data-color]").on("mouseover",function(){
+			console.log("이미지 위에 마우스오버!");
+			$(this).css("border","1px solid blue");
+		});
+		
+		$("[data-color]").on("mouseout",function(){
+			console.log("마우스아웃!");
+			$(this).css("border","#CECECE");
+		});
+	});
+
+</script>
 <table  cellspacing="1000" cellpadding="1000">
 
 	<tr>
@@ -34,7 +49,7 @@
 				<tr>
 					<c:forEach var="xxx" items="${list}" varStatus="status">
 					<fmt:parseNumber var="totalNum" integerOnly="true" value="${xxx.phone_price / 24}"></fmt:parseNumber>
-						<td>
+						<td data-color="phoneSelect">
 							<table style='padding: 15px' border="1" bordercolor="CECECE">
 								<tr>
 									<td><a href="PhoneRetrieve?telecom_num=${xxx.telecom_num}"  class="no-uline" >
@@ -66,10 +81,10 @@
 									<td height="10">
 								</tr> -->
 								<tr>
-									<td class="td_red" align="center"><div>1234</div>
+									<td class="td_red" align="center"><div>${xxx.phone_price } 원</div>
 									
 									<span><font color="orange"><strong>
-										2개월 할부시<br>매달 ${totalNum}원 </strong></font></span>
+										24개월 할부시<br>기계 값 매달 ${totalNum}원 </strong></font></span>
 									</td>
 									
 								</tr>
