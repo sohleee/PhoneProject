@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="orderConfirm" parameterType="int" resultType="CartDTO">
 		select
-		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image,telecom_num,telecom
+		num,userid,phone_model_num,phone_name,phone_price,phone_amount,phone_image,telecom_num,telecom,member_num
 		from cart
 		where num=#{num}
 	</select>
