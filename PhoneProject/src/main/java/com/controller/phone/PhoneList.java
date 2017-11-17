@@ -55,7 +55,6 @@ public class PhoneList {
 	@RequestMapping("/PhoneRetrieve")
 	public ModelAndView PhoneRetrieve(@RequestParam String telecom_num) {
 		PhoneDTO dto = service.phoneRetrieve(telecom_num);
-		System.out.println(telecom_num);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.setViewName("phoneRetrieve");
@@ -89,8 +88,6 @@ public class PhoneList {
 		String phone_image = theFile.getName();
 		long size = theFile.getSize();
 		
-		System.out.println(">>>>>>>>>>>>>"+phone_image+"\t"+originalFilename);
-		System.out.println(dto.getPhone_content()+"\t"+dto.getPhone_model_num());
 		    
 		//실제 저장
 		File f = new File("C:\\upload",originalFilename);
