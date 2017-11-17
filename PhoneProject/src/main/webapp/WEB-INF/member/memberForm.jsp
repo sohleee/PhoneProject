@@ -61,8 +61,9 @@ $(document).ready(function(){
 	
 	
 	
-	 $("#passwd").on("keyup",function(event){
+	 $("[name:'passwd']").on("keyup",function(){
 		var passwd = $("#passwd").val();
+		console.log(passwd);
 		if(passwd =='' || passwd.length ==0){
 			$("#passwd").next().text('필수 입력 사항입니다.').css({"color":"blue", "font-size":"12px"});
 		} else if(!re_pw.test(passwd)){
@@ -73,9 +74,11 @@ $(document).ready(function(){
 	});
 	
 	//비밀번호 일치여부
-	$("#passwdCheck").on("keyup",function(event){
+	$("#passwdCheck").on("blur",function(event){
 		var passwd = $("#passwd").val();
 		var passwdCheck = $("#passwdCheck").val();
+		console.log(passwd);
+		console.log(passwdCheck);
 		if(passwdCheck =='' || passwd.length ==0){
 			$("#passwdCheck").next().text('필수 입력 사항입니다.').css({"color":"red", "font-size":"12px"});
 		} else if(passwd != passwdCheck){

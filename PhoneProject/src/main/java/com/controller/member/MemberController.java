@@ -34,7 +34,7 @@ public class MemberController {
 		return "terms";
 	}
 	
-	@RequestMapping(value="/memberForm", method=RequestMethod.POST)
+	@RequestMapping(value="/memberForm", method=RequestMethod.GET)
 	public String memberForm() {
 		return "memberForm";
 	}
