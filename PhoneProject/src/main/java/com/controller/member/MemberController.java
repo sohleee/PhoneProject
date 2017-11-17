@@ -38,6 +38,11 @@ public class MemberController {
 	public String memberForm() {
 		return "memberForm";
 	}
+
+	@RequestMapping(value="/memberForm", method=RequestMethod.POST)
+	public String memberPostForm() {
+		return "memberForm";
+	}
 	
 	@RequestMapping(value="/memberAdd", method=RequestMethod.POST)
 	public String memberAdd(@ModelAttribute MemberDTO mDTO,Model m) {

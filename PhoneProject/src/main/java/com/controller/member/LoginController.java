@@ -33,10 +33,7 @@ public class LoginController {
 	public String loginForm() {
 		return "loginForm";
 	}
-	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-	public String loginFormPost() {
-		return "loginForm";
-	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map, Model m, HttpSession session,HttpServletRequest reqeust) {
 		session=reqeust.getSession();
