@@ -35,11 +35,13 @@
 
 </head>
 <body>
+
 <c:if test="${!empty requestScope.result}">
 	<script>
 		alert("${requestScope.result}");
 	</script>
 </c:if>
+
 <c:if test="${!empty requestScope.mesg}">
 	<script>
 		alert("${requestScope.mesg}");

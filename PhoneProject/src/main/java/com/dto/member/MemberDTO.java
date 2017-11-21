@@ -18,7 +18,16 @@ public class MemberDTO extends ParentsMember {
 	private String email;
 	private String member_num;
 	private String snsid;
+	private String value;
 	
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 	public MemberDTO() {
 		super();
 		// TODO Auto-generated constructor stub

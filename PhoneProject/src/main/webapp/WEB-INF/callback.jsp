@@ -36,7 +36,6 @@
 			//opener.location.href ="http://localhost:8090/phone/snsForm?email='naver_id_login.getProfileData('email')+'&username='+ naver_id_login.getProfileData('nickname')+'&snsid='+naver_id_login.getProfileData('id')";  
 			opener.location.href ="http://localhost:8090/phone/session?email="+email+"&username="+username
 					+"&snsid="+snsid+"&value=naver";
-			//+"&state="+state
 			
 			window.open('about:blank', '_self').self.close();
 			
