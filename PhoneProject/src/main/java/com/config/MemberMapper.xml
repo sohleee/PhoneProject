@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertSNSMember" parameterType="MemberDTO">
-		insert into member(member_num, snsid, userid, username, phone1,phone2,phone3)
-		values(seq_member_num.nextval, #{snsid},#{userid},#{username},#{phone1},#{phone2},#{phone3})
+		insert into member(member_num, snsid, value, userid, passwd, username, phone1,phone2,phone3)
+		values(seq_member_num.nextval, #{snsid}, #{value},#{userid},#{passwd},#{username},#{phone1},#{phone2},#{phone3})
 	</insert>
 	
 	<select id="login" parameterType="map" resultType="MemberDTO">

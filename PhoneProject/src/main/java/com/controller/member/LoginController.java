@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.admin.AdminDTO;
 import com.dto.member.MemberDTO;
@@ -27,16 +28,11 @@ public class LoginController {
 	@Autowired
 	AdminService amservice;
 
-  
-
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginForm() {
 		return "loginForm";
 	}
-	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-	public String loginFormPost() {
-		return "loginForm";
-	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map, Model m, HttpSession session,HttpServletRequest reqeust) {
 		session=reqeust.getSession();
@@ -85,7 +81,7 @@ public class LoginController {
 	//Form or home
 	@RequestMapping(value="/session")
 	public String session(@RequestParam String email, @RequestParam String username,
-			@RequestParam String snsid, HttpSession session, Model m) {
+			@RequestParam String snsid,@RequestParam String value, HttpSession session, Model m) {
 		MemberDTO dto = service.snsMember(snsid);
 		if(dto != null) {
 			session.setAttribute("login", dto);
@@ -94,15 +90,17 @@ public class LoginController {
 			m.addAttribute("email", email);
 			m.addAttribute("username", username);
 			m.addAttribute("snsid", snsid);
+			m.addAttribute("value",value);
+			m.addAttribute("mesg",username+"님 sns계정 연동을 위한 정보를 입력해주세요");
 			return "snsForm";
 		}
 	}
 	
 	@RequestMapping(value="/snsAdd", method=RequestMethod.POST)
-	public String insertSNSMember(@ModelAttribute MemberDTO mDTO, Model m) {
+	public String insertSNSMember(@ModelAttribute MemberDTO mDTO, RedirectAttributes ra) {
 		service.insertSNSMember(mDTO);
 		System.out.println(mDTO.getUsername());
-		m.addAttribute("result", mDTO.getUsername()+"님 회원가입을 축하합니다. 다시 한번 로그인하세요.");
+		ra.addFlashAttribute("mesg", mDTO.getUsername()+"님 sns계정과 연동되었습니다. 다시 한번 로그인하세요.");
 		return "redirect:/";
 	}
 

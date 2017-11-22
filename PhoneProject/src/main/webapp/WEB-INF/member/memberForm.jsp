@@ -61,27 +61,25 @@ $(document).ready(function(){
 	
 	
 	
-	 $("[name:'passwd']").on("keyup",function(){
-		var passwd = $("#passwd").val();
-		console.log(passwd);
-		if(passwd =='' || passwd.length ==0){
-			$("#passwd").next().text('필수 입력 사항입니다.').css({"color":"blue", "font-size":"12px"});
-		} else if(!re_pw.test(passwd)){
-			$("#passwd").next().text('5자리 이상 15자리 이하 영문과 숫자를 입력하세요.').css({"color":"red", "font-size":"12px"});
+	 $("#passwd2").on("keyup",function(){
+		var passwd2 = $("#passwd2").val();
+		console.log(passwd2);
+		if(passwd2 =='' || passwd2.length ==0){
+			$("#passwd2").next().text('필수 입력 사항입니다.').css({"color":"blue", "font-size":"12px"});
+		} else if(!re_pw.test(passwd2)){
+			$("#passwd2").next().text('5자리 이상 15자리 이하 영문과 숫자를 입력하세요.').css({"color":"red", "font-size":"12px"});
 		}  else {
-			$("#passwd").next().text('사용가능').css({"color":"blue", "font-size":"12px"});
+			$("#passwd2").next().empty();
 		}
 	});
 	
 	//비밀번호 일치여부
 	$("#passwdCheck").on("blur",function(event){
-		var passwd = $("#passwd").val();
+		var passwd2 = $("#passwd2").val();
 		var passwdCheck = $("#passwdCheck").val();
-		console.log(passwd);
-		console.log(passwdCheck);
-		if(passwdCheck =='' || passwd.length ==0){
+		if(passwdCheck =='' || passwd2.length ==0){
 			$("#passwdCheck").next().text('필수 입력 사항입니다.').css({"color":"red", "font-size":"12px"});
-		} else if(passwd != passwdCheck){
+		} else if(passwd2 != passwdCheck){
 			$("#passwdCheck").next().text('비밀번호가 일치하지 않습니다.').css({"color":"red", "font-size":"12px"});
 		 } else {
 			$("#passwdCheck").next().empty();
@@ -121,15 +119,15 @@ $(document).ready(function(){
 		 		alert("아이디는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다.");    
 		 		$("#userid").focus();
 		 		event.preventDefault();
-		 } else if($("#passwd").val() == '' || $("#passwd").val().length == 0){
+		 } else if($("#passwd2").val() == '' || $("#passwd2").val().length == 0){
 		 		alert("비밀번호를 입력하세요");
 		 		$("#passwd").focus();
 		 		event.preventDefault();
-		 } else if(!re_pw.test($("#passwd").val())){
+		 } else if(!re_pw.test($("#passwd2").val())){
 			 alert("비밀번호에 5자리 이상 15자리 이하 영문과 숫자를 입력하세요.");    
-		 		$("#passwd").focus();
+		 		$("#passwd2").focus();
 		 		event.preventDefault();
-		 } else if($("#passwd").val() != $("#passwdCheck").val()){
+		 } else if($("#passwd2").val() != $("#passwdCheck").val()){
 		 		alert("비밀번호가 일치하지 않습니다.");
 		 		$("#passwdCheck").focus();
 		 		event.preventDefault();
@@ -188,8 +186,7 @@ $(document).ready(function(){
 		 		alert("email을 올바르게 입력하세요");
 		 		$("#email").focus();
 		 		event.preventDefault();
-		 } 
-		 	else if($('div:contains("사용중")').length >0){
+		 } else if($('div:contains("사용중")').length >0){
 			 alert("이미 사용중인 아이디입니다.");
 			 	$("#userid").focus();
 			 	console.log($("#userid").text());
@@ -232,15 +229,18 @@ $(document).ready(function(){
 				<div></div>
 			</div>
 		</div>
+		
 		<div class="form-group" id="divPassword">
 			<label for="inputPassword" class="col-lg-2 control-label">*패스워드</label>
 			<div class="col-lg-10">
-				<input type="password" class="form-control" id="passwd"
-					name="passwd" data-rule-required="true" placeholder="패스워드"
-					maxlength="18">
-				<div></div>
+			 <input type="password" class="form-control" id="passwd2" name="passwd" data-rule-required="true"
+			  placeholder="패스워드" maxlength="18">
+			<div></div>
 			</div>
 		</div>
+		
+		
+		
 		<div class="form-group" id="divPasswordCheck">
 			<label for="inputPasswordCheck" class="col-lg-2 control-label">*패스워드
 				확인</label>
@@ -252,6 +252,7 @@ $(document).ready(function(){
 			</div>
 			<div></div>
 		</div>
+		
 		<div class="form-group" id="divName">
 			<label for="inputName" class="col-lg-2 control-label">*이름</label>
 			<div class="col-lg-10">
@@ -278,6 +279,16 @@ $(document).ready(function(){
 				<!-- 다음주소 끝 -->
 			</div>
 		</div>
+		
+		<div class="form-group" id="divEmail">
+			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+			<div class="col-lg-10">
+				<input type="email" class="form-control" id="email" name="email"
+					data-rule-required="true" placeholder="이메일" maxlength="40">
+				<div></div>
+			</div>
+			
+		</div>
 
 		<div class="form-group" id="divPhoneNumber">
 			<label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰
@@ -294,15 +305,7 @@ $(document).ready(function(){
 
 			</div>
 		</div>
-		<div class="form-group" id="divEmail">
-			<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-			<div class="col-lg-10">
-				<input type="email" class="form-control" id="email" name="email"
-					data-rule-required="true" placeholder="이메일" maxlength="40">
-				<div></div>
-			</div>
-			
-		</div>
+		
 
 		<div class="form-group">
 			<label for="inputEmailReceiveYn" class="col-lg-2 control-label">이메일
