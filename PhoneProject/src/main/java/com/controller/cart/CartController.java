@@ -43,18 +43,17 @@ public class CartController {
 	}
 
 	@RequestMapping("/cartAdd")
-	public String cartAdd(@RequestParam Map<String, String> map, @RequestParam String phone_image, HttpSession session, Model m) {
+	public String cartAdd(@RequestParam Map<String, String> map, HttpSession session, Model m) {
 		String userid = map.get("userid");
 		String phone_model_num = map.get("phone_model_num");
 		String phone_name = map.get("phone_name");
 		String phone_price = map.get("phone_price");
-	
+		String phone_image = map.get("phone_image");
 		String telecom_num = map.get("telecom_num");
 		String telecom = map.get("telecom");
 		int phone_amount = 1;
 		CartDTO dto = new CartDTO();
-		System.out.println("cart56" +phone_image);
-		
+
 		userid = (String) ((MemberDTO) session.getAttribute("login")).getUserid();
 		dto.setPhone_amount(phone_amount);
 		dto.setPhone_image(phone_image);

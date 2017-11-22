@@ -88,8 +88,6 @@ public class PhoneList {
 		String phone_image = theFile.getName();
 		long size = theFile.getSize();
 		
-		System.out.println(">>>>>>>>>>>>>"+phone_image+"\t"+originalFilename);
-		System.out.println(dto.getPhone_content()+"\t"+dto.getPhone_model_num());
 		    
 		//실제 저장
 		File f = new File("C:\\upload",originalFilename);
