@@ -19,7 +19,7 @@
 		$(".deleteQNA").on("click",function(){
 			console.log("in");
 			var num = $(this).attr("data-num");
-			
+			console.log("num",num);
 			$.ajax({
 				type:"DELETE",
 				url:"qnaDeleteData/num/"+num,
@@ -132,6 +132,7 @@
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
+				<th></th>
 			</tr>
 
 			<c:set var="list" value="${page.getList()}"></c:set>
@@ -149,7 +150,9 @@
 						<td>${dto.content}</td>
 						<td>${dto.author}</td>
 						<td>${dto.writeday}</td>
-						<td>${dto.readCnt}<input type="button" data-num="${dto.num}"
+						<td>${dto.readCnt}
+						</td>
+						<td><input type="button" data-num="${dto.num}"
 							class="deleteQNA" value="질문삭제">
 						</td>
 					</tr>

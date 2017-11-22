@@ -26,7 +26,7 @@
 		//console.log(e.pageX, e.pageY);
 		if (e.pageX < 100) {
 
-			$('.sidenav').css("width", "200px");
+			$('.sidenav').css("width", "300px");
 
 		} else if (e.pageX > 180) {
 			$('.sidenav').css("width", "0");

@@ -105,12 +105,14 @@ $(document).ready( function($) {
 					<option>I8</option>
 					<option>I8s</option>
 					<option>IX</option>
+					<option>V30</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td>폰 모델&nbsp;&nbsp;&nbsp;</td><td><select name="phone_model_num">
 					<option>iphone</option>
 					<option>galaxy</option>
+					<option>lg</option>
 				</select></td>
 			</tr>
 			<tr>
