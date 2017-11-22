@@ -66,7 +66,7 @@ public class CartController {
 
 		service.insertItem(dto);
 		m.addAttribute("dto", dto);
-
+		System.out.println(map.get("phone_image"));
 		
 		return showCartList(userid,m);
 	}

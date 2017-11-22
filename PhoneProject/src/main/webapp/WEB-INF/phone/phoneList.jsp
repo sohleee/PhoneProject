@@ -40,9 +40,6 @@
 					<td height="50"></td>
 				</tr>
 				<tr>
-					<td height="1" colspan="8" bgcolor="CECECE"></td>
-				</tr>
-				<tr>
 					<td height="10"></td>
 				</tr>
 
@@ -68,7 +65,7 @@
 									<td class="td_default" align="center"><a class="a_black"
 										href="PhoneRetrieve?telecom_num=${xxx.telecom_num}">
 											${xxx.phone_name}<br>
-									</a> <!-- <font color="gray"> -------------------- </font> --></td>
+									</a></td>
 
 								</tr>
 								<!-- <tr>
